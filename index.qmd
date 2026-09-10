@@ -1,29 +1,46 @@
 ---
-title: "Title"
+title: "Preditores ambientais da comunidade zooplanctônica em riachos da floresta atlântica"
 subtitle: |
-  Subtitle 1  
-  Subtitle 2   
+  Influência dos níveis de preservação ambiental e da sazonalidade sobre a composição da comunidade do zooplâncton  
 author:
-  - name: Steve Purves
-    orcid: 0000-0002-0760-5497
-    corresponding: true
-    email: steve@curvenote.com
-    roles:
-      - Investigation
-      - Project administration
-      - Software
-      - Visualization
-    affiliations:
-      - Curvenote
-  - name: Rowan Cockett
-    orcid: 0000-0002-7859-8394
+  - name: Mayara Mirelly da Silva Monteiro
+    orcid: 0009-0001-3332-1340
     corresponding: false
+    email: mayaramirelly68@gmail.com
     roles: []
     affiliations:
-      - Curvenote
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+  - name: Ellen Gomes da Silva
+    orcid: 0009-0008-6580-8162
+    corresponding: false
+    email: ellensilva958@gmail.com
+    roles: []
+    affiliations:
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+  - name: Marcela Vitória Bernardo da Silva
+    orcid: 0009-0002-7483-5978
+    corresponding: false
+    email: marcelavb122@gmail.com
+    roles: []
+    affiliations:
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+  - name: Thais Xavier de Melo
+    orcid: 0000-0003-4346-6997
+    corresponding: false
+    email: thais.melo@ufmt.br
+    roles: []
+    affiliations:
+      - FAET/DESA, Universidade Federal de Mato Grosso - UFMT, Av. Fernando Corrêa da Costa, 2367, Bairro Boa Esperança, CEP 78060-900, Cuiabá, MT, Brazil.
+  - name: Elvio Sergio Figueredo Medeiros
+    orcid: 0000-0002-7472-8147
+    corresponding: true
+    email: elviomedeiros@servidor.uepb.edu.br
+    roles: []
+    affiliations:
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
 keywords:
-  - La Palma
-  - Earthquakes
+  - Riachos
+  - Floresta Atlântica
 date: "`r Sys.Date()`"
 abstract: "Abstract"
 lang: "en-US"
@@ -44,12 +61,9 @@ format:
     toc: true
     code-line-numbers: true
     colorlinks: true
-    execute:
-      echo: false
   docx:
-    execute:
-      echo: false
-    reference-doc: custom-reference.docx
+    reference-doc: refs/custom-rmarkdown-word.docx
+    echo: false
 execute:
   echo: true
   result: hold
