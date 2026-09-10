@@ -75,7 +75,7 @@ editor_options:
 
 # Introdução
 
-The scientific research follows the model shown in the figured cross-referenced here (@fig-pesquisa).
+The scientific research follows the model shown in the figured cross-referenced here.
 
 # Perguntas
 
@@ -124,11 +124,11 @@ A área de entorno da REBIO Guaribas apresenta diferentes formas de uso e cobert
 
 O clima regional é classificado como As', segundo Köppen-Geiger, com estação chuvosa entre fevereiro e julho e período seco entre outubro e dezembro [@peel2007]. A temperatura média anual varia entre 24 e 26 °C, enquanto a precipitação anual é de aproximadamente 1.750 a 2.000 mm. A drenagem local é composta por pequenos riachos de cabeceira, cuja dinâmica está relacionada ao regime de precipitação. Entre esses ambientes, destacam-se os riachos Barro Branco e Caiana, escolhidos como áreas de estudo deste trabalho, ambos pertencentes à bacia do rio Camaratuba [@gouveia2017].
 
-O delineamento amostral foi estruturado considerando dois períodos sazonais e diferentes níveis de preservação ambiental. As coletas foram realizadas durante o período seco, entre novembro de 2023 e fevereiro de 2024, e durante o período chuvoso, entre junho e agosto de 2024. Foram estabelecidas 15 unidades amostrais (UAs), distribuídas nos riachos Barro Branco e Caiana, localizados no fragmento SEMA 02 da REBIO Guaribas, abrangendo áreas no interior da unidade de conservação e áreas sob influência antrópica em seu entorno (Figura 1). No riacho Barro Branco, foram estabelecidas seis unidades amostrais (UAs 1 a 6), distribuídas longitudinalmente ao longo do curso d’água. As UAs 1 a 3 estavam localizadas no interior da REBIO Guaribas, enquanto as UAs 4 a 6 estavam situadas na zona de amortecimento. No riacho Caiana, foram estabelecidas nove unidades amostrais (UAs 7 a 15), distribuídas em trechos sob maior influência de áreas de pastagem e cultivo agrícola.
+O delineamento amostral foi estruturado considerando dois períodos sazonais e diferentes níveis de preservação ambiental. As coletas foram realizadas durante o período seco, entre novembro de 2023 e fevereiro de 2024, e durante o período chuvoso, entre junho e agosto de 2024. Foram estabelecidas 15 unidades amostrais (UAs), distribuídas nos riachos Barro Branco e Caiana, localizados no fragmento SEMA 02 da REBIO Guaribas, abrangendo áreas no interior da unidade de conservação e áreas sob influência antrópica em seu entorno (@fig-mapa). No riacho Barro Branco, foram estabelecidas seis unidades amostrais (UAs 1 a 6), distribuídas longitudinalmente ao longo do curso d’água. As UAs 1 a 3 estavam localizadas no interior da REBIO Guaribas, enquanto as UAs 4 a 6 estavam situadas na zona de amortecimento. No riacho Caiana, foram estabelecidas nove unidades amostrais (UAs 7 a 15), distribuídas em trechos sob maior influência de áreas de pastagem e cultivo agrícola.
 
 Em cada unidade amostral, foram coletados dados referentes à estrutura do habitat, à qualidade da água e à fauna zooplanctônica. Foram realizadas três subamostragens em diferentes habitats dentro de cada unidade amostral, totalizando 45 subamostras (15 UAs × 3 subamostras) para cada período sazonal.
 
-As unidades amostrais foram classificadas quanto ao nível de preservação ambiental a partir das características observadas no entorno e no próprio trecho amostrado, considerando principalmente a condição da vegetação ripária, o uso e a cobertura do solo adjacente e as características gerais do habitat. A classificação resultou em quatro condições de preservação, organizadas em um gradiente que variou de trechos mais preservados a trechos sob maior influência antrópica. As condições foram definidas a priori, antes da análise das respostas biológicas, de modo que o nível de preservação fosse considerado uma característica espacial independente dessas respostas.
+As unidades amostrais foram classificadas quanto ao nível de preservação ambiental a partir das características observadas no entorno e no próprio trecho amostrado, considerando principalmente a condição da vegetação ripária, o uso e a cobertura do solo adjacente e as características gerais do habitat. A classificação resultou em quatro condições de preservação, organizadas em um gradiente que variou de trechos mais preservados a trechos sob maior influência antrópica. As condições foram definidas *a priori*, antes da análise das respostas biológicas, de modo que o nível de preservação fosse considerado uma característica espacial independente dessas respostas.
 
 -   Tipo I: corresponde às unidades amostrais localizadas no interior da área protegida e que apresentam condições bem preservadas, caracterizadas pela presença de vegetação ripária íntegra e ausência de áreas de cultivo nas proximidades, considerando uma distância mínima de 1 km. Essas unidades também atendem aos critérios de qualidade da água estabelecidos como referência, com temperatura média ≤ 28 °C, concentração média de oxigênio dissolvido ≥ 6 mg/L, velocidade média da água ≥ 0,025 m/s e turbidez média ≤ 15 NTU.
 
@@ -192,7 +192,7 @@ Author1: Writing – review & editing, Writing – original draft, Formal analys
 
 This study did not require ethical approval as it did not involve human participants or sensitive data. Field surveys were conducted based on collection permit number (IEF-10327-6 and SISBIO-10.635-7).
 
-# References {.unnumbered}
+# Referências {.unnumbered}
 
 ::: {#refs}
 :::
@@ -200,11 +200,19 @@ This study did not require ethical approval as it did not involve human particip
 \pagebreak
 \newpage
 
-# Figures and Tables {.unnumbered}
+# Figuras e Tabelas {.unnumbered}
 
-## Figures {.unnumbered}
+@fig-mapa: Localização das unidades amostrais nos riachos Barro Branco e Caiana, na Reserva Biológica Guaribas, Mamanguape, Paraíba. A unidade amostral 1 corresponde ao local de referência do estudo.
 
-![Etapas do desenvolvimento da pesquisa científica.](imagens/pesquisa_cientifica.jpg){#fig-pesquisa}
+## Figuras {.unnumbered}
+
+<details>
+
+<summary>Fig.: Localização das unidades amostrais</summary>
+
+![Localização das unidades amostrais.](imagens/mapa.jpeg){#fig-mapa}
+
+<details>
 
 ## Tables {.unnumbered}
 
