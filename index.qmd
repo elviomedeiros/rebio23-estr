@@ -1,7 +1,7 @@
 ---
-title: "Preditores ambientais da comunidade zooplanctônica em riachos da floresta atlântica"
+title: "Preditores ambientais da comunidade zooplanctônica em riachos da floresta atlântica."
 subtitle: |
-  Influência dos níveis de preservação ambiental e da sazonalidade sobre a composição da comunidade do zooplâncton  
+  Influência dos níveis de preservação ambiental e da sazonalidade sobre a composição da comunidade do zooplâncton.  
 author:
   - name: Mayara Mirelly da Silva Monteiro
     orcid: 0009-0001-3332-1340
@@ -73,9 +73,28 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Introduction
+# Introdução
 
 The scientific research follows the model shown in the figured cross-referenced here (@fig-pesquisa).
+
+# Perguntas
+
+O presente estudo propõe-se a responder às seguintes questões:
+
+1.  Como as condições ambientais variam em riachos da Floresta Atlântica considerando os diferentes níveis de preservação ambiental e os períodos seco e chuvoso?
+2.  A composição da comunidade zooplanctônica difere entre diferentes níveis de preservação ambiental e entre os períodos seco e chuvoso?
+3.  Quais variáveis ambientais apresentam maior associação com a variação da composição da comunidade zooplanctônica?
+4.  Quais táxons apresentam maior associação com os diferentes níveis de preservação ambiental?
+
+# Hipóteses
+
+Hipótese 1 – Variação das condições ambientais: Espera-se que as condições ambientais dos riachos apresentem variação ao longo dos gradientes de preservação ambiental e entre os períodos seco e chuvoso, refletindo diferenças na estrutura do habitat e nas características físico-químicas da água.
+
+Hipótese 2 – Variação da composição da comunidade zooplanctônica: Mudanças na estrutura do habitat e nas características ambientais podem modificar os recursos disponíveis para o zooplâncton. Dessa forma, espera-se que a composição da comunidade zooplanctônica se altere entre os diferentes níveis de preservação ambiental e entre os períodos seco e chuvoso.
+
+Hipótese 3 – Associação entre os preditores ambientais e a comunidade zooplanctônica: Considerando que as características ambientais dos riachos podem atuar de forma conjunta sobre a comunidade zooplanctônica, espera-se que parte da variação na composição da comunidade seja explicada pelas variáveis relacionadas às condições ambientais, com algumas variáveis apresentando maior contribuição do que outras.
+
+Hipótese 4 – Táxons indicadores: Tendo em vista que diferentes condições ambientais podem favorecer determinados grupos, espera-se que alguns táxons da comunidade zooplanctônica estejam mais associados a determinados níveis de preservação ambiental, podendo atuar como indicadores do nível de preservação.
 
 # Material and Methods
 
