@@ -96,6 +96,24 @@ Hipótese 3 – Associação entre os preditores ambientais e a comunidade zoopl
 
 Hipótese 4 – Táxons indicadores: Tendo em vista que diferentes condições ambientais podem favorecer determinados grupos, espera-se que alguns táxons da comunidade zooplanctônica estejam mais associados a determinados níveis de preservação ambiental, podendo atuar como indicadores do nível de preservação.
 
+# Objetivos
+
+## Objetivo geral
+
+Identificar os principais preditores ambientais associados à composição da comunidade zooplanctônica em riachos inseridos em um remanescente de Floresta Atlântica, considerando diferentes níveis de preservação ambiental e os períodos seco e chuvoso.
+
+## Objetivos Específicos
+
+-   Caracterizar os principais gradientes de estrutura do habitat e das condições ambientais ao longo dos riachos, considerando os diferentes níveis de preservação ambiental e os períodos seco e chuvoso.
+
+-   Avaliar a variação da composição da comunidade zooplanctônica, entre os diferentes níveis de preservação ambiental e os períodos seco e chuvoso.
+
+-   Identificar as variáveis ambientais que apresentam maior associação com a variação na composição da comunidade zooplanctônica.
+
+-   Determinar quais preditores ambientais selecionados apresentam maior contribuição para explicar a variação da composição da comunidade zooplanctônica.
+
+-   Identificar os táxons associados aos diferentes níveis de preservação ambiental e aos períodos seco e chuvoso.
+
 # Material and Methods
 
 Data and methods are discussed in @sec-data-col. This citation will appear in the bibliography section (@gouveia2017; @medeiros2008).
