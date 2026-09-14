@@ -1,7 +1,7 @@
 ---
 title: "Preditores ambientais da comunidade zooplanctônica em riachos de floresta atlântica."
 subtitle: |
-  Influência dos níveis de preservação ambiental e da sazonalidade sobre a composição da comunidade do zooplanctônica.
+  Influência dos níveis de preservação ambiental e da sazonalidade sobre a composição da comunidade do zooplâncton.
 author:
   - name: Mayara Mirelly da Silva Monteiro
     orcid: 0009-0001-3332-1340
@@ -9,35 +9,35 @@ author:
     email: mayaramirelly68@gmail.com
     roles: []
     affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brasil.
   - name: Ellen Gomes da Silva
     orcid: 0009-0008-6580-8162
     corresponding: false
     email: ellensilva958@gmail.com
     roles: []
     affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brasil.
   - name: Marcela Vitória Bernardo da Silva
     orcid: 0009-0002-7483-5978
     corresponding: false
     email: marcelavb122@gmail.com
     roles: []
     affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brasil.
   - name: Thais Xavier de Melo
     orcid: 0000-0003-4346-6997
     corresponding: false
     email: thais.melo@ufmt.br
     roles: []
     affiliations:
-      - FAET/DESA, Universidade Federal de Mato Grosso - UFMT, Av. Fernando Corrêa da Costa, 2367, Bairro Boa Esperança, CEP 78060-900, Cuiabá, MT, Brazil.
+      - FAET/DESA, Universidade Federal de Mato Grosso - UFMT, Av. Fernando Corrêa da Costa, 2367, Bairro Boa Esperança, CEP 78060-900, Cuiabá, MT, Brasil.
   - name: Elvio Sergio Figueredo Medeiros
     orcid: 0000-0002-7472-8147
     corresponding: true
     email: elviomedeiros@servidor.uepb.edu.br
     roles: []
     affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brasil.
 keywords:
   - Riachos
   - Floresta Atlântica
@@ -149,6 +149,12 @@ A morfologia do local foi caracterizada pela medição da largura (cm) e da prof
 A qualidade da água foi avaliada por meio de variáveis físico-químicas. Em campo, foram medidos o oxigênio dissolvido (mg/L) e a temperatura da água (°C) por meio de oxímetro portátil (LUTRON DO-5510). A velocidade da corrente (m/s) foi estimada pelo método do flutuador descrito por @maitland1990. Em laboratório, no Laboratório de Ecologia da UEPB – Campus V, foram determinados os valores de pH (TECNOPON MPA-210), condutividade elétrica (TECNOPON MCS-150) e turbidez, utilizando turbidímetro com base em amostras de água coletadas em cada unidade amostral.
 
 A composição do sedimento e a estrutura física do habitat foram avaliadas seguindo protocolos propostos por @pusey2004 e @mugodo2006, adaptados por @medeiros2008. Essas variáveis foram estimadas a partir de 9 a 12 quadrantes de um metro distribuídos ao longo das margens do curso d'água (interface terrestre-aquática), por meio de transectos paralelos às margens dos corpos d'água, representando a proporção média (%) de cobertura dos atributos avaliados. Dentro de cada quadrante, a porcentagem de cobertura dos tipos de sedimento (lama, areia, seixos, cascalho fino, cascalho grosso, rochas e rocha matriz) e das estruturas do habitat litorâneo e subaquático foi estimada visualmente. As variáveis de estrutura do habitat incluíram macrófitas aquáticas, gramíneas marginais, serapilheira, algas aderidas, algas filamentosas, vegetação suspensa, vegetação submersa, liteira, pequenos detritos lenhosos, grandes detritos lenhosos, massas radiculares, raízes e galhos.
+
+## Coleta do zooplâncton
+
+O zooplâncton foi coletado quantitativamente utilizando uma rede de plâncton com abertura de 30 cm de diâmetro, 70 cm de comprimento e malha de 68 μm. Em cada unidade amostral, foram definidos três tipos distintos de hábitat, sendo filtrados 50 L de água por hábitat, totalizando 150 L por unidade amostral. O material retido na rede foi transferido para frascos plásticos graduados de 80 mL [@pinto-coelho2004]. As amostras foram anestesiadas com água gasosa comercial (CO₂) e posteriormente fixadas em formalina a 4%, neutralizada com sacarose, com o objetivo de reduzir distorções estruturais, evitar a perda de ovos e garantir a preservação das características morfológicas necessárias à identificação taxonômica [@haney1973]. No laboratório, todo o volume concentrado de cada amostra foi analisado, sendo os indivíduos identificados até o menor nível taxonômico possível e contados em câmara de contagem do tipo Sedgwick–Rafter (1 mL), com auxílio de microscópio óptico (Olympus CX31), chaves de identificação especializadas e outros materiais de apoio relacionados [@elmoor-loureiro1997; @koste1987; @joko2011].
+
+As análises foram realizadas no Laboratório de Ecologia da Universidade Estadual da Paraíba (UEPB), Campus V, e apenas rotíferos, cladóceros e copépodes foram considerados no presente estudo.
 
 ## Statistical Analyses
 
