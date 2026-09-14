@@ -158,20 +158,101 @@ As análises foram realizadas no Laboratório de Ecologia da Universidade Estadu
 
 ## Statistical Analyses
 
-Here you can add your statistical analyses and follow the text with the RStudio code. Following the model in <https://elviomedeiros.github.io/Bentos2006_Q/>.
+Todas as análises estatísticas foram realizadas a partir de duas matrizes de dados: uma matriz ambiental, contendo as variáveis relacionadas à estrutura do habitat e às condições ambientais, e uma matriz comunitária, composta pelos táxons do zooplâncton.
 
-```{r, CHUNK-TITLE}
+Inicialmente, as variáveis ambientais foram avaliadas quanto à correlação entre si, com o objetivo de identificar variáveis redundantes. As variáveis que apresentaram elevada correlação foram excluídas das análises posteriores, evitando a sobreposição de informações entre os preditores ambientais [@legendre1998].
+
+```{r env-str23_org}
 #| eval: false
 #| message: false
 #| warning: false
-#| results: false
-#| echo: true
-#| purl: false
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: "Code: Summary"
+#| code-summary: "Código: Importação e organização dos dados ambientais"
+#| results: false
 
-plot(1:10)
+#str23 - ORGANIZANDO DADOS----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+getwd()
+library(openxlsx)
+
+##CARREGANDO MATRIZES BRUTAS----
+
+habitat <- read.xlsx("data/rebio23-habitat.xlsx",
+                     rowNames = T,
+                     colNames = T,
+                     sheet = "ambiente",
+                     rows = 2:98) #startRow = 2
+
+habitat[is.na(habitat)] <- 0
+habitat
+
+###REMOVENDO COLUNAS ZERADAS DE HABITAT----
+
+sum <- colSums(habitat)
+sum
+zero_sum <- names(which(colSums(habitat) == 0))
+zero_sum #nomes das colunas zeradas
+m_part_cols <- habitat[(colSums(habitat) != 0)] #em != a exclamação inverte o sentido
+zero_sum2 <- names(which(colSums(m_part_cols) == 0))
+zero_sum2 #nomes das colunas zeradas
+sum<-colSums(m_part_cols)
+sum
+
+t_grps <- read.xlsx("data/rebio23-habitat.xlsx",
+                    rowNames = T,
+                    colNames = T,
+                    sheet = "grupos",
+                    rows = 2:98) #startRow = 2
+t_grps
+
+
+###SEPARANDO NUTRIENTES----
+
+nutri <- grep("^n\\.", colnames(m_part_cols), value = TRUE)
+nutri
+nutrientes <- m_part_cols[, nutri, drop = FALSE]
+
+m_hab <- m_part_cols[, !colnames(m_part_cols) %in% nutri, drop = FALSE]
+colnames(m_hab)
+
+##SALVANDO MATRIZES FINAIS----
+
+write.table(m_hab, "m_hab.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+write.table(nutrientes, "t_nutri.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+write.table(t_grps, "t_grps.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+
+##TRAZENDO DE VOLTA----
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+t_nutri <- read.csv("t_nutri.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+m_hab <- read.csv("m_hab.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
 ```
 
 # Results
