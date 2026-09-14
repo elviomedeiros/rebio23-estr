@@ -382,6 +382,73 @@ cor_star <- noquote(cor_star)
 print(cor_star, na.print = "")
 ```
 
+Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada [@mccune2002]. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote `FactoMineR` no ambiente R [@lê2008]. Antes da análise, todas as variáveis foram centradas e escalonadas para a unidade de variância.
+
+```{r env-PCA_org}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Organização dos dados ambientais para a PCA"
+
+#PCA fviz package----
+#browseURL("https://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/")
+
+#ORGANIZANDO DADOS----
+
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
+
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+m_hab_part <- read.csv("m_hab_part.csv",
+                       sep = ";", dec = ".",
+                       row.names = 1,
+                       header = TRUE,
+                       na.strings = NA)
+
+colnames(m_hab_part)
+
+###RELATIVIZAÇÕES E TRANSFORMAÇÕES----
+library(vegan)
+library(tidyverse)
+
+# Selecionando variáveis que começam com "w" ou "m"
+m_wm <- m_hab_part[, grep("^(w|m)", colnames(m_hab_part))]
+
+# Selecionando variáveis que começam com "s" ou "h"
+m_sh <- m_hab_part[, grep("^(s|h)", colnames(m_hab_part))]
+
+# Removendo os dois primeiros caracteres dos nomes das colunas
+colnames(m_wm) <- sub("^..", "", colnames(m_wm))
+colnames(m_sh) <- sub("^..", "", colnames(m_sh))
+
+# Transformações
+m_wm <- sqrt(m_wm)
+m_sh <- asin(sqrt(decostand(m_sh, method = "total", MARGIN = 2)))
+
+# Juntando tudo em uma única tabela
+hab_trns <- cbind(m_sh, m_wm)
+
+# Salvado m_hab_trns
+write.table(hab_trns, "m_hab_trns.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+m_hab_trns <- read.table("m_hab_trns.csv",
+                         sep = ";", dec = ".",
+                         row.names = 1,
+                         header = TRUE,
+                         na.strings = NA)
+```
+
 # Results
 
 The results section should follow the model in <https://elviomedeiros.github.io/Bentos2006_Q/>.
