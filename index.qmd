@@ -449,6 +449,20 @@ m_hab_trns <- read.table("m_hab_trns.csv",
                          na.strings = NA)
 ```
 
+As análises relacionadas à comunidade zooplanctônica foram realizadas com base na densidade dos táxons, expressa em indivíduos por litro (ind/L), seguindo uma metodologia adaptada de @bowen2017. A densidade de cada táxon foi calculada pela razão entre o número de indivíduos registrados na amostra e o volume total de água filtrado, conforme a fórmula: *Dsp = Nsp/Vf* onde, *Dsp* corresponde à densidade do táxon, em indivíduos por litro; *Nsp* corresponde ao número de indivíduos do táxon registrado na amostra; e *Vf* corresponde ao volume total de água filtrado, em litros.
+
+A composição da comunidade zooplanctônica foi avaliada por meio da Análise de Escalonamento Multidimensional Não Métrico (NMDS), utilizando a matriz transformada de densidade. A NMDS foi utilizada para representar a organização da composição da comunidade entre as unidades amostrais e verificar sua distribuição em relação aos diferentes níveis de preservação ambiental e períodos sazonais [@clarke1993].
+
+A diferença na composição da comunidade zooplanctônica entre os grupos foi avaliada por meio da Análise de Variância Multivariada Permutacional (PERMANOVA), utilizando a matriz de densidade transformada. O teste foi empregado para avaliar a variação da composição da comunidade em relação aos diferentes níveis de preservação ambiental e aos períodos seco e chuvoso [@anderson2001].
+
+A identificação dos táxons associados aos diferentes grupos foi realizada por meio da Análise de Espécies Indicadoras (IndVal), buscando identificar os táxons que apresentaram maior associação com os diferentes níveis de preservação ambiental e períodos sazonais [@dufrêne1997].
+
+A relação entre a comunidade zooplanctônica e as variáveis ambientais foi avaliada por meio da Análise de Redundância (RDA), utilizando a matriz comunitária de densidade transformada e a matriz ambiental previamente selecionada [@legendre1998]. Antes da construção do modelo, as variáveis ambientais foram avaliadas pelo fator de inflação da variância (*VIF*), sendo mantidas aquelas com valores inferiores a 10 [@obrien2007]. Em seguida, foi realizada a seleção das variáveis ambientais pelo procedimento forward stepwise, permitindo identificar os preditores que melhor explicaram a variação na composição da comunidade [@blanchet2008].
+
+A significância dos modelos de RDA foi avaliada por meio de testes de permutação, permitindo verificar a relação entre os preditores ambientais selecionados e a variação observada na comunidade zooplanctônica [@legendre1998].
+
+Todas as análises foram realizadas no ambiente de programação R [@rcoreteam2023], utilizando principalmente os pacotes `Vegan` [@oksanen] e `FactoMineR` [@lê2008].
+
 # Results
 
 The results section should follow the model in <https://elviomedeiros.github.io/Bentos2006_Q/>.
