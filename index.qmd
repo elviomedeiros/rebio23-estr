@@ -1,7 +1,7 @@
 ---
 title: "Preditores ambientais da comunidade zooplanctônica em riachos de floresta atlântica."
 subtitle: |
-  Influência dos níveis de preservação ambiental e da sazonalidade sobre a composição da comunidade do zooplâncton.
+  Influência dos níveis de preservação ambiental e da sazonalidade sobre a estrutura da comunidade do zooplâncton.
 author:
   - name: Mayara Mirelly da Silva Monteiro
     orcid: 0009-0001-3332-1340
@@ -457,9 +457,7 @@ A diferença na composição da comunidade zooplanctônica entre os grupos foi a
 
 A identificação dos táxons associados aos diferentes grupos foi realizada por meio da Análise de Espécies Indicadoras (IndVal), buscando identificar os táxons que apresentaram maior associação com os diferentes níveis de preservação ambiental e períodos sazonais [@dufrêne1997].
 
-A relação entre a comunidade zooplanctônica e as variáveis ambientais foi avaliada por meio da Análise de Redundância (RDA), utilizando a matriz comunitária de densidade transformada e a matriz ambiental previamente selecionada [@legendre1998]. Antes da construção do modelo, as variáveis ambientais foram avaliadas pelo fator de inflação da variância (*VIF*), sendo mantidas aquelas com valores inferiores a 10 [@obrien2007]. Em seguida, foi realizada a seleção das variáveis ambientais pelo procedimento forward stepwise, permitindo identificar os preditores que melhor explicaram a variação na composição da comunidade [@blanchet2008].
-
-A significância dos modelos de RDA foi avaliada por meio de testes de permutação, permitindo verificar a relação entre os preditores ambientais selecionados e a variação observada na comunidade zooplanctônica [@legendre1998].
+A relação entre a comunidade zooplanctônica e as variáveis ambientais foi avaliada por meio da Análise de Redundância (RDA), utilizando a matriz comunitária de densidade transformada e a matriz de variáveis ambientais previamente selecionada [@legendre1998]. Antes da construção do modelo, a multicolinearidade entre as variáveis explicativas foi avaliada por meio do Fator de Inflação da Variância (VIF), utilizando a função `vif.cca`. Variáveis que apresentaram VIF \> 10 foram consideradas altamente colineares e excluídas da análise [@obrien2007]. Em seguida, as variáveis ambientais restantes foram submetidas ao procedimento de seleção *forward stepwise*, com o objetivo de identificar os preditores que melhor explicaram a variação na estrutura da comunidade zooplanctônica [@blanchet2008]. A significância da RDA e das variáveis selecionadas foi avaliada por meio de testes de permutação, permitindo verificar a contribuição dos preditores ambientais para a variação observada na comunidade [@legendre1998].
 
 Todas as análises foram realizadas no ambiente de programação R [@rcoreteam2023], utilizando principalmente os pacotes `Vegan` [@oksanen] e `FactoMineR` [@lê2008].
 
