@@ -1,7 +1,7 @@
 ---
-title: "Preditores ambientais da comunidade zooplanctônica em riachos de floresta atlântica."
+title: "Preditores ambientais da comunidade zooplanctônica em riachos de floresta atlântica"
 subtitle: |
-  Influência dos níveis de preservação ambiental e da sazonalidade sobre a estrutura da comunidade do zooplâncton.
+  Influência dos níveis de preservação ambiental e da sazonalidade sobre a estrutura da comunidade do zooplâncton
 author:
   - name: Mayara Mirelly da Silva Monteiro
     orcid: 0009-0001-3332-1340
@@ -461,11 +461,104 @@ A relação entre a comunidade zooplanctônica e as variáveis ambientais foi av
 
 Todas as análises foram realizadas no ambiente de programação R [@rcoreteam2023], utilizando principalmente os pacotes `Vegan` [@oksanen] e `FactoMineR` [@lê2008].
 
-# Results
+# Resultados
 
-The results section should follow the model in <https://elviomedeiros.github.io/Bentos2006_Q/>.
+## Variáveis ambientais
 
-## Environmental variables
+Os dados ambientais apresentaram variação entre os 15 pontos amostrados ao longo do gradiente de preservação. A temperatura da água apresentou médias entre 12,6 e 16,2 °C, com os maiores valores no ponto 11, enquanto o oxigênio dissolvido variou de 2,6 a 4,1 mg/L, sendo o maior valor registrado no ponto de referência (Ponto 1). A condutividade apresentou valores médios entre 98,8 e 223 μS/cm, com maior valor no ponto 10, e a turbidez variou de 4,9 a 79,2 NTU, destacando-se os pontos 7, 12 e 13 pelos maiores valores. O pH apresentou médias entre 5,1 e 6,9, com os valores mais altos nos pontos 14 e 15.
+
+Entre as características morfológicas, a velocidade da água variou de 0 a 0,41 m/s, com maiores médias nos pontos 14, 9, 12 e 7. A profundidade apresentou valores médios entre 12,8 e 72,4 cm, enquanto a largura variou de 1,1 a 19,5 m. A elevação dos pontos variou de 41,5 a 112,8 m, e a declividade apresentou médias entre 1,0 e 3,2. O ponto 1, utilizado como referência, apresentou 0,073 m/s de velocidade, 12,8 cm de profundidade, 6,2 m de largura e 107,1 m de elevação.
+
+O substrato foi composto principalmente por lama e areia, com proporções médias de 1,7 a 100% e de 0 a 98,3%, respectivamente. A lama predominou nos pontos 1 e 2, enquanto a areia apresentou maior contribuição nos pontos 14, 9 e 10. O cascalho fino ocorreu em baixa proporção nos pontos 9, 10 e 13, e as rochas foram registradas apenas no ponto 12.
+
+A estrutura do habitat também variou entre os pontos. A cobertura vegetal apresentou médias de 0,8 a 83,3%, com maiores valores nos pontos 7, 3, 2 e 5, enquanto o ponto 11 apresentou a menor cobertura. As massas de raízes atingiram 42,5% no ponto 5, as gramíneas chegaram a 39,2% no ponto 11 e as macrófitas a 20,8%, também no ponto 11. A liteira variou de 1,7 a 18,3%, a vegetação submersa de 0 a 16,7% e as algas de 0 a 19,2%. Os detritos apresentaram médias entre 4,2 e 30,8%, com maior contribuição no ponto de referência. De forma geral, a composição do substrato e a estrutura do habitat apresentaram mudanças entre os pontos, acompanhadas por diferenças nas condições da água e nas características morfológicas ao longo do gradiente ambiental.
+
+```{r gttable_hab_excel}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Tabela de dados ambientais" 
+
+#TABELA DE HABITAT----
+
+m_hab_part <- read.csv("m_hab_part.csv",
+                       sep = ";", dec = ".",
+                       row.names = 1,
+                       header = TRUE,
+                       na.strings = NA)
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+library(dplyr)
+library(tidyr)
+m_trab <- m_hab_part %>%
+  rename_with(~ gsub("_", ".", .))
+m <- m_trab %>%
+  group_by(PontoN = t_grps$PontoN) %>%
+  summarise(across(where(is.numeric),
+                   list(mean = mean, min = min, max = max)),
+            .groups = 'drop') %>%
+  pivot_longer(
+    cols = -c(PontoN),
+    names_to = c("Variable", ".value"),
+    names_sep = "_"
+  )
+
+m <- as.data.frame(m)
+m_wide <- m %>%
+  mutate(stat_string = ifelse(Variable == c("m.Vel.m.s"),
+                              paste0(round(mean, 3), " (", round(min, 3), "-", round(max, 3), ")"),
+                              paste0(round(mean, 1), " (", round(min, 1), "-", round(max, 1), ")"))) %>%
+  unite("Location", PontoN, sep = "_") %>%
+  select(Variable, Location, stat_string) %>%
+  pivot_wider(names_from = Location, values_from = stat_string)
+
+m_wide
+m_wide <- as.data.frame(m_wide)
+m_wide <- m_wide[, c("Variable", "Ponto5", "Ponto6", "Ponto7", "Ponto8", "Ponto9", "Ponto10", "Ponto12", "Ponto13", "Ponto14", "Ponto15", "Ponto16", "Ponto17", "Ponto18", "Ponto19", "Ponto20")] #sequência das colunas (ou linhas)
+m_wide
+
+# Salvado m_wide
+write.table(m_wide, "m_wide_hab.txt",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+m_wide_hab <- read.table("m_wide_hab.txt",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+# Exportando dados para Excel
+library(openxlsx)
+#write.xlsx(m_wide, file = "tabela de habitat.xlsx", rowNames = FALSE)
+wb <- loadWorkbook("tabela de habitat.xlsx")
+writeData(wb, sheet = "Sheet 1", x = m_wide)
+saveWorkbook(wb, "tabela de habitat.xlsx", overwrite = TRUE)
+
+# Tabela final ajustada no Excel
+library(readxl)
+hab_gttable <- read_excel(
+  path  = "tabela de habitat.xlsx",
+  sheet = "tabela_final",
+  range = "A1:P28") #ajustar para o tamanho da tabela final 
+hab_gttable
+library(gt)
+hab_gttable <- gt(hab_gttable)
+hab_gttable <- sub_missing(hab_gttable,
+                      columns = everything(), missing_text = "")
+#hab_gttable <- fmt_number(hab_gttable, columns = "F.O.(%)", decimals = 1)
+hab_gttable
+gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
+saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
+```
 
 ## Community structure
 
@@ -497,6 +590,8 @@ This study did not require ethical approval as it did not involve human particip
 
 @fig-mapa: Localização das unidades amostrais nos riachos Barro Branco e Caiana, na Reserva Biológica Guaribas, Mamanguape, Paraíba. A unidade amostral 1 corresponde ao local de referência do estudo.
 
+@tbl-hab_gttable: Variáveis ambientais médias para os pontos de amostragem (mínimo–máximo) nos riachos Barro Branco e Caiana (Mamanguape, PB). O Ponto 1 é o ponto de referência deste estudo.
+
 ## Figuras {.unnumbered}
 
 <details>
@@ -508,6 +603,18 @@ This study did not require ethical approval as it did not involve human particip
 <details>
 
 ## Tables {.unnumbered}
+
+<details>
+
+<summary>Tab.: Tabela de dados ambientais</summary>
+
+```{r tbl-hab_gttable}
+#| echo: false
+#| tbl-cap: "Tabela de dados ambientais."
+readRDS("gt-hab_gttable_xlsx.rds")
+```
+
+</details>
 
 \pagebreak
 \newpage
