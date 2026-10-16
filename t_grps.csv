@@ -17,9 +17,6 @@
 "S-B-P10-H1";"seco";"Barro Branco";"BarroBranco2";"Ponto10";45168;1;"Barro Branco";"Barro Branco Baixo";"Rio";10;"IV";NA;1
 "S-B-P10-H2";"seco";"Barro Branco";"BarroBranco2";"Ponto10";45168;1;"Barro Branco";"Barro Branco Baixo";"Rio";10;"IV";NA;2
 "S-B-P10-H3";"seco";"Barro Branco";"BarroBranco2";"Ponto10";45168;1;"Barro Branco";"Barro Branco Baixo";"Rio";10;"IV";NA;3
-"S-C-P11-H1";"seco";"Caiana";NA;"Ponto11";45322;5;"Caiana";"Poça";"Poça temporária";11;"IV";NA;1
-"S-C-P11-H2";"seco";"Caiana";NA;"Ponto11";45322;5;"Caiana";"Poça";"Poça temporária";11;"IV";NA;2
-"S-C-P11-H3";"seco";"Caiana";NA;"Ponto11";45322;5;"Caiana";"Poça";"Poça temporária";11;"IV";NA;3
 "S-C-P12-H1";"seco";"Caiana";"Caiana1";"Ponto12";45322;5;"Caiana";"Caiana Alto";"Rio";12;"III";NA;1
 "S-C-P12-H2";"seco";"Caiana";"Caiana1";"Ponto12";45322;5;"Caiana";"Caiana Alto";"Rio";12;"III";NA;2
 "S-C-P12-H3";"seco";"Caiana";"Caiana1";"Ponto12";45322;5;"Caiana";"Caiana Alto";"Rio";12;"III";NA;3
@@ -65,9 +62,6 @@
 "C-B-P10-H1";"chuvoso";"Barro Branco";"BarroBranco2";"Ponto10";45471;1;"Barro Branco";"Barro Branco Baixo";"Rio";10;"IV";NA;1
 "C-B-P10-H2";"chuvoso";"Barro Branco";"BarroBranco2";"Ponto10";45471;1;"Barro Branco";"Barro Branco Baixo";"Rio";10;"IV";NA;2
 "C-B-P10-H3";"chuvoso";"Barro Branco";"BarroBranco2";"Ponto10";45471;1;"Barro Branco";"Barro Branco Baixo";"Rio";10;"IV";NA;3
-"C-C-P11-H1";"chuvoso";"Caiana";NA;"Ponto11";45471;5;"Caiana";"Poça";"Poça temporária";11;"IV";NA;1
-"C-C-P11-H2";"chuvoso";"Caiana";NA;"Ponto11";45471;5;"Caiana";"Poça";"Poça temporária";11;"IV";NA;2
-"C-C-P11-H3";"chuvoso";"Caiana";NA;"Ponto11";45471;5;"Caiana";"Poça";"Poça temporária";11;"IV";NA;3
 "C-C-P12-H1";"chuvoso";"Caiana";"Caiana1";"Ponto12";45462;5;"Caiana";"Caiana Alto";"Rio";12;"III";NA;1
 "C-C-P12-H2";"chuvoso";"Caiana";"Caiana1";"Ponto12";45462;5;"Caiana";"Caiana Alto";"Rio";12;"III";NA;2
 "C-C-P12-H3";"chuvoso";"Caiana";"Caiana1";"Ponto12";45462;5;"Caiana";"Caiana Alto";"Rio";12;"III";NA;3

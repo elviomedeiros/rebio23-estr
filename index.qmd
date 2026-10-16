@@ -1,40 +1,11 @@
 ---
-title: "Preditores ambientais da comunidade zooplanctônica em riachos de floresta atlântica"
+title: "Preditores ambientais da comunidade zooplanctônica em riachos sob diferentes níveis de preservação em um remanescente de Floresta Atlântica"
 subtitle: |
-  Influência dos níveis de preservação ambiental e da sazonalidade sobre a estrutura da comunidade do zooplâncton
 author:
   - name: Mayara Mirelly da Silva Monteiro
     orcid: 0009-0001-3332-1340
     corresponding: false
     email: mayaramirelly68@gmail.com
-    roles: []
-    affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brasil.
-  - name: Ellen Gomes da Silva
-    orcid: 0009-0008-6580-8162
-    corresponding: false
-    email: ellensilva958@gmail.com
-    roles: []
-    affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brasil.
-  - name: Marcela Vitória Bernardo da Silva
-    orcid: 0009-0002-7483-5978
-    corresponding: false
-    email: marcelavb122@gmail.com
-    roles: []
-    affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brasil.
-  - name: Thais Xavier de Melo
-    orcid: 0000-0003-4346-6997
-    corresponding: false
-    email: thais.melo@ufmt.br
-    roles: []
-    affiliations:
-      - FAET/DESA, Universidade Federal de Mato Grosso - UFMT, Av. Fernando Corrêa da Costa, 2367, Bairro Boa Esperança, CEP 78060-900, Cuiabá, MT, Brasil.
-  - name: Elvio Sergio Figueredo Medeiros
-    orcid: 0000-0002-7472-8147
-    corresponding: true
-    email: elviomedeiros@servidor.uepb.edu.br
     roles: []
     affiliations:
       - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brasil.
@@ -48,7 +19,7 @@ editor: source
 toc: true
 number-sections: true
 bibliography: refs/references.bib
-csl: refs/apa.csl
+csl: refs/ecology.csl
 highlight-style: pygments
 format:
   html:
@@ -75,86 +46,87 @@ editor_options:
 
 # Introdução
 
-The scientific research follows the model shown in the figured cross-referenced here.
+A Floresta Atlântica está entre os principais domínios de florestas tropicais e subtropicais úmidas do Brasil apresentando variações no relevo e na vegetação ao longo de sua distribuição[@olson2001; @massante2023]. Essa variação gera heterogeneidade ambiental, o que contribui para sua rica biodiversidade, que inclui espécies raras e endêmicas, muitas delas ameaçadas de extinção [@tabarelli2010; @marques2021]. Entretanto, a Floresta Atlântica apresenta um longo histórico de ocupação e uso da terra, que contribuiu para a redução de sua cobertura vegetal original [@fonseca1985], sendo que grande parte da vegetação remanescente encontra-se distribuída em pequenos fragmentos, geralmente isolados entre si e sujeitos à influência dos efeitos de borda [@vancine2024; @molinez2024]. A combinação de sua rica biodiversidade e de seu elevado endemismo, somada à intensa perda de habitat, levou ao seu reconhecimento como um dos principais *hotspots* mundiais de conservação [@myers2000].
+
+Diante desse cenário, as unidades de conservação tornam-se uma estratégia para proteger os remanescentes de Floresta Atlântica, contribuindo para a manutenção da cobertura vegetal e da biodiversidade [@lima2020; @souza2021; @zuñe2025], tendo como objetivo a preservação integral dos ecossistemas e a manutenção de suas condições naturais dentro de seus limites [@brasil2000]. No entanto, a proteção legal não garante, por si só, que essas condições sejam mantidas, tornando necessário o acompanhamento das áreas protegidas para avaliar sua efetividade [@oliveira2017; @faria2021; @barros2022; @chen2023; @witt2023; @simeão2026]. Para esse acompanhamento, os ecossistemas aquáticos inseridos nos remanescentes florestais podem ser utilizados como indicadores das condições ambientais, entre os quais se destacam os riachos, por serem sistemas que sofrem interferência direta do ambiente terrestre, especialmente pela vegetação ripária [@fisher1996; @silva-araújo2020; @oliveira2025].
+
+A vegetação ripária corresponde à vegetação presente nas margens dos riachos, formando uma faixa de transição entre os ambientes terrestre e aquático, contribuindo para o controle da entrada de nutrientes e sedimentos, o fornecimento de matéria orgânica e a regulação da incidência de luz e da temperatura nos riachos [@naiman1997; @beltrão2009; @tonello2021]. Dessa forma, a vegetação ripária favorece a manutenção de habitats e a disponibilidade de recursos para os organismos aquáticos [@oester2026; @ye2024; @zhang2024]. Entretanto, interferências antrópicas, como a substituição ou remoção da vegetação ripária, podem comprometer essas funções, alterando a retenção de nutrientes, sedimentos e contaminantes e, consequentemente, as condições do habitat e a qualidade da água [@ebling2024; @fachinelli2023]. Essas alterações podem refletir na composição e nas características funcionais das comunidades aquáticas [@andriotti2022; @hepp2023; @aggio2022; @amaral2022; @bomfim2023]. Além disso, a variação das condições ambientais no espaço e no tempo podem contribuir para diferentes respostas das comunidades, influenciando sua estrutura e organização [@santos2025; @gomes2020; @souza2023; @giongo2023; @silva2024].
+
+Além da ação humana, fatores naturais, como a sazonalidade, também influenciam o funcionamento dos ecossistemas aquáticos em regiões tropicais, onde a alternância entre os períodos chuvosos e secos modifica a dinâmica dos riachos [@maltchik2006; @milesi2024; @barboza2024]. Durante o período chuvoso, o aumento do escoamento pode elevar a velocidade da água, o transporte e a deposição de sedimentos, bem como a entrada de matéria orgânica e nutrientes [@magalhães2022; @tadeu2025]. No período seco, a redução da vazão pode favorecer a formação de poças e remansos e modificar a disponibilidade de recursos e micro-hábitats [@silva2017; @costa2026]. Dessa forma, a sazonalidade pode alterar simultaneamente as condições ambientais e a estrutura do habitat, influenciando a organização das comunidades aquáticas.
+
+Entre as comunidades que melhor respondem a essas variações está o zooplâncton. O zooplâncton compreende a comunidade de organismos heterotróficos que vivem na coluna d'água e apresentam capacidade limitada de locomoção, sendo influenciados pelo movimento da água [@tundisi2008; @esteves2011]. Embora seja tradicionalmente associado a ambientes lênticos, esse grupo também ocorre em sistemas lóticos, sobretudo em locais de menor velocidade da água, como margens protegidas, poças e remansos [@walks2007; @castilho-noll2023]. Sua ocorrência nesses ambientes está relacionada às condições locais e à disponibilidade de habitats favoráveis à sua permanência [@gomes2020; @gutierrez2022; @santos2026].
+
+A comunidade zooplanctônica é sensível às variações que ocorrem no ambiente e pode responder rapidamente a mudanças nas condições locais. As condições físico-químicas da água, como temperatura, oxigênio dissolvido e condutividade, podem afetar a ocorrência e a densidade dos organismos, enquanto a heterogeneidade espacial está relacionada à disponibilidade de micro-hábitats e áreas de retenção [@riis2020; @aggio2022; @bomfim2022; @bomfim2024]. A vegetação ripária também exerce papel importante nessa dinâmica, ao regular a entrada de luz, matéria orgânica e sedimentos, influenciando as condições ambientais e a disponibilidade de recursos [@ono2020; @bega2024]. Em conjunto, esses fatores podem determinar diferentes padrões na composição e na densidade da comunidade zooplanctônica.
+
+Apesar da importância desses componentes, o zooplâncton de riachos permanece menos estudado do que aquele associado a ambientes lênticos, especialmente em regiões tropicais [@bomfim2024]. Essa lacuna torna-se relevante porque a dinâmica hidrológica, a heterogeneidade do habitat e a conexão entre os riachos e o ambiente terrestre podem produzir padrões de organização diferentes daqueles observados em lagos e reservatórios [@amaral2022; @ribeiro2022; @gomes2020; @ramos2022]. Nesse sentido, a vegetação ripária e as características físico-químicas da água podem influenciar a composição da comunidade zooplanctônica, uma vez que alterações nessas condições podem modificar os recursos e as condições disponíveis para os organismos. Assim, a identificação das variáveis ambientais associadas à comunidades aquáticas, como o zooplâncton, permite compreender quais variáveis ambientais apresentam maior associação com relação a sua composição [@stenert2008; @maltchik2010; @simião-ferreira2026]. Diante disso, este estudo busca identificar os principais preditores ambientais associados à composição da comunidade zooplanctônica em riachos inseridos em um remanescente de Floresta Atlântica, considerando diferentes níveis de preservação ambiental.
 
 # Perguntas
 
 O presente estudo propõe-se a responder às seguintes questões:
 
-1.  Como as condições ambientais variam em riachos de Floresta Atlântica considerando os diferentes níveis de preservação ambiental e os períodos seco e chuvoso?
-2.  A composição da comunidade zooplanctônica difere entre diferentes níveis de preservação ambiental e entre os períodos seco e chuvoso?
-3.  Quais variáveis ambientais apresentam maior associação com a variação da composição da comunidade zooplanctônica?
-4.  Quais táxons apresentam maior associação com os diferentes níveis de preservação ambiental?
+1.  Como as condições ambientais e a composição da comunidade zooplanctônica variam ao longo do gradiente de preservação dos riachos?
+
+2.  Quais variáveis ambientais estão associadas à variação na composição da comunidade zooplanctônica e quais apresentam maior contribuição para explicá-la?
+
+3.  Quais táxons estão associados às diferentes condições ambientais observadas nos riachos?
 
 # Hipóteses
 
-Hipótese 1 – Variação das condições ambientais: Espera-se que as condições ambientais dos riachos apresentem variação ao longo dos gradientes de preservação ambiental e entre os períodos seco e chuvoso, refletindo diferenças na estrutura do habitat e nas características físico-químicas da água.
-
-Hipótese 2 – Variação da composição da comunidade zooplanctônica: Mudanças na estrutura do habitat e nas características ambientais podem modificar os recursos disponíveis para o zooplâncton. Dessa forma, espera-se que a composição da comunidade zooplanctônica se altere entre os diferentes níveis de preservação ambiental e entre os períodos seco e chuvoso.
-
-Hipótese 3 – Associação entre os preditores ambientais e a comunidade zooplanctônica: Considerando que as características ambientais dos riachos podem atuar de forma conjunta sobre a comunidade zooplanctônica, espera-se que parte da variação na composição da comunidade seja explicada pelas variáveis relacionadas às condições ambientais, com algumas variáveis sendo mais significativas do que outras.
-
-Hipótese 4 – Táxons indicadores: Tendo em vista que diferentes condições ambientais podem favorecer determinados grupos, espera-se que alguns táxons da comunidade zooplanctônica estejam mais associados a determinados níveis de preservação ambiental, podendo atuar como indicadores da condição ambiental.
+1.  **Variação das condições ambientais e da composição da comunidade:** As mudanças no uso e cobertura do solo bem como alterações na vegetação ripária podem modificar a estrutura do habitat e as características físico-químicas da água, alterando as condições e a disponibilidade de recursos para os organismos. Assim, espera-se que a composição da comunidade zooplanctônica responda a essas mudanças e varie ao longo do gradiente de preservação, acompanhando essas alterações ambientais.
+2.  **Associação entre os preditores ambientais e a comunidade zooplanctônica:** A comunidade zooplanctônica é sensível às mudanças nas condições ambientais, podendo apresentar alterações em sua composição. Dessa forma, espera-se que parte da variação na composição da comunidade zooplanctônica seja explicada pelas condições ambientais dos riachos, com algumas variáveis apresentando maior contribuições para explicar essa variação do que outras.
+3.  **Táxons indicadores:** Espera-se que determinados táxons da comunidade zooplanctônica apresentem maior associação com algum nivel de preservação ambiental, em resposta às condições características de cada nível, podendo atuar como bioindicadores dessas condições.
 
 # Objetivos
 
 ## Objetivo Geral
 
-Identificar os principais preditores ambientais associados à composição da comunidade zooplanctônica em riachos inseridos em um remanescente de Floresta Atlântica, considerando diferentes níveis de preservação ambiental e os períodos seco e chuvoso.
+Identificar os principais preditores ambientais associados à composição da comunidade zooplanctônica em riachos de um remanescente de Floresta Atlântica sob diferentes níveis de preservação ambiental.
 
 ## Objetivos Específicos
 
--   Caracterizar os principais gradientes de estrutura do habitat e das condições ambientais ao longo dos riachos, considerando os diferentes níveis de preservação ambiental e os períodos seco e chuvoso.
+-   Caracterizar os principais gradientes de estrutura do habitat e das condições ambientais ao longo dos riachos, considerando diferentes níveis de preservação.
 
--   Avaliar a variação da composição da comunidade zooplanctônica, entre os diferentes níveis de preservação ambiental e os períodos seco e chuvoso.
+-   Avaliar a variação na composição da comunidade zooplanctônica ao longo do gradiente de preservação.
 
--   Identificar as variáveis ambientais que apresentam maior associação com a variação na composição da comunidade zooplanctônica.
+-   Determinar quais preditores ambientais apresentam maior contribuição para explicar a variação na composição da comunidade zooplanctônica.
 
--   Determinar quais preditores ambientais selecionados apresentam maior contribuição para explicar a variação da composição da comunidade zooplanctônica.
-
--   Identificar os táxons associados aos diferentes níveis de preservação ambiental e aos períodos seco e chuvoso.
+-   Identificar os táxons que funcionam como especies indicadoras associados às diferentes condições ambientais observadas ao longo dos riachos.
 
 # Material e Métodos
 
 ## Área de estudo e delineamento amostral
 
-O estudo foi realizado na Reserva Biológica Guaribas (REBIO Guaribas), unidade de conservação federal localizada no estado da Paraíba. Criada em 1990, a REBIO Guaribas é constituída por três fragmentos descontínuos, denominados SEMA 01, SEMA 02 e SEMA 03, constituindo um dos últimos remanescentes de Floresta Atlântica na região. A vegetação da unidade de conservação é composta principalmente por floresta estacional semidecidual e formações savânicas, com influência da Caatinga adjacente. A REBIO Guaribas está localizada no município de Mamanguape, mas também sofre influência de Rio Tinto, Curral de Cima, Jacaraú e Marcação, estando inserida em uma região caracterizada pelo predomínio de áreas agrícolas [@mma2003].
+O estudo foi realizado na Reserva Biológica Guaribas (REBIO Guaribas), uma unidade de conservação federal localizada no estado da Paraíba. Criada em 1990, a REBIO Guaribas é constituída por três fragmentos descontínuos, denominados SEMA 01, SEMA 02 e SEMA 03, que representam um dos últimos remanescentes de Floresta Atlântica na região. A vegetação da REBIO é composta principalmente por floresta estacional semidecidual e formações savânicas, estando a unidade localizada em uma zona de transição entre as ecorregiões da Caatinga e da Mata Atlântica. A área de estudo está inserida principalmente no município de Mamanguape, abrangendo também os municípios de Rio Tinto, Curral de Cima, Jacaraú e Marcação, em uma região caracterizada pelo predomínio de áreas agrícolas [@mma2003]. O entorno da REBIO Guaribas apresenta diferentes formas de uso e cobertura do solo, com predominância de áreas destinadas à agricultura, pastagens e pequenas propriedades rurais [@mma2026; @arruda2013]. Entre as principais atividades desenvolvidas na região estão o cultivo de cana-de-açúcar, abacaxi e coqueiro, além da pecuária e roçados de subsistência [@heinrichs2017; @gouveia2017]. Esses usos do solo podem influenciar os ambientes aquáticos adjacentes por meio do escoamento superficial, da alteração da vegetação ripária e do aporte de sedimentos, nutrientes e outros materiais pelo assoreamento de córregos e contaminação das águas subterrâneas [@mma2003; @soler2004].
 
-A área de entorno da REBIO Guaribas apresenta diferentes formas de uso e cobertura do solo, incluindo áreas de agricultura, pastagem e pequenas propriedades rurais [@mma2026; @arruda2013]. Entre as principais atividades desenvolvidas na região estão o cultivo de cana-de-açúcar, abacaxi e coqueiro, além da pecuária, pomares e roçados de subsistência [@heinrichs2017; @gouveia2017]. Esses usos podem influenciar os ambientes aquáticos adjacentes por meio do escoamento superficial, da alteração da vegetação ripária e da entrada de sedimentos, nutrientes e outros materiais nos riachos [@mma2003; @soler2004].
+A rede hidrográfica da região é composta predominantemente por pequenas bacias, com córregos de primeira e segunda ordem, segundo a classificação de Strahler [@strahler1957]. Entre eles, destacam-se os riachos Barro Branco e Caiana, ambos pertencentes à bacia hidrográfica do rio Camaratuba e selecionados como áreas de estudo deste trabalho, localizados no fragmento SEMA 02 da REBIO Guaribas. O riacho Barro Branco possui aproximadamente 8,8 km de extensão e sua nascente está localizada no interior da REBIO Guaribas. Seu trecho superior está inserido nos limites da unidade de conservação, enquanto os trechos médio e inferior se estendem para a área de entorno. Apesar dessa transição, a vegetação ripária permanece preservada ao longo da maior parte do riacho. O riacho Caiana possui aproximadamente 9,8 km de extensão e também tem sua nascente no interior da REBIO, porém a maior parte de seu curso está situada fora dos limites da unidade de conservação.
 
-O clima regional é classificado como As', segundo Köppen-Geiger, com estação chuvosa entre fevereiro e julho e período seco entre outubro e dezembro [@peel2007]. A temperatura média anual varia entre 24 e 26 °C, enquanto a precipitação anual é de aproximadamente 1.750 a 2.000 mm. A drenagem local é composta por pequenos riachos de cabeceira, cuja dinâmica está relacionada ao regime de precipitação. Entre esses ambientes, destacam-se os riachos Barro Branco e Caiana, escolhidos como áreas de estudo deste trabalho, ambos pertencentes à bacia do rio Camaratuba [@gouveia2017].
+O clima da região é classificado como As', segundo Köppen-Geiger [@peel2007], com temperatura média anual de aproximadamente 25 °C e baixa amplitude térmica anual. As temperaturas máximas ocorrem principalmente entre fevereiro e março. A precipitação anual varia de 1.400 a 1.800 mm, concentrando-se entre março e julho, período que se estende do outono ao inverno, enquanto os menores níveis de precipitação ocorrem entre setembro e dezembro. Esse padrão está relacionado à influência de massas de ar frio provenientes do Oceano Atlântico Sul, que afetam a região [@gouveia2017].
 
-O delineamento amostral foi estruturado considerando dois períodos sazonais e diferentes níveis de preservação ambiental. As coletas foram realizadas durante o período seco, entre novembro de 2023 e fevereiro de 2024, e durante o período chuvoso, entre junho e agosto de 2024. Foram estabelecidas 15 unidades amostrais (UAs), distribuídas nos riachos Barro Branco e Caiana, localizados no fragmento SEMA 02 da REBIO Guaribas, abrangendo áreas no interior da unidade de conservação e áreas sob influência antrópica em seu entorno (@fig-mapa). No riacho Barro Branco, foram estabelecidas seis unidades amostrais (UAs 1 a 6), distribuídas longitudinalmente ao longo do curso d’água. As UAs 1 a 3 estavam localizadas no interior da REBIO Guaribas, enquanto as UAs 4 a 6 estavam situadas na zona de amortecimento. No riacho Caiana, foram estabelecidas nove unidades amostrais (UAs 7 a 15), distribuídas em trechos sob maior influência de áreas de pastagem e cultivo agrícola.
+A amostragem foi realizada durante o período seco entre novembro de 2023 e fevereiro de 2024 e o período chuvoso entre junho e agosto de 2024. Foram estabelecidos 15 pontos amostrais (P), distribuídos longitudinalmente nos riachos Barro Branco e Caiana, abrangendo diferentes níveis de preservação ambiental e de influência antrópica (@fig-mapa). No riacho Barro Branco, foram estabelecidos seis pontos amostrais (P1 a P6), sendo os pontos 1 a 3 localizados no interior da REBIO e do 4 ao 6 na zona de amortecimento. No riacho Caiana, foram estabelecidos nove pontos amostrais (P7 a P15), todos localizados fora dos limites da unidade de conservação, em trechos sob maior influência de áreas de pastagem e cultivo agrícola. Em cada ponto foram realizadas três subamostragens em diferentes habitats, totalizando 45 subamostras (15 Pontos × 3 subamostras) por período sazonal. Esse delineamento permitiu avaliar a variação espacial das condições ambientais, das características do habitat e da composição da comunidade zooplanctônica em diferentes níveis de preservação e influência antrópica.
 
-Em cada unidade amostral, foram coletados dados referentes à estrutura do habitat, à qualidade da água e à fauna zooplanctônica. Foram realizadas três subamostragens em diferentes habitats dentro de cada unidade amostral, totalizando 45 subamostras (15 UAs × 3 subamostras) para cada período sazonal.
+Para fins de comparação, os pontos amostrais foram classificadas *a priori* em quatro tipos, considerando o nível de preservação ambiental e as características observadas no entorno e no próprio trecho amostrado. A classificação foi baseada principalmente na condição da vegetação ripária, no uso e cobertura do solo adjacente e nas características do habitat e da qualidade da água. Dessa forma, os quatro tipos foram organizados em um gradiente de preservação, desde trechos com condições mais preservadas até aqueles sob maior influência antrópica. A definição das categorias foi realizada antes da análise das respostas biológicas, permitindo que o nível de preservação fosse considerado uma característica espacial independente dessas respostas.
 
-As unidades amostrais foram classificadas quanto ao nível de preservação ambiental a partir das características observadas no entorno e no próprio trecho amostrado, considerando principalmente a condição da vegetação ripária, o uso e a cobertura do solo adjacente e as características gerais do habitat. A classificação resultou em quatro condições de preservação, organizadas em um gradiente que variou de trechos mais preservados a trechos sob maior influência antrópica. As condições foram definidas *a priori*, antes da análise das respostas biológicas, de modo que o nível de preservação fosse considerado uma característica espacial independente dessas respostas.
+-   **Tipo I\*:** corresponde aos pontos localizadas no interior da área protegida e que apresentam condições relativamente preservadas, caracterizadas pela presença de vegetação ripária íntegra e ausência de áreas de cultivo nas proximidades, considerando uma distância mínima de 1 km. Esses pontos de amonstragem também atendem aos critérios de qualidade da água estabelecidos como referência, com temperatura média ≤ 28 °C, concentração média de oxigênio dissolvido ≥ 6 mg/L, velocidade média da água ≥ 0,025 m/s e turbidez média ≤ 15 NTU.
 
--   Tipo I: corresponde às unidades amostrais localizadas no interior da área protegida e que apresentam condições bem preservadas, caracterizadas pela presença de vegetação ripária íntegra e ausência de áreas de cultivo nas proximidades, considerando uma distância mínima de 1 km. Essas unidades também atendem aos critérios de qualidade da água estabelecidos como referência, com temperatura média ≤ 28 °C, concentração média de oxigênio dissolvido ≥ 6 mg/L, velocidade média da água ≥ 0,025 m/s e turbidez média ≤ 15 NTU.
+-   **Tipo II:** pontos localizados no interior da área protegida, mas que apresentam algum grau de alteração ambiental. Essas alterações podem estar relacionadas à proximidade de áreas de cultivo ou a desvios em uma ou mais das características hidrológicas e de qualidade da água utilizadas como referência para o Tipo I\*.
 
--   Tipo II: corresponde às unidades amostrais localizadas no interior da área protegida, mas que apresentam algum grau de alteração ambiental. Essas alterações podem estar relacionadas à proximidade de áreas de cultivo ou a desvios em uma ou mais das características hidrológicas e de qualidade da água utilizadas como referência para o Tipo I.
+-   **Tipo III:** corresponde aos pontos amostrais localizados fora da área protegida, mas que apresentam condições de qualidade da água relativamente boas, comparáveis às observadas nos pontos classificados como sendo do Tipo I\*. Esses pontos podem, entretanto, apresentar diferenças em outras características ambientais graças à localização fora da área protegida.
 
--   Tipo III: corresponde às unidades amostrais localizadas fora da área protegida, mas que mantêm condições de qualidade da água relativamente boas, comparáveis às observadas no Tipo I. Essas unidades podem, entretanto, apresentar diferenças em outras características ambientais relacionadas à sua localização fora da área protegida.
+-   **Tipo IV:** os pontos localizados fora da área protegida e que apresentam evidências de perturbação ambiental. Essas alterações incluem condições de qualidade da água inferiores às observadas nos pontos de referência, não atendendo a pelo menos um dos critérios estabelecidos para o Tipo I\*, e/ou alterações nas características do habitat.
 
--   Tipo IV: corresponde às unidades amostrais localizadas fora da área protegida e que apresentam evidências de maior perturbação ambiental. Essas alterações incluem condições de qualidade da água inferiores às observadas nas unidades de referência, não atendendo a pelo menos um dos critérios estabelecidos para o Tipo I, e/ou alterações nas características do habitat.
-
-Para as unidades amostrais dos Tipos III e IV, não foram considerados os critérios de proximidade da vegetação ripária e de áreas de cultivo utilizados na classificação das unidades dos Tipos I e II. Por estarem localizadas fora da REBIO Guaribas, essas unidades estão sujeitas a diferentes condições de uso e cobertura do solo e, portanto, não necessariamente apresentam vegetação ripária íntegra ou distância mínima de 1 km de áreas de cultivo. A classificação das unidades amostrais foi posteriormente avaliada em conjunto com as medições das variáveis ambientais realizadas em campo.
+Para os pontos amostrais dos Tipos III e IV, não foram considerados os critérios de proximidade da vegetação ripária e das áreas de cultivo utilizados na definição dos Tipos I\* e II. Por estarem localizados fora da REBIO Guaribas, esses pontos estão sujeitos a diferentes condições de uso e cobertura do solo e, portanto, não se espera que apresentem vegetação ripária íntegra ou distância mínima de 1 km de áreas de cultivo. As categorias definidas *a priori* foram posteriormente avaliadas com base nas medições das variáveis ambientais realizadas em campo.
 
 ## Coleta de dados ambientais
 
-Para caracterizar as condições ambientais de cada unidade amostral, foram avaliados quatro conjuntos de variáveis: (a) morfologia do local, (b) qualidade da água, (c) composição do sedimento e (d) estrutura do habitat marginal.
+Para caracterizar as condições ambientais de cada ponto, foram avaliados quatro conjuntos de variáveis: (a) morfologia do local, (b) qualidade da água, (c) composição do sedimento e (d) estrutura do habitat marginal. A morfologia do local foi caracterizada pela medição da largura (cm) e da profundidade (cm) do curso d'água em três transectos selecionados aleatoriamente, utilizando trena métrica. A inclinação das margens foi classificada como 1 para declive de até 20°, 2 para declive de 20 a 30°, 3 para declive entre 30 e 50° e 4 para declive das margens superior a 50°. Variáveis em escala de bacia hidrográfica, como altitude, comprimento do curso d'água, forma dos ambientes e distância entre os pontos amostrais, foram obtidas utilizando GPS portátil e imagens de satélite [@medeiros2008].
 
-A morfologia do local foi caracterizada pela medição da largura (cm) e da profundidade (cm) do curso d'água em três transectos selecionados aleatoriamente, utilizando trena métrica. A inclinação das margens foi classificada como 1 para declive de até 20°, 2 para declive de 20 a 30°, 3 para declive entre 30 e 50° e 4 para declive das margens superior a 50°. Variáveis em escala de bacia hidrográfica, como altitude, comprimento do curso d'água, forma dos ambientes e distância entre as unidades amostrais, foram obtidas utilizando GPS portátil e imagens de satélite [@medeiros2008].
+A qualidade da água foi avaliada por meio de variáveis físico-químicas. Em campo, foram medidos o oxigênio dissolvido (mg/L) e a temperatura da água (°C) por meio de oxímetro portátil (LUTRON DO-5510). A velocidade da corrente (m/s) foi estimada pelo método do flutuador descrito por @maitland1990. Em laboratório, no Laboratório de Ecologia da UEPB – Campus V, foram determinados os valores de pH (TECNOPON MPA-210), condutividade elétrica (TECNOPON MCS-150) e turbidez, utilizando turbidímetro com base em amostras de água coletadas em cada ponto amostral.
 
-A qualidade da água foi avaliada por meio de variáveis físico-químicas. Em campo, foram medidos o oxigênio dissolvido (mg/L) e a temperatura da água (°C) por meio de oxímetro portátil (LUTRON DO-5510). A velocidade da corrente (m/s) foi estimada pelo método do flutuador descrito por @maitland1990. Em laboratório, no Laboratório de Ecologia da UEPB – Campus V, foram determinados os valores de pH (TECNOPON MPA-210), condutividade elétrica (TECNOPON MCS-150) e turbidez, utilizando turbidímetro com base em amostras de água coletadas em cada unidade amostral.
-
-A composição do sedimento e a estrutura física do habitat foram avaliadas seguindo protocolos propostos por @pusey2004 e @mugodo2006, adaptados por @medeiros2008. Essas variáveis foram estimadas a partir de 9 a 12 quadrantes de um metro distribuídos ao longo das margens do curso d'água (interface terrestre-aquática), por meio de transectos paralelos às margens dos corpos d'água, representando a proporção média (%) de cobertura dos atributos avaliados. Dentro de cada quadrante, a porcentagem de cobertura dos tipos de sedimento (lama, areia, seixos, cascalho fino, cascalho grosso, rochas e rocha matriz) e das estruturas do habitat litorâneo e subaquático foi estimada visualmente. As variáveis de estrutura do habitat incluíram macrófitas aquáticas, gramíneas marginais, serapilheira, algas aderidas, algas filamentosas, vegetação suspensa, vegetação submersa, liteira, pequenos detritos lenhosos, grandes detritos lenhosos, massas radiculares, raízes e galhos.
+A composição do sedimento e a estrutura física do habitat foram avaliadas seguindo protocolos propostos por @pusey2004 e @mugodo2006, adaptados por @medeiros2008. Essas variáveis foram estimadas a partir de 9 a 12 quadrantes de um metro distribuídos ao longo das margens do curso d'água (interface terrestre-aquática), por meio de transectos paralelos às margens dos corpos d'água, representando a proporção média (%) de cobertura dos atributos avaliados. Dentro de cada quadrante, a porcentagem de cobertura dos tipos de sedimento (lama, areia, seixos, cascalho fino, cascalho grosso, rochas e rocha matriz) e da estrutura do habitat marginal e subaquático foi estimada visualmente. As variáveis de estrutura do habitat incluíram macrófitas aquáticas, gramíneas marginais, serapilheira, algas aderidas e filamentosas, cobertura vegetação, vegetação submersa, liteira, detritos lenhosos, massas radiculares, raízes e galhos.
 
 ## Coleta do zooplâncton
 
-O zooplâncton foi coletado quantitativamente utilizando uma rede de plâncton com abertura de 30 cm de diâmetro, 70 cm de comprimento e malha de 68 μm. Em cada unidade amostral, foram definidos três tipos distintos de hábitat, sendo filtrados 50 L de água por hábitat, totalizando 150 L por unidade amostral. O material retido na rede foi transferido para frascos plásticos graduados de 80 mL [@pinto-coelho2004]. As amostras foram anestesiadas com água gasosa comercial (CO₂) e posteriormente fixadas em formalina a 4%, neutralizada com sacarose, com o objetivo de reduzir distorções estruturais, evitar a perda de ovos e garantir a preservação das características morfológicas necessárias à identificação taxonômica [@haney1973]. No laboratório, todo o volume concentrado de cada amostra foi analisado, sendo os indivíduos identificados até o menor nível taxonômico possível e contados em câmara de contagem do tipo Sedgwick–Rafter (1 mL), com auxílio de microscópio óptico (Olympus CX31), chaves de identificação especializadas e outros materiais de apoio relacionados [@elmoor-loureiro1997; @koste1987; @joko2011].
-
-As análises foram realizadas no Laboratório de Ecologia da Universidade Estadual da Paraíba (UEPB), Campus V, e apenas rotíferos, cladóceros e copépodes foram considerados no presente estudo.
+O zooplâncton foi coletado quantitativamente utilizando uma rede de plâncton com abertura de 30 cm de diâmetro, 70 cm de comprimento e malha de 68 μm. Em cada unidade amostral, foram definidos três tipos distintos de hábitat, sendo filtrados 50 L de água por hábitat, totalizando 150 L por unidade amostral. O material retido na rede foi transferido para frascos plásticos graduados de 80 mL [@pinto-coelho2004]. As amostras foram anestesiadas com água gasosa comercial (CO₂) e posteriormente fixadas em formalina a 4%, neutralizada com sacarose, com o objetivo de reduzir distorções estruturais, evitar a perda de ovos e garantir a preservação das características morfológicas necessárias à identificação taxonômica [@haney1973]. No laboratório, todo o volume concentrado de cada amostra foi analisado, sendo os indivíduos identificados até o menor nível taxonômico possível e contados em câmara de contagem do tipo Sedgwick–Rafter (1 mL), com auxílio de microscópio óptico (Olympus CX31), chaves de identificação especializadas e outros materiais de apoio como @elmoor-loureiro1997; @koste1987 e @joko2011. As análises foram realizadas no Laboratório de Ecologia da Universidade Estadual da Paraíba (UEPB), Campus V, e apenas rotíferos, cladóceros e copépodes foram considerados no presente estudo.
 
 ## Análise de dados
 
@@ -185,10 +157,31 @@ habitat <- read.xlsx("data/rebio23-habitat.xlsx",
                      sheet = "ambiente",
                      rows = 2:98) #startRow = 2
 
-habitat[is.na(habitat)] <- 0
+t_grps <- read.xlsx("data/rebio23-habitat.xlsx",
+                    rowNames = T,
+                    colNames = T,
+                    sheet = "grupos",
+                    rows = 2:98) #startRow = 2
+
+###### DELETANDO O PONTO 11
+del_rows <- c("C-C-P11-H1", "C-C-P11-H2", "C-C-P11-H3",
+              "S-C-P11-H1", "S-C-P11-H2", "S-C-P11-H3")
+del_rows
+habitat <- habitat[!(row.names(habitat) %in% c(del_rows)),]
 habitat
 
+rownames(t_grps)
+del_rows
+
+t_grps <- t_grps[!(rownames(t_grps) %in% del_rows),]
+
+t_grps
+
 ###REMOVENDO COLUNAS ZERADAS DE HABITAT----
+
+
+habitat[is.na(habitat)] <- 0
+habitat
 
 sum <- colSums(habitat)
 sum
@@ -199,14 +192,6 @@ zero_sum2 <- names(which(colSums(m_part_cols) == 0))
 zero_sum2 #nomes das colunas zeradas
 sum<-colSums(m_part_cols)
 sum
-
-t_grps <- read.xlsx("data/rebio23-habitat.xlsx",
-                    rowNames = T,
-                    colNames = T,
-                    sheet = "grupos",
-                    rows = 2:98) #startRow = 2
-t_grps
-
 
 ###SEPARANDO NUTRIENTES----
 
@@ -382,7 +367,7 @@ cor_star <- noquote(cor_star)
 print(cor_star, na.print = "")
 ```
 
-Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada [@mccune2002]. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote `FactoMineR` no ambiente R [@lê2008]. Antes da análise, todas as variáveis foram centradas e escalonadas para a unidade de variância.
+Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada [@mccune2002]. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote `FactoMineR` no ambiente R [@lê2008]. Antes da análise, todas as variáveis foram centradas e escalonadas. As diferenças entre os riachos foram descritas com base nos parâmetros de qualidade da água, como temperatura e oxigênio dissolvido. No entanto, essas variáveis não foram incluídas na PCA, pois não foram medidas nos dois períodos sazonais. Para avaliar se o conjunto completo de variáveis ambientais apresentava diferenças entre os níveis de preservação, foi realizada uma Análise de Variância Multivariada Permutacional (PERMANOVA), com 999 permutações.
 
 ```{r env-PCA_org}
 #| eval: false
@@ -449,29 +434,105 @@ m_hab_trns <- read.table("m_hab_trns.csv",
                          na.strings = NA)
 ```
 
-As análises relacionadas à comunidade zooplanctônica foram realizadas com base na densidade dos táxons, expressa em indivíduos por litro (ind/L), seguindo uma metodologia adaptada de @bowen2017. A densidade de cada táxon foi calculada pela razão entre o número de indivíduos registrados na amostra e o volume total de água filtrado, conforme a fórmula: *Dsp = Nsp/Vf* onde, *Dsp* corresponde à densidade do táxon, em indivíduos por litro; *Nsp* corresponde ao número de indivíduos do táxon registrado na amostra; e *Vf* corresponde ao volume total de água filtrado, em litros.
+As análises relacionadas à comunidade zooplanctônica foram realizadas com base na densidade dos táxons, expressa em indivíduos por litro (ind/L), seguindo uma metodologia adaptada de @bowen2017. A densidade de cada táxon foi calculada pela razão entre o número de indivíduos registrados na amostra e o volume total de água filtrado, conforme a fórmula: *Dsp = Nsp/Vf* onde, *Dsp* corresponde à densidade do táxon, em indivíduos por litro; *Nsp* corresponde ao número de indivíduos do táxon registrado na amostra; e *Vf* corresponde ao volume total de água filtrado, em litros. Antes das análises, os dados de densidade foram relativizados e transformados pela raiz quadrada, para reduzir a influência dos táxons mais abundantes e melhorar a distribuição dos dados [@rocha2012].
 
-A composição da comunidade zooplanctônica foi avaliada por meio da Análise de Escalonamento Multidimensional Não Métrico (NMDS), utilizando a matriz transformada de densidade. A NMDS foi utilizada para representar a organização da composição da comunidade entre as unidades amostrais e verificar sua distribuição em relação aos diferentes níveis de preservação ambiental e períodos sazonais [@clarke1993].
+```{r com-str23_org}
+#| eval: false
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Importação e organização dos dados comunitários"
+#| results: false
 
-A diferença na composição da comunidade zooplanctônica entre os grupos foi avaliada por meio da Análise de Variância Multivariada Permutacional (PERMANOVA), utilizando a matriz de densidade transformada. O teste foi empregado para avaliar a variação da composição da comunidade em relação aos diferentes níveis de preservação ambiental e aos períodos seco e chuvoso [@anderson2001].
+#ZOOREBIO23_STR - ORGANIZANDO DADOS DA COMUNIDADE----
+#####....----
 
-A identificação dos táxons associados aos diferentes grupos foi realizada por meio da Análise de Espécies Indicadoras (IndVal), buscando identificar os táxons que apresentaram maior associação com os diferentes níveis de preservação ambiental e períodos sazonais [@dufrêne1997].
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
 
-A relação entre a comunidade zooplanctônica e as variáveis ambientais foi avaliada por meio da Análise de Redundância (RDA), utilizando a matriz comunitária de densidade transformada e a matriz de variáveis ambientais previamente selecionada [@legendre1998]. Antes da construção do modelo, a multicolinearidade entre as variáveis explicativas foi avaliada por meio do Fator de Inflação da Variância (VIF), utilizando a função `vif.cca`. Variáveis que apresentaram VIF \> 10 foram consideradas altamente colineares e excluídas da análise [@obrien2007]. Em seguida, as variáveis ambientais restantes foram submetidas ao procedimento de seleção *forward stepwise*, com o objetivo de identificar os preditores que melhor explicaram a variação na estrutura da comunidade zooplanctônica [@blanchet2008]. A significância da RDA e das variáveis selecionadas foi avaliada por meio de testes de permutação, permitindo verificar a contribuição dos preditores ambientais para a variação observada na comunidade [@legendre1998].
+library(openxlsx)
 
-Todas as análises foram realizadas no ambiente de programação R [@rcoreteam2023], utilizando principalmente os pacotes `Vegan` [@oksanen] e `FactoMineR` [@lê2008].
+##CARREGANDO MATRIZES BRUTAS----
+
+densidade <- read.xlsx("data/rebio23-zoopl.xlsx",
+                   rowNames = T,
+                   colNames = T,
+                   sheet = "densidade_hab_indL")
+densidade[1:5,1:5] #[1:5,1:5] mostra apenas as linhas e colunas de 1 a 5.
+
+##COLUNAS ZERADAS DE DENSIDADE----
+sum <- colSums(densidade)
+sum
+zero_sum <- names(which(colSums(densidade) == 0))
+zero_sum #nomes das espécies zeradas
+m_part_cols <- densidade[(colSums(densidade) != 0)] #em != a exclamação inverte o sentido
+zero_sum2 <- names(which(colSums(m_part_cols) == 0))
+zero_sum2 #nomes das espécies zeradas
+sum<-colSums(m_part_cols)
+sum
+
+###LINHAS ZERADAS DE DENSIDADE----
+m_part2 <- as.data.frame(t(m_part_cols))
+sum <- colSums(m_part2)
+sum
+zero_sum <- names(which(colSums(m_part2) == 0))
+zero_sum #nomes das espécies zeradas
+m_part_rows <- m_part2[(colSums(m_part2) != 0)] #em != a exclamação inverte o sentido
+zero_sum2 <- names(which(colSums(m_part_rows) == 0))
+zero_sum2 #nomes das espécies zeradas
+sum<-colSums(m_part_rows)
+sum
+m_dens <- as.data.frame((t(m_part_rows)))
+
+##SALVANDO MATRIZES FINAIS REMOVIDAS AS LINHAS/COLUNAS ZERADAS----
+
+write.table(m_dens, "m_dens.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+m_dens <- read.csv("m_dens.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+#TRANSFORMANDO A MATRIZ DE DENSIDADE
+
+library(vegan)
+m_dens_trns <- asin(sqrt(decostand(m_dens,
+                               method="total", MARGIN = 2)))
+
+write.table(m_dens_trns, "m_dens_trns.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+
+m_dens_trns <- read.csv("m_dens_trns.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+```
+
+A composição da comunidade zooplanctônica foi avaliada por meio da Análise de Escalonamento Multidimensional Não Métrico (NMDS), utilizando a matriz transformada de densidade. A NMDS foi utilizada para representar a organização da composição da comunidade entre os pontos amostrais e verificar sua distribuição em relação aos diferentes níveis de preservação ambiental [@clarke1993]. A diferença na composição da comunidade zooplanctônica entre os tipos, classificados segundo o nivel de preservação (I, II, III e IV) foi avaliada por meio da Análise de Variância Multivariada Permutacional (PERMANOVA), com 999 permutações. O teste foi empregado para avaliar se existia variação na composição da comunidade em relação aos diferentes níveis de preservação ambiental [@anderson2001]. A identificação dos táxons associados aos diferentes grupos foi realizada por meio da Análise de Espécies Indicadoras (IndVal), buscando identificar os táxons que apresentaram maior associação com os diferentes níveis de preservação ambiental [@dufrêne1997].
+
+A relação entre a comunidade zooplanctônica e as variáveis ambientais foi avaliada por meio da Análise de Redundância (RDA), utilizando a matriz comunitária de densidade transformada e a matriz de variáveis ambientais previamente selecionada [@legendre1998]. Antes da construção do modelo, a multicolinearidade entre as variáveis explicativas foi avaliada por meio do Fator de Inflação da Variância (VIF), utilizando a função `vif.cca`. Variáveis que apresentaram VIF \> 10 foram consideradas altamente colineares e excluídas da análise [@obrien2007]. Em seguida, as variáveis ambientais restantes foram submetidas ao procedimento de seleção *forward stepwise*, com o objetivo de identificar os preditores que melhor explicaram a variação na estrutura da comunidade zooplanctônica [@blanchet2008]. A significância da RDA e das variáveis selecionadas foi avaliada por meio de testes de permutação, permitindo verificar a contribuição dos preditores ambientais para a variação observada na comunidade [@legendre1998]. Todas as análises foram realizadas no ambiente de programação R [@rcoreteam2023], utilizando principalmente os pacotes `Vegan` [@oksanen] e `FactoMineR` [@lê2008].
 
 # Resultados
 
 ## Variáveis ambientais
 
-Os dados ambientais apresentaram variação entre os 15 pontos amostrados ao longo e ao gradiente de preservação. A temperatura da água apresentou médias entre 12,6 e 16,2 °C, com os maiores valores no ponto 11, enquanto o oxigênio dissolvido variou de 2,6 a 4,1 mg/L, sendo o maior valor registrado no ponto de referência (Ponto 1). A condutividade apresentou valores médios entre 98,8 e 223 μS/cm, com maior valor no ponto 10, e a turbidez variou de 4,9 a 79,2 NTU, destacando-se os pontos 7, 12 e 13 pelos maiores valores. O pH apresentou médias entre 5,1 e 6,9, com os valores mais altos nos pontos 14 e 15.
+A condutividade variou de 98,8 a 223 μS/cm, com o maior valor registrado no ponto 10, enquanto o pH apresentou valores médios entre 5,1 e 6,9, com os maiores valores nos pontos 14 e 15. A turbidez variou de 4,9 a 79,2 NTU, destacando-se os pontos 7, 12 e 13 pelos maiores valores.
 
-Entre as características morfológicas, a velocidade da água variou de 0 a 0,41 m/s, com maiores médias nos pontos 14, 9, 12 e 7. A profundidade apresentou valores médios entre 12,8 e 72,4 cm, enquanto a largura variou de 1,1 a 19,5 m. A elevação dos pontos variou de 41,5 a 112,8 m, e a declividade apresentou médias entre 1,0 e 3,2. O ponto 1, utilizado como referência, apresentou 0,073 m/s de velocidade, 12,8 cm de profundidade, 6,2 m de largura e 107,1 m de elevação.
+Entre as características morfológicas, a velocidade da água variou de 0 a 0,41 m/s, com maiores valores nos pontos 14, 9, 12 e 7. A largura variou de 1,1 a 19,5 m, enquanto a profundidade apresentou valores médios entre 12,8 e 72,4 cm. A elevação dos pontos variou de 41,5 a 112,8 m, e a declividade apresentou médias entre 1,0 e 3,2. O ponto de referência (Ponto 1\*) apresentou velocidade de 0,073 m/s, profundidade de 12,8 cm, largura de 6,2 m e elevação de 107,1 m.
 
-O substrato foi composto principalmente por lama e areia, com proporções médias de 1,7 a 100% e de 0 a 98,3%, respectivamente. A lama predominou nos pontos 1 e 2, enquanto a areia apresentou maior contribuição nos pontos 14, 9 e 10. O cascalho fino ocorreu em baixa proporção nos pontos 9, 10 e 13, e as rochas foram registradas apenas no ponto 12.
+A lama e a areia foram os principais componentes do substrato, com proporções médias variando de 1,7 a 100% e de 0 a 98,3%, respectivamente. A lama predominou nos pontos 1 e 2, enquanto a areia apresentou maior contribuição nos pontos 14, 9 e 10. O cascalho fino ocorreu em baixa proporção nos pontos 9, 10 e 13, e as rochas foram registradas apenas no ponto 12.
 
-A estrutura do habitat também variou entre os pontos. A cobertura vegetal apresentou médias de 0,8 a 83,3%, com maiores valores nos pontos 7, 3, 2 e 5, enquanto o ponto 11 apresentou a menor cobertura. As massas de raízes atingiram 42,5% no ponto 5, as gramíneas chegaram a 39,2% no ponto 11 e as macrófitas a 20,8%, também no ponto 11. A liteira variou de 1,7 a 18,3%, a vegetação submersa de 0 a 16,7% e as algas de 0 a 19,2%. Os detritos apresentaram médias entre 4,2 e 30,8%, com maior contribuição no ponto de referência. De forma geral, a composição do substrato e a estrutura do habitat apresentaram mudanças entre os pontos, acompanhadas por diferenças nas condições da água e nas características morfológicas ao longo do gradiente ambiental (@tbl-hab_gttable).
+A estrutura do habitat também variou entre os pontos. A cobertura vegetal apresentou médias de 0,8 a 83,3%, com maiores valores nos pontos 7, 3, 2 e 5, enquanto o ponto 11 apresentou a menor cobertura. As massas de raízes atingiram 42,5% no ponto 5, enquanto as gramíneas e as macrófitas foram mais abundantes no ponto 11, com 39,2% e 20,8%, respectivamente. A liteira variou de 1,7 a 18,3%, a vegetação submersa de 0 a 16,7% e as algas de 0 a 19,2%. Os detritos apresentaram médias entre 4,2 e 30,8%, com maior contribuição no ponto de referência (@tbl-hab_gttable).
 
 ```{r gttable_hab_excel}
 #| eval: false
@@ -548,7 +609,7 @@ library(readxl)
 hab_gttable <- read_excel(
   path  = "tabela de habitat.xlsx",
   sheet = "tabela_final",
-  range = "A1:P28") #ajustar para o tamanho da tabela final 
+  range = "A1:P26") #ajustar para o tamanho da tabela final 
 hab_gttable
 library(gt)
 hab_gttable <- gt(hab_gttable)
