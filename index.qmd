@@ -1,5 +1,5 @@
 ---
-title: "Preditores ambientais da comunidade zooplanctônica em riachos sob diferentes níveis de preservação em um remanescente de Floresta Atlântica"
+title: "Preditores ambientais da comunidade zooplanctônica em riachos sob diferentes níveis de preservação ambiental em um remanescente de Floresta Atlântica"
 subtitle: |
 author:
   - name: Mayara Mirelly da Silva Monteiro
@@ -367,7 +367,7 @@ cor_star <- noquote(cor_star)
 print(cor_star, na.print = "")
 ```
 
-Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada [@mccune2002]. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote `FactoMineR` no ambiente R [@lê2008]. Antes da análise, todas as variáveis foram centradas e escalonadas. As diferenças entre os riachos foram descritas com base nos parâmetros de qualidade da água, como temperatura e oxigênio dissolvido. No entanto, essas variáveis não foram incluídas na PCA, pois não foram medidas nos dois períodos sazonais. Para avaliar se o conjunto completo de variáveis ambientais apresentava diferenças entre os níveis de preservação, foi realizada uma Análise de Variância Multivariada Permutacional (PERMANOVA), com 999 permutações.
+Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada [@mccune2002]. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote `FactoMineR` no ambiente R [@lê2008].
 
 ```{r env-PCA_org}
 #| eval: false
@@ -460,7 +460,6 @@ densidade <- read.xlsx("data/rebio23-zoopl.xlsx",
                    rowNames = T,
                    colNames = T,
                    sheet = "densidade_hab_indL")
-densidade[1:5,1:5] #[1:5,1:5] mostra apenas as linhas e colunas de 1 a 5.
 
 ##COLUNAS ZERADAS DE DENSIDADE----
 sum <- colSums(densidade)
@@ -615,23 +614,295 @@ gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
 saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
 ```
 
-## Community structure
+A Análise de Componentes Principais (PCA) descreveu as condições ambientais dos locais amostrados e identificou as principais variáveis relacionadas à diferenciação entre os tipos I, II, III e IV, considerando o tipo I como referência para a interpretação das diferenças ambientais (@fig-PCA_fviz). Os dois primeiros eixos explicaram 40,0% da variação total dos dados, sendo 23,2% pelo primeiro eixo (Dim1) e 16,8% pelo segundo eixo (Dim2). Em relação ao tipo I, o tipo II apresentou maior aproximação na distribuição dos pontos, indicando semelhanças nas condições ambientais, principalmente em relação à elevação, à liteira e ao oxigênio dissolvido. O tipo III apresentou distribuição principalmente no lado esquerdo do gráfico, diferenciando-se do tipo I pela associação com características como largura do canal, vegetação submersa, gramíneas, macrófitas, lama e algas. Já o tipo IV apresentou maior dispersão dos pontos, com alguns localizados na parte inferior direita do gráfico, associados à areia, à velocidade da água e à turbidez. O segundo eixo contribuiu para essa diferenciação, com a porção positiva relacionada à elevação, à liteira e ao oxigênio dissolvido, além de algas, lama e macrófitas, enquanto a porção negativa esteve relacionada à turbidez, à areia, à velocidade da água e às massas de raízes. De modo geral, considerando o tipo I como referência, a PCA indicou maior semelhança entre os tipos I e II, diferenciação do tipo III em relação às características do canal e da vegetação e maior heterogeneidade ambiental no tipo IV.
 
-# Discussion
+```{r env-PCA_fviz}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Análise de Componentes Principais (PCA) dos dados ambientais"
 
-# Conclusions {.unnumbered}
+#PCA fviz package----
+#browseURL("https://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/")
 
-# Acknowledgements {.unnumbered}
+#ORGANIZANDO DADOS----
 
-# Authorship contribution statement {.unnumbered}
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
 
-Authorship of this paper is based on @credit2026.
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+m_hab_trns <- read.csv("m_hab_trns.csv",
+                       sep = ";", dec = ".",
+                       row.names = 1,
+                       header = TRUE,
+                       na.strings = NA)
 
-Author1: Writing – review & editing, Writing – original draft, Formal analysis, Data curation, Conceptualization. Author2: Writing – review & editing, Data curation, Conceptualization. Author3: Writing – review & editing, Formal analysis, Data curation, Conceptualization.
+####### matriz de média para habitat
+env_completo <- m_hab_trns
+library(tidyverse)
+m_hab <- env_completo %>%                    
+  replace(is.na(.), 0) %>%  #substitui todos os valores NA por 0
+  select(where(~sum(.) > 0)) %>%  #mantém apenas colunas cuja soma seja maior que 0
+  rownames_to_column("Grupos") %>%
+  mutate(Grupos = substr(Grupos, 1, 7),     
+         Grupos = factor(Grupos, levels = unique(Grupos))) %>% #mantém a ordem original dos grupos
+  group_by(Grupos) %>%                                       
+  summarise(across(everything(), mean),                     
+            .groups = "drop") %>%                            
+  column_to_rownames("Grupos")
+m_hab_trns <- m_hab
 
-# Ethical approval {.unnumbered}
+######## grupos precisa ter o mesmo número de linhas
+###################### particionando grupos
+m_grups <- t_grps
+row.names(m_grups)
+pat <- "-H2" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
+pat <- "-H3" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
+################## deletando "H1"
+rownames(m_grups) <- gsub("-H1", "", rownames(m_grups))
+m_grups
+t_grps <- m_grups
 
-This study did not require ethical approval as it did not involve human participants or sensitive data. Field surveys were conducted based on collection permit number (IEF-10327-6 and SISBIO-10.635-7).
+#PCA----
+
+library("FactoMineR")
+library("factoextra")
+
+pca <- PCA(m_hab_trns, scale.unit = TRUE, ncp = 5, graph = TRUE)
+print(pca)
+
+eig.val <- get_eigenvalue(pca)
+eig.val
+
+#sink(file = "cor_matrix.txt", append = FALSE)
+pca$var$cor
+#sink()
+
+fviz_eig(pca, addlabels = TRUE, ylim = c(0,30))
+
+var <- get_pca_var(pca)
+var
+
+fviz_pca_var(pca, col.var = "black")
+
+library("corrplot")
+corrplot(var$cos2, is.corr=FALSE)
+
+fviz_cos2(pca, choice = "var", axes = 1:2)
+
+fviz_pca_var(pca, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE # Avoid text overlapping
+)
+
+fviz_pca_var(pca, alpha.var = "cos2")
+
+corrplot(var$contrib, is.corr=FALSE)
+
+fviz_contrib(pca, choice = "var", axes = 1, top = 10)
+fviz_contrib(pca, choice = "var", axes = 2, top = 10)
+fviz_contrib(pca, choice = "var", axes = 1:2, top = 10)
+
+fviz_pca_var(pca, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07")
+)
+fviz_pca_var(pca, alpha.var = "contrib")
+
+##GROUPING BY KMEANS----
+
+set.seed(123)
+res.km <- kmeans(var$coord, centers = 3, nstart = 25)
+grp <- as.factor(res.km$cluster)
+# Color variables by groups
+fviz_pca_var(pca, col.var = grp,
+             palette = c("#0073C2FF", "#EFC000FF", "#868686FF"),
+             legend.title = "Cluster")
+
+ind <- get_pca_ind(pca)
+ind
+ind$contrib
+
+##BIPLOTS----
+
+fviz_pca_ind(pca)
+
+fviz_pca_ind(pca, col.ind = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE #avoid text overlapping (slow if many points)
+)
+
+fviz_pca_ind(pca, pointsize = "cos2",
+             pointshape = 21, fill = "#E7B800",
+             repel = TRUE #avoid text overlapping (slow if many points)
+)
+
+fviz_pca_ind(pca, col.ind = "cos2", pointsize = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE #avoid text overlapping (slow if many points)
+)
+
+fviz_cos2(pca, choice = "ind")
+
+fviz_contrib(pca, choice = "ind", axes = 1:2)
+
+# Create a random continuous variable of length 23,
+# Same length as the number of active individuals in the PCA
+t_grps <- t_grps[rownames(pca$ind$coord), ]
+set.seed(123)
+my.cont.var <- t_grps$Ref_site
+my.cont.var
+# Color individuals by the continuous variable
+fviz_pca_ind(
+  pca,
+  habillage = my.cont.var,
+  palette = c("blue", "yellow", "red", "pink"),
+  repel = FALSE
+)
+
+fviz_pca_ind(pca,
+             geom.ind = "point", #show points only (nbut not "text")
+             col.ind = as.factor(my.cont.var), #color by groups
+             palette = "grey",
+             addEllipses = TRUE, #concentration ellipses
+             legend.title = "Groups"
+)
+
+length(unique(my.cont.var))
+fviz_pca_ind(pca,
+             geom.ind = "point",
+             col.ind = t_grps$Ref_site,
+             palette = "grey",
+             addEllipses = TRUE, ellipse.type = "confidence",
+             mean.point = TRUE,
+             legend.title = "Groups")
+
+fviz_pca_biplot(pca, repel = TRUE,
+                col.var = "#2E9FDF", #variables color
+                col.ind = "#696969"  #individuals color
+)
+
+fviz_pca_biplot(pca,
+                col.ind = t_grps$Ref_site, palette = "jco",
+                addEllipses = TRUE, elipse.type = "euclid",
+                label = "var",
+                col.var = "black", repel = TRUE,
+                legend.title = "Species")
+
+### FILTRANDO AS VARIÁVEIS
+var_coord <- pca$var$coord[,1:2]
+keep_vars <- apply(abs(var_coord) > 0.5,1,any)
+vars_to_keep <- rownames(var_coord)[keep_vars]
+pca_filt <- pca
+pca_filt$var$coord    <- pca$var$coord[vars_to_keep,,drop=FALSE]
+pca_filt$var$cos2     <- pca$var$cos2[vars_to_keep,,drop=FALSE]
+pca_filt$var$contrib  <- pca$var$contrib[vars_to_keep,,drop=FALSE]
+
+### AJUSTE MANUAL DAS COORDENADAS DOS VETORES
+var_coords <- as.data.frame(pca_filt$var$coord)
+var_coords$Dim.1 <- var_coords$Dim.1*4.2
+var_coords$Dim.2 <- var_coords$Dim.2*4.2
+
+## Caso queira editar manualmente
+#fix(var_coords) #nomes das colunas
+#write.table(var_coords,"coords_var.txt")
+
+var_coords <- read.table("coords_var.txt",
+                         header=TRUE,
+                         row.names=1)
+
+### AJUSTE MANUAL DOS INDIVÍDUOS
+#ind_coords <- as.data.frame(pca_filt$ind$coord)
+
+## Caso queira editar manualmente
+#fix(ind_coords) #nomes das linhas
+#write.table(ind_coords,"coords_ind.txt")
+
+ind_coords <- read.table("coords_ind.txt",
+                         header=TRUE,
+                         row.names=1)
+
+############################################################
+### GRÁFICO FINAL
+############################################################
+
+library(factoextra)
+library(ggplot2)
+
+t_grps$Ref_site <- as.factor(t_grps$Ref_site)
+
+#png("fig-PCA_fviz.png", width=11, height=9, units="in", res=1000)
+
+library(ggplot2)
+
+ggplot() +
+  
+  geom_hline(yintercept = 0, linetype = 2) +
+  geom_vline(xintercept = 0, linetype = 2) +
+  
+  geom_point(
+    data = ind_coords,
+    aes(Dim.1, Dim.2, shape = t_grps$Ref_site),
+    size = 2,
+    colour = "black"
+  ) +
+  
+  geom_segment(
+    data = var_coords,
+    aes(x = 0, y = 0,
+        xend = Dim.1,
+        yend = Dim.2),
+    colour = "red",
+    arrow = arrow(length = unit(0.25,"cm"))
+  ) +
+  
+  geom_text(
+    data = transform(
+      var_coords,
+      nudge_y = ifelse(Dim.2 >= 0, 0.25, -0.25)
+    ),
+    aes(
+      x = Dim.1,
+      y = Dim.2 + nudge_y,
+      label = rownames(var_coords)
+    ),
+    colour = "red",
+    size = 4,
+    nudge_x = 0.19
+  ) +
+  
+  scale_shape_manual(values = c(15,16,0,1,2,17)) +
+  
+  labs(
+    x = paste0("Dim1 (", round(pca$eig[1,2],1), "%)"),
+    y = paste0("Dim2 (", round(pca$eig[2,2],1), "%)"),
+    shape = "Tipos"
+  ) +
+  
+  coord_equal() +
+  theme_minimal()
+
+#dev.off()
+```
+
+## Estrutura da comunidade
+
+# Discussão
+
+# Conclusão
+
+# Licenças e Autorizações {.unnumbered}
+
+O presente trabalho teve duração de um ano e foi desenvolvido no laboratório de Ecologia (LABECO) do Campus V da UEPB. A coleta dos organismos foi realizada na Reserva Biológica Guaribas (REBIO Guaribas) de acordo com as licenças de coleta MMA/ICMBIO/SISBIO Número: 89415-1 e Número: 89429-2 (com datas de emissão de 04/07/2023 e 04/08/2023, respectivamente).
 
 # Referências {.unnumbered}
 
@@ -645,6 +916,8 @@ This study did not require ethical approval as it did not involve human particip
 
 @fig-mapa: Localização das unidades amostrais nos riachos Barro Branco e Caiana, na Reserva Biológica Guaribas, Mamanguape, Paraíba. A unidade amostral 1 corresponde ao local de referência do estudo.
 
+@fig-PCA_fviz: Análise de Componentes Principais (PCA) descrevendo a estrutura ambiental dos locais de amostragem com base em variáveis físico-químicas da água, morfologia do canal, composição do substrato e estrutura do habitat marginal.
+
 @tbl-hab_gttable: Variáveis ambientais médias para os pontos de amostragem (mínimo–máximo) nos riachos Barro Branco e Caiana (Mamanguape, PB). O Ponto 1 é o ponto de referência deste estudo.
 
 ## Figuras {.unnumbered}
@@ -657,7 +930,15 @@ This study did not require ethical approval as it did not involve human particip
 
 <details>
 
-## Tables {.unnumbered}
+<details>
+
+<summary>Fig.: Análise de Componentes Principais das variáveis ambientais</summary>
+
+![Análise de Componentes Principais das variáveis ambientais.](fig-PCA_fviz.png){#fig-PCA_fviz}
+
+<details>
+
+## Tabelas {.unnumbered}
 
 <details>
 
@@ -674,9 +955,9 @@ readRDS("gt-hab_gttable_xlsx.rds")
 \pagebreak
 \newpage
 
-# Apendices {.unnumbered}
+# Apêndices {.unnumbered}
 
-# Non-used figures and tables {.unnumbered}
+# Figuras e tabelas não usadas {.unnumbered}
 
 ::: callout-warning
 # Non-used codes
