@@ -367,7 +367,7 @@ cor_star <- noquote(cor_star)
 print(cor_star, na.print = "")
 ```
 
-Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada [@mccune2002]. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote `FactoMineR` no ambiente R [@lê2008]. A diferença nas condições ambientais entre os tipos, classificados segundo o nível de preservação ambiental (I, II, III e IV), foi avaliada por meio da Análise de Variância Multivariada Permutacional (PERMANOVA), com 999 permutações. O teste foi empregado para avaliar se existiam diferenças nas variáveis ambientais entre os diferentes níveis de preservação [@anderson2001].
+Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada [@mccune2002]. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote `FactoMineR` no ambiente R [@lê2008]. A diferença nas condições ambientais entre os tipos I, II, III e IV, classificados de acordo com o nível de preservação ambiental, foi avaliada por meio da Análise de Variância Multivariada Permutacional (PERMANOVA), com 999 permutações [@anderson2001].
 
 ```{r env-PCA_org}
 #| eval: false
@@ -614,7 +614,7 @@ gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
 saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
 ```
 
-A Análise de Componentes Principais (PCA) descreveu as condições ambientais dos locais amostrados e identificou as principais variáveis relacionadas à diferenciação entre os tipos I, II, III e IV, considerando o tipo I como referência para a interpretação das diferenças ambientais (@fig-PCA_fviz). Os dois primeiros eixos explicaram 40,0% da variação total dos dados, sendo 23,2% pelo primeiro eixo (Dim1) e 16,8% pelo segundo eixo (Dim2). Em relação ao tipo I, o tipo II apresentou maior aproximação na distribuição dos pontos, indicando semelhanças nas condições ambientais, principalmente em relação à elevação, à liteira e ao oxigênio dissolvido. O tipo III apresentou distribuição principalmente no lado esquerdo do gráfico, diferenciando-se do tipo I pela associação com características como largura do canal, vegetação submersa, gramíneas, macrófitas, lama e algas. Já o tipo IV apresentou maior dispersão dos pontos, com alguns localizados na parte inferior direita do gráfico, associados à areia, à velocidade da água e à turbidez. O segundo eixo contribuiu para essa diferenciação, com a porção positiva relacionada à elevação, à liteira e ao oxigênio dissolvido, além de algas, lama e macrófitas, enquanto a porção negativa esteve relacionada à turbidez, à areia, à velocidade da água e às massas de raízes. De modo geral, considerando o tipo I como referência, a PCA indicou maior semelhança entre os tipos I e II, diferenciação do tipo III em relação às características do canal e da vegetação e maior heterogeneidade ambiental no tipo IV.
+A Análise de Componentes Principais (PCA) mostrou que os dois primeiros eixos explicaram 40,0% da variação total dos dados, sendo 23,2% pelo primeiro eixo (Dim1) e 16,8% pelo segundo eixo (Dim2). Em relação aos niveis de preservação os pontos do tipo I foram utilizado como referência para a interpretação, o tipo II apresentou maior aproximação na distribuição dos pontos, indicando semelhanças nas condições ambientais, principalmente quanto à elevação, à liteira e ao oxigênio dissolvido. O tipo III foi associado a características como largura do canal, vegetação submersa, gramíneas, macrófitas, lama e algas. O tipo IV apresentou maior dispersão dos pontos, com alguns deles localizados próximos às variáveis areia, velocidade da água e turbidez (@fig-PCA_fviz). Essas diferenças na distribuição entre os níveis de preservação foram corroboradas pela PERMANOVA, que identificou diferenças significativas nas condições ambientais entre os quatro tipos (*F* = 6,23; *R*² = 0,1786; *p* = 0,001), indicando que a classificação dos locais segundo o nível de preservação explicou 17,86% da variação ambiental. Nas comparações pareadas, foram observadas diferenças significativas entre os tipos I e III (*F* = 9,13; *R*² = 0,1858; *p* ajustado = 0,006), I e IV (*F* = 5,30; *R*² = 0,0925; *p* ajustado = 0,006), II e III (*F* = 4,05; *R*² = 0,1065; *p* ajustado = 0,006), II e IV (*F* = 3,46; *R*² = 0,0699; *p* ajustado = 0,006) e III e IV (*F* = 9,39; *R*² = 0,1182; *p* ajustado = 0,006). Não houve diferença significativa entre os tipos I e II (*F* = 2,03; *R*² = 0,1126; *p* ajustado = 0,094), resultado que acompanha a maior proximidade entre esses grupos observada na PCA. De modo geral, os resultados indicaram maior semelhança ambiental entre os tipos I e II, diferenças entre os tipos III e IV e os demais grupos e maior heterogeneidade na distribuição dos pontos do tipo IV.
 
 ```{r env-PCA_fviz}
 #| eval: false
@@ -892,6 +892,252 @@ ggplot() +
   theme_minimal()
 
 #dev.off()
+```
+
+```{r env-PERMANOVA_fviz}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Teste PERMANOVA - Dados ambientais"
+
+#### Limpando para começar
+
+dev.off()
+rm(list = ls(all = TRUE))
+cat("\014")
+
+library(vegan)
+
+########## organizando os dados
+
+t_grps <- read.csv(
+  "t_grps.csv",
+  sep = ";",
+  dec = ".",
+  row.names = 1,
+  header = TRUE,
+  na.strings = NA
+)
+
+m_hab_trns <- read.csv(
+  "m_hab_trns.csv",
+  sep = ";",
+  dec = ".",
+  row.names = 1,
+  header = TRUE,
+  na.strings = NA
+)
+
+# Conferir se as amostras correspondem
+if (!setequal(rownames(t_grps), rownames(m_hab_trns))) {
+  stop("As amostras de t_grps e m_hab_trns não correspondem.")
+}
+
+# Colocar as amostras na mesma ordem
+m_trab <- m_hab_trns[rownames(t_grps), , drop = FALSE]
+
+# Manter apenas variáveis ambientais numéricas
+m_trab <- m_trab[
+  , sapply(m_trab, is.numeric),
+  drop = FALSE
+]
+
+# Remover amostras com dados ausentes
+dados_ok <- complete.cases(m_trab) &
+  !is.na(t_grps$Ref_site)
+
+m_trab <- m_trab[dados_ok, , drop = FALSE]
+grupos <- droplevels(as.factor(t_grps$Ref_site[dados_ok]))
+
+# Remover variáveis sem variação
+variancia <- sapply(m_trab, var)
+
+m_trab <- m_trab[
+  , is.finite(variancia) & variancia > 0,
+  drop = FALSE
+]
+
+# Conferir os dados
+print(table(grupos))
+print(colnames(m_trab))
+
+# Padronizar as variáveis ambientais
+m_env <- scale(m_trab)
+
+# Distância euclidiana
+dist_env <- dist(m_env, method = "euclidean")
+
+#### PERMANOVA GERAL
+
+set.seed(123)
+
+perma_geral <- adonis2(
+  dist_env ~ grupos,
+  permutations = 999
+)
+
+print(perma_geral)
+
+####  COMPARAÇÕES PAREADAS ENTRE OS NÍVEIS DE PRESERVAÇÃO
+
+niveis <- levels(grupos)
+
+pares <- combn(niveis, 2, simplify = FALSE)
+
+set.seed(123)
+
+resultados_pares <- lapply(pares, function(par) {
+  
+  selecao <- grupos %in% par
+  
+  dados_par <- m_env[selecao, , drop = FALSE]
+  grupos_par <- droplevels(grupos[selecao])
+  
+  dist_par <- dist(dados_par, method = "euclidean")
+  
+  teste <- adonis2(
+    dist_par ~ grupos_par,
+    permutations = 999
+  )
+  
+  data.frame(
+    Tipo_1 = par[1],
+    Tipo_2 = par[2],
+    F = teste$F[1],
+    R2 = teste$R2[1],
+    p = teste$`Pr(>F)`[1]
+  )
+})
+
+resultados_pares <- do.call(rbind, resultados_pares)
+
+# Corrigir os valores de p para as comparações múltiplas
+resultados_pares$p_ajustado <- p.adjust(
+  resultados_pares$p,
+  method = "holm"
+)
+
+resultados_pares$Significativo <- ifelse(
+  resultados_pares$p_ajustado < 0.05,
+  "Sim",
+  "Não"
+)
+
+print(resultados_pares)
+
+# 4. PERMDISP — DISPERSÃO DOS GRUPOS
+
+bd <- betadisper(
+  dist_env,
+  grupos,
+  type = "centroid"
+)
+
+set.seed(123)
+
+teste_disp <- permutest(
+  bd,
+  permutations = 999
+)
+
+print(teste_disp)
+
+
+# 5. SALVAR OS RESULTADOS
+
+write.csv(
+  as.data.frame(perma_geral),
+  "permanova_ambiental_geral.csv",
+  row.names = TRUE
+)
+
+write.csv(
+  resultados_pares,
+  "permanova_ambiental_pareada.csv",
+  row.names = FALSE
+)
+
+capture.output(
+  teste_disp,
+  file = "permdisp_ambiental.txt"
+)
+
+
+# TABELA EM MATRIZ (OS VALORES DE p SIGNIFICATIVOS EM VERMELHO)
+
+library(knitr)
+library(kableExtra)
+library(tibble)
+
+# Criar matriz com os tipos de Ref_sites
+niveis <- levels(grupos)
+
+pval_matrix <- matrix(
+  NA_real_,
+  nrow = length(niveis),
+  ncol = length(niveis),
+  dimnames = list(niveis, niveis)
+)
+
+diag(pval_matrix) <- NA_real_
+
+# Preencher a matriz com os p ajustados das comparações pareadas
+for (i in seq_len(nrow(resultados_pares))) {
+  
+  tipo1 <- resultados_pares$Tipo_1[i]
+  tipo2 <- resultados_pares$Tipo_2[i]
+  p <- resultados_pares$p_ajustado[i]
+  
+  pval_matrix[tipo1, tipo2] <- p
+  pval_matrix[tipo2, tipo1] <- p
+}
+
+# Formatar os valores de p e destacar os significativos em vermelho
+pval_formatada <- matrix(
+  ifelse(
+    is.na(pval_matrix),
+    "",
+    ifelse(
+      pval_matrix < 0.05,
+      paste0(
+        "<span style='color:red; font-weight:bold;'>",
+        sprintf("%.3f", pval_matrix),
+        "</span>"
+      ),
+      sprintf("%.3f", pval_matrix)
+    )
+  ),
+  nrow = nrow(pval_matrix),
+  ncol = ncol(pval_matrix),
+  dimnames = dimnames(pval_matrix)
+)
+
+# Transformar em tabela
+tabela_p <- as.data.frame(pval_formatada) |>
+  tibble::rownames_to_column("Ref_sites")
+
+# Mostrar a tabela formatada
+matrixstyle <- knitr::kable(
+  tabela_p,
+  format = "html",
+  escape = FALSE,
+  row.names = FALSE,
+  caption = "Valores de p ajustados das comparações pareadas entre os tipos de Ref_sites"
+) |>
+  kableExtra::kable_styling(full_width = FALSE)
+
+matrixstyle
+
+# Salvar a tabela em HTML
+if (!dir.exists("res")) dir.create("res")
+
+kableExtra::save_kable(
+  matrixstyle,
+  "res/kb-perma-env_matrixstyle.html"
+)
 ```
 
 ## Estrutura da comunidade

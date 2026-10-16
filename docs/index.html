@@ -5198,7 +5198,7 @@ vertical-align: -.125em;
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cor_star, <span class="at">na.print =</span> <span class="st">&quot;&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada <span class="citation" data-cites="mccune2002">(<a href="#ref-mccune2002" role="doc-biblioref">Mccune and Grace 2002</a>)</span>. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote <code>FactoMineR</code> no ambiente R <span class="citation" data-cites="lê2008">(<a href="#ref-lê2008" role="doc-biblioref">Lê et al. 2008</a>)</span>. A diferença nas condições ambientais entre os tipos, classificados segundo o nível de preservação ambiental (I, II, III e IV), foi avaliada por meio da Análise de Variância Multivariada Permutacional (PERMANOVA), com 999 permutações. O teste foi empregado para avaliar se existiam diferenças nas variáveis ambientais entre os diferentes níveis de preservação <span class="citation" data-cites="anderson2001">(<a href="#ref-anderson2001" role="doc-biblioref">Anderson 2001</a>)</span>.</p>
+<p>Após essa etapa, as variáveis ambientais foram transformadas de acordo com sua natureza. As variáveis relacionadas à morfologia do local e à qualidade da água foram transformadas pela raiz quadrada, enquanto as variáveis de composição do sedimento e de estrutura do habitat marginal, expressas em porcentagem, foram relativizadas pelo total da coluna e transformadas pelo arco seno da raiz quadrada <span class="citation" data-cites="mccune2002">(<a href="#ref-mccune2002" role="doc-biblioref">Mccune and Grace 2002</a>)</span>. A matriz ambiental resultante foi utilizada na Análise de Componentes Principais (PCA), com o objetivo de avaliar os principais gradientes ambientais e a distribuição das unidades amostrais em relação às variáveis ambientais. A PCA foi realizada utilizando o pacote <code>FactoMineR</code> no ambiente R <span class="citation" data-cites="lê2008">(<a href="#ref-lê2008" role="doc-biblioref">Lê et al. 2008</a>)</span>. A diferença nas condições ambientais entre os tipos I, II, III e IV, classificados de acordo com o nível de preservação ambiental, foi avaliada por meio da Análise de Variância Multivariada Permutacional (PERMANOVA), com 999 permutações <span class="citation" data-cites="anderson2001">(<a href="#ref-anderson2001" role="doc-biblioref">Anderson 2001</a>)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Código: Organização dos dados ambientais para a PCA</summary>
@@ -5424,7 +5424,7 @@ vertical-align: -.125em;
 <span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(hab_gttable, <span class="st">&quot;gt-hab_gttable_xlsx.rds&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>A Análise de Componentes Principais (PCA) descreveu as condições ambientais dos locais amostrados e identificou as principais variáveis relacionadas à diferenciação entre os tipos I, II, III e IV, considerando o tipo I como referência para a interpretação das diferenças ambientais (<a href="#fig-PCA_fviz" class="quarto-xref">Figure 2</a>). Os dois primeiros eixos explicaram 40,0% da variação total dos dados, sendo 23,2% pelo primeiro eixo (Dim1) e 16,8% pelo segundo eixo (Dim2). Em relação ao tipo I, o tipo II apresentou maior aproximação na distribuição dos pontos, indicando semelhanças nas condições ambientais, principalmente em relação à elevação, à liteira e ao oxigênio dissolvido. O tipo III apresentou distribuição principalmente no lado esquerdo do gráfico, diferenciando-se do tipo I pela associação com características como largura do canal, vegetação submersa, gramíneas, macrófitas, lama e algas. Já o tipo IV apresentou maior dispersão dos pontos, com alguns localizados na parte inferior direita do gráfico, associados à areia, à velocidade da água e à turbidez. O segundo eixo contribuiu para essa diferenciação, com a porção positiva relacionada à elevação, à liteira e ao oxigênio dissolvido, além de algas, lama e macrófitas, enquanto a porção negativa esteve relacionada à turbidez, à areia, à velocidade da água e às massas de raízes. De modo geral, considerando o tipo I como referência, a PCA indicou maior semelhança entre os tipos I e II, diferenciação do tipo III em relação às características do canal e da vegetação e maior heterogeneidade ambiental no tipo IV.</p>
+<p>A Análise de Componentes Principais (PCA) mostrou que os dois primeiros eixos explicaram 40,0% da variação total dos dados, sendo 23,2% pelo primeiro eixo (Dim1) e 16,8% pelo segundo eixo (Dim2). Em relação aos niveis de preservação os pontos do tipo I foram utilizado como referência para a interpretação, o tipo II apresentou maior aproximação na distribuição dos pontos, indicando semelhanças nas condições ambientais, principalmente quanto à elevação, à liteira e ao oxigênio dissolvido. O tipo III foi associado a características como largura do canal, vegetação submersa, gramíneas, macrófitas, lama e algas. O tipo IV apresentou maior dispersão dos pontos, com alguns deles localizados próximos às variáveis areia, velocidade da água e turbidez (<a href="#fig-PCA_fviz" class="quarto-xref">Figure 2</a>). Essas diferenças na distribuição entre os níveis de preservação foram corroboradas pela PERMANOVA, que identificou diferenças significativas nas condições ambientais entre os quatro tipos (<em>F</em> = 6,23; <em>R</em>² = 0,1786; <em>p</em> = 0,001), indicando que a classificação dos locais segundo o nível de preservação explicou 17,86% da variação ambiental. Nas comparações pareadas, foram observadas diferenças significativas entre os tipos I e III (<em>F</em> = 9,13; <em>R</em>² = 0,1858; <em>p</em> ajustado = 0,006), I e IV (<em>F</em> = 5,30; <em>R</em>² = 0,0925; <em>p</em> ajustado = 0,006), II e III (<em>F</em> = 4,05; <em>R</em>² = 0,1065; <em>p</em> ajustado = 0,006), II e IV (<em>F</em> = 3,46; <em>R</em>² = 0,0699; <em>p</em> ajustado = 0,006) e III e IV (<em>F</em> = 9,39; <em>R</em>² = 0,1182; <em>p</em> ajustado = 0,006). Não houve diferença significativa entre os tipos I e II (<em>F</em> = 2,03; <em>R</em>² = 0,1126; <em>p</em> ajustado = 0,094), resultado que acompanha a maior proximidade entre esses grupos observada na PCA. De modo geral, os resultados indicaram maior semelhança ambiental entre os tipos I e II, diferenças entre os tipos III e IV e os demais grupos e maior heterogeneidade na distribuição dos pontos do tipo IV.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Código: Análise de Componentes Principais (PCA) dos dados ambientais</summary>
@@ -5695,6 +5695,246 @@ vertical-align: -.125em;
 <span id="cb7-265"><a href="#cb7-265" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
 <span id="cb7-266"><a href="#cb7-266" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-267"><a href="#cb7-267" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Código: Teste PERMANOVA - Dados ambientais</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Limpando para começar</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>(<span class="at">all =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\014</span><span class="st">&quot;</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">########## organizando os dados</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>t_grps <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;t_grps.csv&quot;</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="cn">NA</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>m_hab_trns <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;m_hab_trns.csv&quot;</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="cn">NA</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Conferir se as amostras correspondem</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">setequal</span>(<span class="fu">rownames</span>(t_grps), <span class="fu">rownames</span>(m_hab_trns))) {</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">&quot;As amostras de t_grps e m_hab_trns não correspondem.&quot;</span>)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Colocar as amostras na mesma ordem</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>m_trab <span class="ot">&lt;-</span> m_hab_trns[<span class="fu">rownames</span>(t_grps), , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Manter apenas variáveis ambientais numéricas</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>m_trab <span class="ot">&lt;-</span> m_trab[</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">sapply</span>(m_trab, is.numeric),</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>  drop <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Remover amostras com dados ausentes</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>dados_ok <span class="ot">&lt;-</span> <span class="fu">complete.cases</span>(m_trab) <span class="sc">&amp;</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(t_grps<span class="sc">$</span>Ref_site)</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>m_trab <span class="ot">&lt;-</span> m_trab[dados_ok, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>grupos <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">as.factor</span>(t_grps<span class="sc">$</span>Ref_site[dados_ok]))</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Remover variáveis sem variação</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>variancia <span class="ot">&lt;-</span> <span class="fu">sapply</span>(m_trab, var)</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>m_trab <span class="ot">&lt;-</span> m_trab[</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>  , <span class="fu">is.finite</span>(variancia) <span class="sc">&amp;</span> variancia <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>  drop <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Conferir os dados</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">table</span>(grupos))</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colnames</span>(m_trab))</span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Padronizar as variáveis ambientais</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>m_env <span class="ot">&lt;-</span> <span class="fu">scale</span>(m_trab)</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Distância euclidiana</span></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>dist_env <span class="ot">&lt;-</span> <span class="fu">dist</span>(m_env, <span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="do">#### PERMANOVA GERAL</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>perma_geral <span class="ot">&lt;-</span> <span class="fu">adonis2</span>(</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>  dist_env <span class="sc">~</span> grupos,</span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>  <span class="at">permutations =</span> <span class="dv">999</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(perma_geral)</span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="do">####  COMPARAÇÕES PAREADAS ENTRE OS NÍVEIS DE PRESERVAÇÃO</span></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>niveis <span class="ot">&lt;-</span> <span class="fu">levels</span>(grupos)</span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>pares <span class="ot">&lt;-</span> <span class="fu">combn</span>(niveis, <span class="dv">2</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>resultados_pares <span class="ot">&lt;-</span> <span class="fu">lapply</span>(pares, <span class="cf">function</span>(par) {</span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>  selecao <span class="ot">&lt;-</span> grupos <span class="sc">%in%</span> par</span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>  dados_par <span class="ot">&lt;-</span> m_env[selecao, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>  grupos_par <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(grupos[selecao])</span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>  dist_par <span class="ot">&lt;-</span> <span class="fu">dist</span>(dados_par, <span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>  teste <span class="ot">&lt;-</span> <span class="fu">adonis2</span>(</span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>    dist_par <span class="sc">~</span> grupos_par,</span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>    <span class="at">permutations =</span> <span class="dv">999</span></span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">Tipo_1 =</span> par[<span class="dv">1</span>],</span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">Tipo_2 =</span> par[<span class="dv">2</span>],</span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>    <span class="at">F =</span> teste<span class="sc">$</span>F[<span class="dv">1</span>],</span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">R2 =</span> teste<span class="sc">$</span>R2[<span class="dv">1</span>],</span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> teste<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>resultados_pares <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, resultados_pares)</span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrigir os valores de p para as comparações múltiplas</span></span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>resultados_pares<span class="sc">$</span>p_ajustado <span class="ot">&lt;-</span> <span class="fu">p.adjust</span>(</span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>  resultados_pares<span class="sc">$</span>p,</span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;holm&quot;</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>resultados_pares<span class="sc">$</span>Significativo <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>  resultados_pares<span class="sc">$</span>p_ajustado <span class="sc">&lt;</span> <span class="fl">0.05</span>,</span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Sim&quot;</span>,</span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Não&quot;</span></span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resultados_pares)</span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. PERMDISP — DISPERSÃO DOS GRUPOS</span></span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">&lt;-</span> <span class="fu">betadisper</span>(</span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>  dist_env,</span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a>  grupos,</span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;centroid&quot;</span></span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>teste_disp <span class="ot">&lt;-</span> <span class="fu">permutest</span>(</span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>  bd,</span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>  <span class="at">permutations =</span> <span class="dv">999</span></span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(teste_disp)</span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. SALVAR OS RESULTADOS</span></span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>(perma_geral),</span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;permanova_ambiental_geral.csv&quot;</span>,</span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a>  resultados_pares,</span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;permanova_ambiental_pareada.csv&quot;</span>,</span>
+<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a><span class="fu">capture.output</span>(</span>
+<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a>  teste_disp,</span>
+<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;permdisp_ambiental.txt&quot;</span></span>
+<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a><span class="co"># TABELA EM MATRIZ (OS VALORES DE p SIGNIFICATIVOS EM VERMELHO)</span></span>
+<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar matriz com os tipos de Ref_sites</span></span>
+<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a>niveis <span class="ot">&lt;-</span> <span class="fu">levels</span>(grupos)</span>
+<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a>pval_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA_real_</span>,</span>
+<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">length</span>(niveis),</span>
+<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">length</span>(niveis),</span>
+<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(niveis, niveis)</span>
+<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(pval_matrix) <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a><span class="co"># Preencher a matriz com os p ajustados das comparações pareadas</span></span>
+<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(resultados_pares))) {</span>
+<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>  tipo1 <span class="ot">&lt;-</span> resultados_pares<span class="sc">$</span>Tipo_1[i]</span>
+<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a>  tipo2 <span class="ot">&lt;-</span> resultados_pares<span class="sc">$</span>Tipo_2[i]</span>
+<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> resultados_pares<span class="sc">$</span>p_ajustado[i]</span>
+<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>  pval_matrix[tipo1, tipo2] <span class="ot">&lt;-</span> p</span>
+<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a>  pval_matrix[tipo2, tipo1] <span class="ot">&lt;-</span> p</span>
+<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatar os valores de p e destacar os significativos em vermelho</span></span>
+<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a>pval_formatada <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(</span>
+<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.na</span>(pval_matrix),</span>
+<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;&quot;</span>,</span>
+<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(</span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a>      pval_matrix <span class="sc">&lt;</span> <span class="fl">0.05</span>,</span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(</span>
+<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;&lt;span style=&#39;color:red; font-weight:bold;&#39;&gt;&quot;</span>,</span>
+<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, pval_matrix),</span>
+<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;&lt;/span&gt;&quot;</span></span>
+<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, pval_matrix)</span>
+<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(pval_matrix),</span>
+<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">ncol</span>(pval_matrix),</span>
+<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">dimnames</span>(pval_matrix)</span>
+<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformar em tabela</span></span>
+<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a>tabela_p <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pval_formatada) <span class="sc">|&gt;</span></span>
+<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(<span class="st">&quot;Ref_sites&quot;</span>)</span>
+<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar a tabela formatada</span></span>
+<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a>matrixstyle <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a>  tabela_p,</span>
+<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a>  <span class="at">format =</span> <span class="st">&quot;html&quot;</span>,</span>
+<span id="cb8-221"><a href="#cb8-221" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-222"><a href="#cb8-222" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-223"><a href="#cb8-223" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Valores de p ajustados das comparações pareadas entre os tipos de Ref_sites&quot;</span></span>
+<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-226"><a href="#cb8-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-227"><a href="#cb8-227" aria-hidden="true" tabindex="-1"></a>matrixstyle</span>
+<span id="cb8-228"><a href="#cb8-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar a tabela em HTML</span></span>
+<span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">&quot;res&quot;</span>)) <span class="fu">dir.create</span>(<span class="st">&quot;res&quot;</span>)</span>
+<span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">save_kable</span>(</span>
+<span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a>  matrixstyle,</span>
+<span id="cb8-234"><a href="#cb8-234" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;res/kb-perma-env_matrixstyle.html&quot;</span></span>
+<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -6042,20 +6282,20 @@ Table 1: Tabela de dados ambientais.
 </figcaption>
 <div aria-describedby="tbl-hab_gttable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="kalbtzosxp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kalbtzosxp table {
+<div id="jqmxlkwwcs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jqmxlkwwcs table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#kalbtzosxp thead, #kalbtzosxp tbody, #kalbtzosxp tfoot, #kalbtzosxp tr, #kalbtzosxp td, #kalbtzosxp th {
+#jqmxlkwwcs thead, #jqmxlkwwcs tbody, #jqmxlkwwcs tfoot, #jqmxlkwwcs tr, #jqmxlkwwcs td, #jqmxlkwwcs th {
 border-style: none;
 }
-#kalbtzosxp p {
+#jqmxlkwwcs p {
 margin: 0;
 padding: 0;
 }
-#kalbtzosxp .gt_table {
+#jqmxlkwwcs .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -6080,11 +6320,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#kalbtzosxp .gt_caption {
+#jqmxlkwwcs .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#kalbtzosxp .gt_title {
+#jqmxlkwwcs .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -6095,7 +6335,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#kalbtzosxp .gt_subtitle {
+#jqmxlkwwcs .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -6106,7 +6346,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#kalbtzosxp .gt_heading {
+#jqmxlkwwcs .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -6117,12 +6357,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#kalbtzosxp .gt_bottom_border {
+#jqmxlkwwcs .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kalbtzosxp .gt_col_headings {
+#jqmxlkwwcs .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -6136,7 +6376,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#kalbtzosxp .gt_col_heading {
+#jqmxlkwwcs .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6155,7 +6395,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#kalbtzosxp .gt_column_spanner_outer {
+#jqmxlkwwcs .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6166,13 +6406,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#kalbtzosxp .gt_column_spanner_outer:first-child {
+#jqmxlkwwcs .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#kalbtzosxp .gt_column_spanner_outer:last-child {
+#jqmxlkwwcs .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#kalbtzosxp .gt_column_spanner {
+#jqmxlkwwcs .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -6183,10 +6423,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#kalbtzosxp .gt_spanner_row {
+#jqmxlkwwcs .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#kalbtzosxp .gt_group_heading {
+#jqmxlkwwcs .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6211,7 +6451,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#kalbtzosxp .gt_empty_group_heading {
+#jqmxlkwwcs .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -6225,13 +6465,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#kalbtzosxp .gt_from_md > :first-child {
+#jqmxlkwwcs .gt_from_md > :first-child {
 margin-top: 0;
 }
-#kalbtzosxp .gt_from_md > :last-child {
+#jqmxlkwwcs .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#kalbtzosxp .gt_row {
+#jqmxlkwwcs .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6249,7 +6489,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#kalbtzosxp .gt_stub {
+#jqmxlkwwcs .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6261,7 +6501,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kalbtzosxp .gt_stub_row_group {
+#jqmxlkwwcs .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6274,13 +6514,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#kalbtzosxp .gt_row_group_first td {
+#jqmxlkwwcs .gt_row_group_first td {
 border-top-width: 2px;
 }
-#kalbtzosxp .gt_row_group_first th {
+#jqmxlkwwcs .gt_row_group_first th {
 border-top-width: 2px;
 }
-#kalbtzosxp .gt_summary_row {
+#jqmxlkwwcs .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6289,14 +6529,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kalbtzosxp .gt_first_summary_row {
+#jqmxlkwwcs .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#kalbtzosxp .gt_first_summary_row.thick {
+#jqmxlkwwcs .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#kalbtzosxp .gt_last_summary_row {
+#jqmxlkwwcs .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6305,7 +6545,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kalbtzosxp .gt_grand_summary_row {
+#jqmxlkwwcs .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6314,7 +6554,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kalbtzosxp .gt_first_grand_summary_row {
+#jqmxlkwwcs .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6323,7 +6563,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#kalbtzosxp .gt_last_grand_summary_row_top {
+#jqmxlkwwcs .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6332,10 +6572,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#kalbtzosxp .gt_striped {
+#jqmxlkwwcs .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#kalbtzosxp .gt_table_body {
+#jqmxlkwwcs .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -6343,7 +6583,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kalbtzosxp .gt_footnotes {
+#jqmxlkwwcs .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6356,7 +6596,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#kalbtzosxp .gt_footnote {
+#jqmxlkwwcs .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -6364,7 +6604,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kalbtzosxp .gt_sourcenotes {
+#jqmxlkwwcs .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6377,64 +6617,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#kalbtzosxp .gt_sourcenote {
+#jqmxlkwwcs .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kalbtzosxp .gt_left {
+#jqmxlkwwcs .gt_left {
 text-align: left;
 }
-#kalbtzosxp .gt_center {
+#jqmxlkwwcs .gt_center {
 text-align: center;
 }
-#kalbtzosxp .gt_right {
+#jqmxlkwwcs .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#kalbtzosxp .gt_font_normal {
+#jqmxlkwwcs .gt_font_normal {
 font-weight: normal;
 }
-#kalbtzosxp .gt_font_bold {
+#jqmxlkwwcs .gt_font_bold {
 font-weight: bold;
 }
-#kalbtzosxp .gt_font_italic {
+#jqmxlkwwcs .gt_font_italic {
 font-style: italic;
 }
-#kalbtzosxp .gt_super {
+#jqmxlkwwcs .gt_super {
 font-size: 65%;
 }
-#kalbtzosxp .gt_footnote_marks {
+#jqmxlkwwcs .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#kalbtzosxp .gt_asterisk {
+#jqmxlkwwcs .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#kalbtzosxp .gt_indent_1 {
+#jqmxlkwwcs .gt_indent_1 {
 text-indent: 5px;
 }
-#kalbtzosxp .gt_indent_2 {
+#jqmxlkwwcs .gt_indent_2 {
 text-indent: 10px;
 }
-#kalbtzosxp .gt_indent_3 {
+#jqmxlkwwcs .gt_indent_3 {
 text-indent: 15px;
 }
-#kalbtzosxp .gt_indent_4 {
+#jqmxlkwwcs .gt_indent_4 {
 text-indent: 20px;
 }
-#kalbtzosxp .gt_indent_5 {
+#jqmxlkwwcs .gt_indent_5 {
 text-indent: 25px;
 }
-#kalbtzosxp .katex-display {
+#jqmxlkwwcs .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#kalbtzosxp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jqmxlkwwcs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -7019,7 +7259,7 @@ Non-used codes
 <div class="cell">
 <details class="code-fold">
 <summary>non-used code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
