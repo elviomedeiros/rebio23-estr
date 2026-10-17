@@ -1142,6 +1142,376 @@ kableExtra::save_kable(
 
 ## Estrutura da comunidade
 
+```{r desc-comunidade}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Descritores da comunidade"
+
+#ZOOREBIO_str - Descritores DA COMUNIDADE----
+#####....----
+
+##ORGANIZANDO DADOS----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+m_dens <- read.csv("m_dens.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+
+
+library(tibble)
+library(tidyverse)
+library(forcats)
+library(openxlsx)
+library(Rcpp)
+
+####### matriz de média para comunidade
+env_completo <- m_dens
+library(tidyverse)
+m_hab <- env_completo %>%                    
+  replace(is.na(.), 0) %>%  #substitui todos os valores NA por 0
+  select(where(~sum(.) > 0)) %>%  #mantém apenas colunas cuja soma seja maior que 0
+  rownames_to_column("Grupos") %>%
+  mutate(Grupos = substr(Grupos, 5, 7),     
+         Grupos = factor(Grupos, levels = unique(Grupos))) %>% #mantém a ordem original dos grupos
+  group_by(Grupos) %>%                                       
+  summarise(across(everything(), mean),                     
+            .groups = "drop") %>%                            
+  column_to_rownames("Grupos")
+m_dens <- m_hab
+
+######## grupos precisa ter o mesmo número de linhas
+###################### particionando grupos
+m_grups <- t_grps
+row.names(m_grups)
+pat <- "-H2" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
+pat <- "-H3" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
+################## deletando "H1"
+rownames(m_grups) <- gsub("-H1", "", rownames(m_grups))
+m_grups
+t_grps <- m_grups
+
+
+m_dens
+str(m_dens)
+m_trab <- m_dens
+
+m_trab <- (m_dens) #SITES
+#m_trab <- (m_dens) #SPP
+
+##TAMANHO DA MATRIZ----
+
+range(m_trab) #menor e maior valores
+length(m_trab) #no. de colunas
+ncol(m_trab) #no. de N colunas
+nrow(m_trab) #no. de M linhas
+sum(lengths(m_trab)) #soma os nos. de colunas
+length(as.matrix(m_trab)) #tamanho da matriz m x n
+sum(m_trab == 0) #número de observações igual a zero
+sum(m_trab > 0) #número de observações maiores que zero
+#calculando a proporção de zeros na matriz
+zeros <- (sum(m_trab == 0)/length(as.matrix(m_trab)))*100
+zeros
+
+##ESTRUTURA DA COMUNIDADE----
+
+Sum <- rowSums(m_trab)
+#ou
+Sum <- apply(m_trab,1,sum)
+Sum
+# Abundância relativa (%)
+RA <- (Sum / sum(Sum)) * 100 # percentage
+# Media
+Mean <- rowMeans(m_trab)
+Mean
+# Ou
+Mean <- apply(m_trab,1,mean)
+Mean
+# Desvio padrão
+DP <- apply(m_trab,1,sd)
+DP
+# Máximo
+Max <- apply(m_trab,1,max)
+Max
+# Mínimo
+Min <- apply(m_trab,1,min)
+Min
+# Mínimo não-zero
+MinZ <- apply(m_trab, 1, function(row) {
+  non_zero_values <- row[row > 0]  # Filter out zero values
+  if (length(non_zero_values) == 0) {
+    return(0)  # If all values are zero, return 0
+  } else {
+    return(min(non_zero_values))  # Return the minimum of non-zero values
+  }
+})
+MinZ
+
+m_pa <- m_trab
+m_pa[m_pa != 0] <- 1
+rowSums(m_pa)
+library(vegan)
+bin <- decostand(m_trab,"pa")
+bin[1:10, 1:10]
+S <- apply(bin,1,sum)
+S
+#OU
+Riqueza <- specnumber(m_trab)
+Riqueza
+Riqueza_total <- specnumber(colSums(m_trab))
+Riqueza_total
+
+FO <- rowSums(m_trab > 0) / ncol(m_trab) * 100
+FO
+
+H <- diversity(m_trab, index = "shannon")
+H
+D <- diversity(m_trab, "simpson")
+D
+D[is.na(D)] <- 0 #substitui NA ou NaN por 0
+D
+E <- H/log(specnumber(m_trab))
+E
+E[is.na(E)] <- 0 #substitui NA ou NaN por 0
+E
+
+###DESCRITORES----
+Descritores1 <- cbind(Sum, RA, Mean, DP, Max, Min, MinZ, FO, S, E, H, D)
+Descritores1 <- as.data.frame(Descritores1)
+Descritores1
+Descritores1 <- Descritores1[order(-Descritores1$Mean), ] #ordena do maio para o menor "-"
+#Descritores1 <- Descritores1 %>% rownames_to_column(var="Espécies") #da nome a primeira coluna
+SomaTotalD <- apply(Descritores1,2,sum)
+SomaTotalD
+MediaTotalD <- apply(Descritores1,2,mean)
+MediaTotalD
+DPTotalD <- apply(Descritores1,2,sd)
+DPTotalD
+Descritores2 <- cbind(SomaTotalD, MediaTotalD, DPTotalD)
+Descritores2 <- as.data.frame(Descritores2)
+Descritores2 <- t(Descritores2)
+Descritores2
+DescritoresFinal <- rbind(Descritores1, Descritores2)
+DescritoresFinal
+DescritoresFinal <- round (DescritoresFinal, 2)
+DescritoresFinal
+
+# Salvando DescritoresFinal
+write.table(data.frame("SPP"=rownames(DescritoresFinal),
+                       DescritoresFinal),
+            "DescritoresSPP.txt",
+            row.names=FALSE,
+            sep="\t")
+
+###TABELA FINAL DESCRITORES----
+library(gt)
+df <- DescritoresFinal
+ncol(df); nrow(df) #no. de N colunas x M linhas
+df <- cbind(SPP = rownames(df), df)
+gt <- gt(df, rowname_col = "SPP",
+   caption = "Descritores da diversidade por espécie (colunas). Sum, soma; RA, abundância relativa (%); mean, média; DP, desvio padrão da média; Max, maior valor; Min, menor valor; MinZ, menor valor não zero; FO, frequência de ocorrência (%); S, riqueza (ou no. de ocorrências, da matriz transposta); E, índice de equitabilidade de Pielou; H, índice de diversidade de Shannon; D, índice de diversidade de Simpson.")
+gt
+gtsave(gt, "DescritoresSPP.html")
+gtsave(gt, "DescritoresSPP.png")
+
+### TABELA DE DESCRITORES ----
+
+library(dplyr)
+library(openxlsx)
+library(readxl)
+library(gt)
+
+# Utilizar os descritores já calculados
+df <- as.data.frame(DescritoresFinal)
+
+# Conferir a estrutura
+ncol(df)
+nrow(df)
+
+# Colocar os pontos na primeira coluna
+df <- cbind(Ponto = rownames(df), df)
+
+# Salvar a tabela inicial em Excel
+write.xlsx(
+  df,
+  file = "Tabela de descritores.xlsx",
+  rowNames = FALSE,
+  overwrite = TRUE
+)
+
+
+# Tabela final ajustada no Excel
+library(readxl)
+
+desc_gttable <- read_excel(
+  path = "tabela de descritores.xlsx",
+  sheet = "tabela_final",
+  col_names = TRUE,
+  range = "A1:M16"
+)
+
+library(gt)
+
+desc_gttable <- gt(desc_gttable)
+
+desc_gttable <- sub_missing(
+  desc_gttable,
+  columns = everything(),
+  missing_text = ""
+)
+
+# Vírgula como separador decimal
+desc_gttable <- fmt_number(
+  desc_gttable,
+  columns = where(is.numeric),
+  dec_mark = ",",
+  sep_mark = "."
+)
+
+# Visualizar
+desc_gttable
+
+# Salvar
+gtsave(desc_gttable, "gt-desc_gttable_xlsx.html")
+saveRDS(desc_gttable, "gt-desc_gttable_xlsx.rds")
+```
+
+```{r list-comunidade}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Lista de espécies"
+
+###NORMALIDADE----
+library(moments)
+Assimetria <- apply(m_trab,1,skewness)
+Assimetria
+Curtose <- apply(m_trab,1,kurtosis)
+Curtose
+Normalidade1 <- cbind(Assimetria, Curtose)
+Normalidade1 <- as.data.frame(Normalidade1)
+Normalidade1
+SomaTotalN <- apply(Normalidade1,2,sum)
+SomaTotalN
+MediaTotalN <- apply(Normalidade1,2,mean)
+MediaTotalN
+DPTotalN <- apply(Normalidade1,2,sd)
+DPTotalN
+Normalidade2<-cbind(SomaTotalN, MediaTotalN, DPTotalN)
+Normalidade2<-as.data.frame(Normalidade2)
+Normalidade2 <- t(Normalidade2) #"t" transpoe a matriz
+Normalidade2
+NormalidadeFinal <- rbind(Normalidade1, Normalidade2)
+NormalidadeFinal
+NormalidadeFinal <- round(NormalidadeFinal, 2)
+NormalidadeFinal
+
+# Salvando NormalidadeFinal
+write.table(data.frame("SPP"=rownames(NormalidadeFinal),
+                       NormalidadeFinal),
+            "NormalidadeSPP.txt",
+            row.names=FALSE,
+            sep="\t")
+
+###TABELA FINAL NORMALIDADE----
+nf <- NormalidadeFinal
+ncol(nf); nrow(nf) #no. de N colunas x M linhas
+nf <- cbind(SPP = rownames(nf), nf)
+gt <- gt(nf, rowname_col = "SPP", caption = "Descritores da normalidade por SPP (COLUNA)")
+gt
+gtsave(gt, "NormalidadeSPP.html")
+
+##TABELA DA COMUNIDADE----
+
+library(dplyr)
+library(tidyr)
+m_trab <- m_dens %>%
+  rename_with(~ gsub("_", ".", .))
+m <- m_trab %>%
+  group_by(Tipo = t_grps$Ref_site,
+           Ponto = t_grps$PontoN) %>%
+  summarise(across(where(is.numeric),
+                   list(mean = mean, sd = sd)),
+            .groups = 'drop') %>%
+  pivot_longer(
+    cols = -c(Tipo, Ponto),
+    names_to = c("Variable", ".value"),
+    names_sep = "_"
+  )
+m
+m <- as.data.frame(m)
+m_wide <- m %>%
+  mutate(stat_string = ifelse(
+    Variable == "m_trab",  #escolhe uma variável pra ter 3 casas decimais
+    paste0(round(mean, 3), " (", round(sd, 3), ")"),
+    paste0(round(mean, 1), " (", round(sd, 1), ")")
+  )) %>%
+  unite("Location", Tipo, Ponto, sep = "_") %>%
+  dplyr::select(Variable, Location, stat_string) %>% #dplyr dá conflito com MASS
+  pivot_wider(names_from = Location, values_from = stat_string)
+
+m_wide
+m_wide <- as.data.frame(m_wide)
+m_wide
+
+# Salvado m_wide
+write.table(m_wide, "m_wide_spp.txt",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+m_wide_spp <- read.table("m_wide_spp.txt",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+# Exportando dados para Excel
+library(openxlsx)
+#write.xlsx(m_wide_spp, file = "tabela da comunidade.xlsx", rowNames = FALSE)
+wb <- loadWorkbook("tabela da comunidade.xlsx")
+writeData(wb, sheet = "Sheet 1", x = m_wide_spp)
+saveWorkbook(wb, "tabela da comunidade.xlsx", overwrite = TRUE)
+
+# Tabela final ajustada no Excel
+library(readxl)
+spp_gttable <- read_excel(
+  path  = "tabela da comunidade.xlsx",
+  sheet = "tabela_final",
+  col_names = T,
+  range = "A1:Q91") #ajustar para o tamanho da tabela final
+spp_gttable
+library(gt)
+spp_gttable <- gt(spp_gttable)
+spp_gttable <- sub_missing(spp_gttable,
+                      columns = everything(), missing_text = "")
+#spp_gttable <- fmt_number(spp_gttable,
+#                          columns = "F.O.(%)", decimals = 1)
+spp_gttable
+gtsave(spp_gttable, "gt-spp_gttable_xlsx.html")
+saveRDS(spp_gttable, "gt-spp_gttable_xlsx.rds")
+
+```
+
 # Discussão
 
 # Conclusão
@@ -1166,6 +1536,10 @@ O presente trabalho teve duração de um ano e foi desenvolvido no laboratório 
 
 @tbl-hab_gttable: Variáveis ambientais médias para os pontos de amostragem (mínimo–máximo) nos riachos Barro Branco e Caiana (Mamanguape, PB). O Ponto 1 é o ponto de referência deste estudo.
 
+@tbl-desc_gttable: Descritores da diversidade por ponto de amostragem (linhas). Soma, abundância relativa (%), média, desvio padrão, valor máximo (Max), valor mínimo (Min), frequência de ocorrência (%), riqueza (R), índice de equitabilidade de Pielou (E), índice de diversidade de Shannon (H) e índice de diversidade de Simpson (D).
+
+@tbl-spp_gttable: Lista de espécies de zooplâncton registradas na REBIO Guaribas, com valores de média e desvio-padrão da densidade (ind./L). O Ponto 1 corresponde ao ponto de referência do estudo.
+
 ## Figuras {.unnumbered}
 
 <details>
@@ -1174,7 +1548,7 @@ O presente trabalho teve duração de um ano e foi desenvolvido no laboratório 
 
 ![Localização das unidades amostrais.](imagens/mapa.jpeg){#fig-mapa}
 
-<details>
+</details>
 
 <details>
 
@@ -1182,7 +1556,7 @@ O presente trabalho teve duração de um ano e foi desenvolvido no laboratório 
 
 ![Análise de Componentes Principais das variáveis ambientais.](fig-PCA_fviz.png){#fig-PCA_fviz}
 
-<details>
+</details>
 
 ## Tabelas {.unnumbered}
 
@@ -1194,6 +1568,30 @@ O presente trabalho teve duração de um ano e foi desenvolvido no laboratório 
 #| echo: false
 #| tbl-cap: "Tabela de dados ambientais."
 readRDS("gt-hab_gttable_xlsx.rds")
+```
+
+</details>
+
+<details>
+
+<summary>Tab.: Descritores por ponto de amostragem</summary>
+
+```{r tbl-desc_gttable}
+#| echo: false
+#| tbl-cap: "Descritores por ponto."
+readRDS("gt-desc_gttable_xlsx.rds")
+```
+
+</details>
+
+<details>
+
+<summary>Tab.: Lista de espécies</summary>
+
+```{r tbl-spp_gttable}
+#| echo: false
+#| tbl-cap: "Lista de espécies."
+readRDS("gt-spp_gttable_xlsx.rds")
 ```
 
 </details>
