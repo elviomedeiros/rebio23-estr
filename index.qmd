@@ -536,6 +536,12 @@ A condutividade média variou de 98,8 a 223 μS/cm, com maior valor medido no po
 #| code-overflow: wrap
 #| code-summary: "Código: Tabela de dados ambientais" 
 
+#####....----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
 #TABELA DE HABITAT----
 
 m_hab_part <- read.csv("m_hab_part.csv",
@@ -1142,6 +1148,8 @@ kableExtra::save_kable(
 
 ## Estrutura da comunidade
 
+Os descritores da comunidade zooplanctônica variaram entre os pontos amostrados, tendo o P1\* como referência. Nesse ponto, a abundância total foi de 1,59 e a riqueza foi de 10 táxons. Em comparação, a abundância total foi menor nos pontos P2 (1,35) e P3 (1,42), enquanto os maiores valores foram registrados nos pontos P4 (17,32) e P11 (21,00). Para a riqueza, P2 (7 táxons) e P3 (8 táxons) apresentaram valores inferiores aos de P1, enquanto P4 (37 táxons) e P11 (42 táxons) apresentaram os maiores valores. Em relação à diversidade de Shannon, que considera tanto a riqueza de táxons quanto a distribuição dos indivíduos entre eles, P1 apresentou valor de 0,89. Os menores valores foram registrados novamente nos pontos P2 (0,39) e P3 (0,50), indicando menor diversidade nesses pontos em comparação com P1. Por outro lado, P11 apresentou o maior valor (2,69), seguido de P12 (2,19). Quanto à equitabilidade de Pielou, que expressa o grau de uniformidade na distribuição dos indivíduos entre os táxons, P1 apresentou valor de 0,38. Os valores foram menores em P2 (0,20) e P3 (0,24), indicando uma distribuição menos uniforme dos indivíduos entre os táxons nesses pontos. Já P11 apresentou o maior valor (0,72), seguido de P12 (0,63), indicando uma distribuição mais uniforme dos indivíduos entre os táxons (@tbl-desc_gttable).
+
 ```{r desc-comunidade}
 #| eval: false
 #| warning: false
@@ -1201,7 +1209,11 @@ row.names(m_grups)
 pat <- "-H2" 
 m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
 pat <- "-H3" 
-m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui
+#quem começa com pat
+#quem começa com pat
+pat <- "S-" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui
 ################## deletando "H1"
 rownames(m_grups) <- gsub("-H1", "", rownames(m_grups))
 m_grups
@@ -1213,7 +1225,7 @@ str(m_dens)
 m_trab <- m_dens
 
 m_trab <- (m_dens) #SITES
-#m_trab <- (m_dens) #SPP
+#m_trab <- t(m_dens) #SPP
 
 ##TAMANHO DA MATRIZ----
 
@@ -1348,12 +1360,12 @@ nrow(df)
 df <- cbind(Ponto = rownames(df), df)
 
 # Salvar a tabela inicial em Excel
-write.xlsx(
-  df,
-  file = "Tabela de descritores.xlsx",
-  rowNames = FALSE,
-  overwrite = TRUE
-)
+#write.xlsx(
+#  df,
+#  file = "Tabela de descritores.xlsx",
+#  rowNames = FALSE,
+#  overwrite = TRUE
+#)
 
 
 # Tabela final ajustada no Excel
@@ -1390,16 +1402,6 @@ desc_gttable
 # Salvar
 gtsave(desc_gttable, "gt-desc_gttable_xlsx.html")
 saveRDS(desc_gttable, "gt-desc_gttable_xlsx.rds")
-```
-
-```{r list-comunidade}
-#| eval: false
-#| warning: false
-#| message: false
-#| results: hide
-#| code-fold: true
-#| code-overflow: wrap
-#| code-summary: "Código: Lista de espécies"
 
 ###NORMALIDADE----
 library(moments)
@@ -1428,7 +1430,7 @@ NormalidadeFinal
 # Salvando NormalidadeFinal
 write.table(data.frame("SPP"=rownames(NormalidadeFinal),
                        NormalidadeFinal),
-            "NormalidadeSPP.txt",
+            "Normalidade.txt",
             row.names=FALSE,
             sep="\t")
 
@@ -1436,9 +1438,38 @@ write.table(data.frame("SPP"=rownames(NormalidadeFinal),
 nf <- NormalidadeFinal
 ncol(nf); nrow(nf) #no. de N colunas x M linhas
 nf <- cbind(SPP = rownames(nf), nf)
-gt <- gt(nf, rowname_col = "SPP", caption = "Descritores da normalidade por SPP (COLUNA)")
+gt <- gt(nf, rowname_col = "SPP", caption = "Descritores da normalidade por ponto (COLUNA)")
 gt
-gtsave(gt, "NormalidadeSPP.html")
+gtsave(gt, "Normalidade.html")
+```
+
+Um total de 56 táxons distribuídos entre Rotifera, Cladocera e Copepoda foi registrado durante o período de estudo. Rotifera apresentou a maior riqueza taxonômica (40), seguido por Cladocera (12) e Copepoda (4), além dos estágios juvenis de copepoda náuplios e copepoditos. Entre os registros, Bdelloidea foi o único táxon presente em todos os pontos amostrados, com densidades médias (ind/L) que variaram de 0,9 no P13 a 2,3 no P4. A distribuição dos demais táxons foi mais restrita, com diferenças nas densidades médias entre os pontos. Entre os rotíferos, *Lecane curvicornis* apresentou densidade média de 2,0 no P11. Nesse mesmo ponto, *Lecane luna* apresentou 0,5, *Lecane cornuta* 0,4, *Brachionus patulus* 0,6 e *Polyarthra vulgaris* 0,5. *Platyias quadricornis* foi registrado no P6 e no P11, com densidade média de 0,6 em ambos os pontos. Outros rotíferos apresentaram densidades médias inferiores a 0,5, como *Lecane leontina*, com 0,2 no P4, e *Testudinella patina*, com 0,2 no P11. Entre os cladóceros, *Alonella dadayi* apresentou densidade média de 2,7 no P4, sendo o maior valor registrado para esse grupo. Nos demais pontos em que ocorreu, as densidades foram de 0,2 no P6, 0,3 no P11 e 0,1 nos P12 e P13. *Chydorus sp.* também apresentou maior densidade no P4, com 1,6, seguido pelo P11, com 0,9. Já *Alonella hamulata* apresentou densidade média de 0,5 no P4, enquanto *Macrothrix laticornis* e *Ilyocryptus spinifer* apresentaram, respectivamente, 0,7 e 0,7 no P11. *Diaphanosoma birgei* também se destacou nesse ponto, com densidade média de 1,1. Em relação a Copepoda, os estágios juvenis apresentaram as maiores densidades médias. Os náuplios atingiram 1,9 no P4 e 4,4 no P11. Para os copepoditos, as densidades médias foram de 6,6 no P4 e 4,5 no P11. Nos demais pontos em que foram registrados, os valores foram inferiores, variando de 0,1 a 0,8 para ambos os estágios. Entre os copépodes identificados em nível de gênero, *Paracyclops sp.* apresentou densidade média de 0,4 no P4, enquanto *Mesocyclops sp.* apresentou 0,3 nesse mesmo ponto. *Notodiaptomus sp.* apresentou densidade média de 0,2 no P11 (@tbl-spp_gttable).
+
+```{r list-comunidade}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Lista de espécies"
+
+##ORGANIZANDO DADOS----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+m_dens <- read.csv("m_dens.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
 
 ##TABELA DA COMUNIDADE----
 
@@ -1544,9 +1575,9 @@ O presente trabalho teve duração de um ano e foi desenvolvido no laboratório 
 
 <details>
 
-<summary>Fig.: Localização das unidades amostrais</summary>
+<summary>Fig.: Localização dos pontos amostrais</summary>
 
-![Localização das unidades amostrais.](imagens/mapa.jpeg){#fig-mapa}
+![Localização dos pontos amostrais.](imagens/mapa.jpeg){#fig-mapa}
 
 </details>
 
