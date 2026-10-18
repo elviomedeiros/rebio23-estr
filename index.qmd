@@ -1561,9 +1561,9 @@ O presente trabalho teve duração de um ano e foi desenvolvido no laboratório 
 
 # Figuras e Tabelas {.unnumbered}
 
-@fig-mapa: Localização das unidades amostrais nos riachos Barro Branco e Caiana, na Reserva Biológica Guaribas, Mamanguape, Paraíba. A unidade amostral 1 corresponde ao local de referência do estudo.
+@fig-mapa: Localização dos pontos amostrais ao longo dos riachos Barro Branco e Caiana, na Reserva Biológica Guaribas, Mamanguape, Paraíba. O ponto 1 corresponde ao local de referência do estudo.
 
-@fig-PCA_fviz: Análise de Componentes Principais (PCA) descrevendo a estrutura ambiental dos locais de amostragem com base em variáveis físico-químicas da água, morfologia do canal, composição do substrato e estrutura do habitat marginal.
+@fig-PCA_fviz: Biplot da Análise de Componentes Principais (PCA) dos pontos de coleta com base nas variáveis ambientais, considerando os quatro tipos de pontos amostrais (I a IV), classificados de acordo com o nível de preservação. Os símbolos representam os pontos amostrais, e os vetores indicam as variáveis ambientais relacionadas à estrutura do habitat.
 
 @tbl-hab_gttable: Variáveis ambientais médias para os pontos de amostragem (mínimo–máximo) nos riachos Barro Branco e Caiana (Mamanguape, PB). O Ponto 1 é o ponto de referência deste estudo.
 
