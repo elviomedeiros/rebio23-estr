@@ -1568,7 +1568,7 @@ A PERMANOVA confirmou diferenças significativas nas condições ambientais entr
 
 # Conclusão
 
-Em conjunto, os resultados da PCA e da PERMANOVA mostram que as condições ambientais variaram entre os locais amostrados e estiveram relacionadas tanto ao nível de preservação quanto à localização em relação à REBIO Guaribas. A semelhança entre os tipos I e II e as diferenças observadas entre os grupos externos e internos indicam que a localização dos pontos deve ser considerada juntamente com as características de preservação.
+Em conjunto, os resultados da PCA e da PERMANOVA mostram que as condições ambientais variaram entre os locais amostrados e estiveram relacionadas tanto ao nível de preservação quanto à localização em relação à REBIO Guaribas. A semelhança entre os tipos I e II e as diferenças observadas entre os grupos externos e internos indicam que a localização dos pontos deve ser considerada juntamente com o nível de preservação.
 
 # Licenças e Autorizações {.unnumbered}
 
