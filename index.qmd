@@ -603,20 +603,26 @@ wb <- loadWorkbook("tabela de habitat.xlsx")
 writeData(wb, sheet = "Sheet 1", x = m_wide)
 saveWorkbook(wb, "tabela de habitat.xlsx", overwrite = TRUE)
 
-# Tabela final ajustada no Excel
+### tabela final
 library(readxl)
-hab_gttable <- read_excel(
-  path  = "tabela de habitat.xlsx",
-  sheet = "tabela_final",
-  range = "A1:P26") #ajustar para o tamanho da tabela final 
-hab_gttable
 library(gt)
+
+hab_gttable <- read_excel(
+  path = "tabela de habitat.xlsx",
+  sheet = "tabela_final",
+  range = "A1:P26"
+)
+
 hab_gttable <- gt(hab_gttable)
-hab_gttable <- sub_missing(hab_gttable,
-                      columns = everything(), missing_text = "")
-#hab_gttable <- fmt_number(hab_gttable, columns = "F.O.(%)", decimals = 1)
-hab_gttable
+
+hab_gttable <- sub_missing(
+  hab_gttable,
+  columns = everything(),
+  missing_text = ""
+)
+
 gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
+
 saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
 ```
 
@@ -1370,6 +1376,8 @@ df <- cbind(Ponto = rownames(df), df)
 
 # Tabela final ajustada no Excel
 library(readxl)
+library(gt)
+library(dplyr)
 
 desc_gttable <- read_excel(
   path = "tabela de descritores.xlsx",
@@ -1378,7 +1386,18 @@ desc_gttable <- read_excel(
   range = "A1:M16"
 )
 
-library(gt)
+# Formatar os números: zero como 0 e os demais com duas casas
+desc_gttable <- desc_gttable |>
+  mutate(
+    across(
+      where(is.numeric),
+      ~ ifelse(
+        .x == 0,
+        "0",
+        formatC(.x, format = "f", digits = 2, decimal.mark = ",", big.mark = ".")
+      )
+    )
+  )
 
 desc_gttable <- gt(desc_gttable)
 
@@ -1386,14 +1405,6 @@ desc_gttable <- sub_missing(
   desc_gttable,
   columns = everything(),
   missing_text = ""
-)
-
-# Vírgula como separador decimal
-desc_gttable <- fmt_number(
-  desc_gttable,
-  columns = where(is.numeric),
-  dec_mark = ",",
-  sep_mark = "."
 )
 
 # Visualizar

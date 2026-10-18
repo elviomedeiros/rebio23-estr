@@ -5413,21 +5413,27 @@ vertical-align: -.125em;
 <span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="st">&quot;Sheet 1&quot;</span>, <span class="at">x =</span> m_wide)</span>
 <span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;tabela de habitat.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabela final ajustada no Excel</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="do">### tabela final</span></span>
 <span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>hab_gttable <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">path  =</span> <span class="st">&quot;tabela de habitat.xlsx&quot;</span>,</span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">&quot;tabela_final&quot;</span>,</span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>  <span class="at">range =</span> <span class="st">&quot;A1:P26&quot;</span>) <span class="co">#ajustar para o tamanho da tabela final </span></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>hab_gttable</span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>hab_gttable <span class="ot">&lt;-</span> <span class="fu">gt</span>(hab_gttable)</span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>hab_gttable <span class="ot">&lt;-</span> <span class="fu">sub_missing</span>(hab_gttable,</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>                      <span class="at">columns =</span> <span class="fu">everything</span>(), <span class="at">missing_text =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="co">#hab_gttable &lt;- fmt_number(hab_gttable, columns = &quot;F.O.(%)&quot;, decimals = 1)</span></span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>hab_gttable</span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(hab_gttable, <span class="st">&quot;gt-hab_gttable_xlsx.html&quot;</span>)</span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(hab_gttable, <span class="st">&quot;gt-hab_gttable_xlsx.rds&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>hab_gttable <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;tabela de habitat.xlsx&quot;</span>,</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">&quot;tabela_final&quot;</span>,</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>  <span class="at">range =</span> <span class="st">&quot;A1:P26&quot;</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>hab_gttable <span class="ot">&lt;-</span> <span class="fu">gt</span>(hab_gttable)</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>hab_gttable <span class="ot">&lt;-</span> <span class="fu">sub_missing</span>(</span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>  hab_gttable,</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">everything</span>(),</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_text =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(hab_gttable, <span class="st">&quot;gt-hab_gttable_xlsx.html&quot;</span>)</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(hab_gttable, <span class="st">&quot;gt-hab_gttable_xlsx.rds&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>A Análise de Componentes Principais (PCA) mostrou que os dois primeiros eixos explicaram 40,0% da variação total dos dados, sendo 23,2% pelo primeiro eixo (Dim1) e 16,8% pelo segundo eixo (Dim2). Em relação aos niveis de preservação os pontos do tipo I foram utilizado como referência para a interpretação, o tipo II apresentou maior aproximação na distribuição dos pontos, indicando semelhanças nas condições ambientais, principalmente quanto à elevação, à liteira e ao oxigênio dissolvido. O tipo III foi associado a características como largura do canal, vegetação submersa, gramíneas, macrófitas, lama e algas. O tipo IV apresentou maior dispersão dos pontos, com alguns deles localizados próximos às variáveis areia, velocidade da água e turbidez (<a href="#fig-PCA_fviz" class="quarto-xref">Figure 2</a>). Essas diferenças na distribuição entre os níveis de preservação foram corroboradas pela PERMANOVA, que identificou diferenças significativas nas condições ambientais entre os quatro tipos (<em>F</em> = 6,23; <em>R</em>² = 0,1786; <em>p</em> = 0,001), indicando que a classificação dos locais segundo o nível de preservação explicou 17,86% da variação ambiental. Nas comparações pareadas, foram observadas diferenças significativas entre os tipos I e III (<em>F</em> = 9,13; <em>R</em>² = 0,1858; <em>p</em> ajustado = 0,006), I e IV (<em>F</em> = 5,30; <em>R</em>² = 0,0925; <em>p</em> ajustado = 0,006), II e III (<em>F</em> = 4,05; <em>R</em>² = 0,1065; <em>p</em> ajustado = 0,006), II e IV (<em>F</em> = 3,46; <em>R</em>² = 0,0699; <em>p</em> ajustado = 0,006) e III e IV (<em>F</em> = 9,39; <em>R</em>² = 0,1182; <em>p</em> ajustado = 0,006). Não houve diferença significativa entre os tipos I e II (<em>F</em> = 2,03; <em>R</em>² = 0,1126; <em>p</em> ajustado = 0,094), resultado que acompanha a maior proximidade entre esses grupos observada na PCA. De modo geral, os resultados indicaram maior semelhança ambiental entre os tipos I e II, diferenças entre os tipos III e IV e os demais grupos e maior heterogeneidade na distribuição dos pontos do tipo IV.</p>
@@ -6161,77 +6167,82 @@ vertical-align: -.125em;
 <span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabela final ajustada no Excel</span></span>
 <span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a>desc_gttable <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;tabela de descritores.xlsx&quot;</span>,</span>
-<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">&quot;tabela_final&quot;</span>,</span>
-<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a>  <span class="at">range =</span> <span class="st">&quot;A1:M16&quot;</span></span>
-<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a>desc_gttable <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;tabela de descritores.xlsx&quot;</span>,</span>
+<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">&quot;tabela_final&quot;</span>,</span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a>  <span class="at">range =</span> <span class="st">&quot;A1:M16&quot;</span></span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a>desc_gttable <span class="ot">&lt;-</span> <span class="fu">gt</span>(desc_gttable)</span>
-<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>desc_gttable <span class="ot">&lt;-</span> <span class="fu">sub_missing</span>(</span>
-<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a>  desc_gttable,</span>
-<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">everything</span>(),</span>
-<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_text =</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Vírgula como separador decimal</span></span>
-<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a>desc_gttable <span class="ot">&lt;-</span> <span class="fu">fmt_number</span>(</span>
-<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a>  desc_gttable,</span>
-<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">where</span>(is.numeric),</span>
-<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a>  <span class="at">dec_mark =</span> <span class="st">&quot;,&quot;</span>,</span>
-<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep_mark =</span> <span class="st">&quot;.&quot;</span></span>
-<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar</span></span>
-<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a>desc_gttable</span>
-<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar</span></span>
-<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(desc_gttable, <span class="st">&quot;gt-desc_gttable_xlsx.html&quot;</span>)</span>
-<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(desc_gttable, <span class="st">&quot;gt-desc_gttable_xlsx.rds&quot;</span>)</span>
-<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a><span class="do">###NORMALIDADE----</span></span>
-<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a>Assimetria <span class="ot">&lt;-</span> <span class="fu">apply</span>(m_trab,<span class="dv">1</span>,skewness)</span>
-<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a>Assimetria</span>
-<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a>Curtose <span class="ot">&lt;-</span> <span class="fu">apply</span>(m_trab,<span class="dv">1</span>,kurtosis)</span>
-<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a>Curtose</span>
-<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a>Normalidade1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Assimetria, Curtose)</span>
-<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a>Normalidade1 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(Normalidade1)</span>
-<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a>Normalidade1</span>
-<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a>SomaTotalN <span class="ot">&lt;-</span> <span class="fu">apply</span>(Normalidade1,<span class="dv">2</span>,sum)</span>
-<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a>SomaTotalN</span>
-<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a>MediaTotalN <span class="ot">&lt;-</span> <span class="fu">apply</span>(Normalidade1,<span class="dv">2</span>,mean)</span>
-<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a>MediaTotalN</span>
-<span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a>DPTotalN <span class="ot">&lt;-</span> <span class="fu">apply</span>(Normalidade1,<span class="dv">2</span>,sd)</span>
-<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a>DPTotalN</span>
-<span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a>Normalidade2<span class="ot">&lt;-</span><span class="fu">cbind</span>(SomaTotalN, MediaTotalN, DPTotalN)</span>
-<span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a>Normalidade2<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(Normalidade2)</span>
-<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a>Normalidade2 <span class="ot">&lt;-</span> <span class="fu">t</span>(Normalidade2) <span class="co">#&quot;t&quot; transpoe a matriz</span></span>
-<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a>Normalidade2</span>
-<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>NormalidadeFinal <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Normalidade1, Normalidade2)</span>
-<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a>NormalidadeFinal</span>
-<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a>NormalidadeFinal <span class="ot">&lt;-</span> <span class="fu">round</span>(NormalidadeFinal, <span class="dv">2</span>)</span>
-<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a>NormalidadeFinal</span>
-<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando NormalidadeFinal</span></span>
-<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(<span class="fu">data.frame</span>(<span class="st">&quot;SPP&quot;</span><span class="ot">=</span><span class="fu">rownames</span>(NormalidadeFinal),</span>
-<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a>                       NormalidadeFinal),</span>
-<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Normalidade.txt&quot;</span>,</span>
-<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a>            <span class="at">row.names=</span><span class="cn">FALSE</span>,</span>
-<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a>            <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
-<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a><span class="do">###TABELA FINAL NORMALIDADE----</span></span>
-<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a>nf <span class="ot">&lt;-</span> NormalidadeFinal</span>
-<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(nf); <span class="fu">nrow</span>(nf) <span class="co">#no. de N colunas x M linhas</span></span>
-<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a>nf <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">SPP =</span> <span class="fu">rownames</span>(nf), nf)</span>
-<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">gt</span>(nf, <span class="at">rowname_col =</span> <span class="st">&quot;SPP&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Descritores da normalidade por ponto (COLUNA)&quot;</span>)</span>
-<span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a>gt</span>
-<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(gt, <span class="st">&quot;Normalidade.html&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatar os números: zero como 0 e os demais com duas casas</span></span>
+<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a>desc_gttable <span class="ot">&lt;-</span> desc_gttable <span class="sc">|&gt;</span></span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>      <span class="fu">where</span>(is.numeric),</span>
+<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">ifelse</span>(</span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a>        .x <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;0&quot;</span>,</span>
+<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a>        <span class="fu">formatC</span>(.x, <span class="at">format =</span> <span class="st">&quot;f&quot;</span>, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="at">big.mark =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a>desc_gttable <span class="ot">&lt;-</span> <span class="fu">gt</span>(desc_gttable)</span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a>desc_gttable <span class="ot">&lt;-</span> <span class="fu">sub_missing</span>(</span>
+<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a>  desc_gttable,</span>
+<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">everything</span>(),</span>
+<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_text =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar</span></span>
+<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a>desc_gttable</span>
+<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvar</span></span>
+<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(desc_gttable, <span class="st">&quot;gt-desc_gttable_xlsx.html&quot;</span>)</span>
+<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(desc_gttable, <span class="st">&quot;gt-desc_gttable_xlsx.rds&quot;</span>)</span>
+<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a><span class="do">###NORMALIDADE----</span></span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a>Assimetria <span class="ot">&lt;-</span> <span class="fu">apply</span>(m_trab,<span class="dv">1</span>,skewness)</span>
+<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a>Assimetria</span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a>Curtose <span class="ot">&lt;-</span> <span class="fu">apply</span>(m_trab,<span class="dv">1</span>,kurtosis)</span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a>Curtose</span>
+<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a>Normalidade1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Assimetria, Curtose)</span>
+<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a>Normalidade1 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(Normalidade1)</span>
+<span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a>Normalidade1</span>
+<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a>SomaTotalN <span class="ot">&lt;-</span> <span class="fu">apply</span>(Normalidade1,<span class="dv">2</span>,sum)</span>
+<span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a>SomaTotalN</span>
+<span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a>MediaTotalN <span class="ot">&lt;-</span> <span class="fu">apply</span>(Normalidade1,<span class="dv">2</span>,mean)</span>
+<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a>MediaTotalN</span>
+<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a>DPTotalN <span class="ot">&lt;-</span> <span class="fu">apply</span>(Normalidade1,<span class="dv">2</span>,sd)</span>
+<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>DPTotalN</span>
+<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a>Normalidade2<span class="ot">&lt;-</span><span class="fu">cbind</span>(SomaTotalN, MediaTotalN, DPTotalN)</span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a>Normalidade2<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(Normalidade2)</span>
+<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a>Normalidade2 <span class="ot">&lt;-</span> <span class="fu">t</span>(Normalidade2) <span class="co">#&quot;t&quot; transpoe a matriz</span></span>
+<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a>Normalidade2</span>
+<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a>NormalidadeFinal <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Normalidade1, Normalidade2)</span>
+<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a>NormalidadeFinal</span>
+<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a>NormalidadeFinal <span class="ot">&lt;-</span> <span class="fu">round</span>(NormalidadeFinal, <span class="dv">2</span>)</span>
+<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a>NormalidadeFinal</span>
+<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvando NormalidadeFinal</span></span>
+<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(<span class="fu">data.frame</span>(<span class="st">&quot;SPP&quot;</span><span class="ot">=</span><span class="fu">rownames</span>(NormalidadeFinal),</span>
+<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>                       NormalidadeFinal),</span>
+<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Normalidade.txt&quot;</span>,</span>
+<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a>            <span class="at">row.names=</span><span class="cn">FALSE</span>,</span>
+<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a>            <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a><span class="do">###TABELA FINAL NORMALIDADE----</span></span>
+<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a>nf <span class="ot">&lt;-</span> NormalidadeFinal</span>
+<span id="cb9-283"><a href="#cb9-283" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(nf); <span class="fu">nrow</span>(nf) <span class="co">#no. de N colunas x M linhas</span></span>
+<span id="cb9-284"><a href="#cb9-284" aria-hidden="true" tabindex="-1"></a>nf <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">SPP =</span> <span class="fu">rownames</span>(nf), nf)</span>
+<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">gt</span>(nf, <span class="at">rowname_col =</span> <span class="st">&quot;SPP&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Descritores da normalidade por ponto (COLUNA)&quot;</span>)</span>
+<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a>gt</span>
+<span id="cb9-287"><a href="#cb9-287" aria-hidden="true" tabindex="-1"></a><span class="fu">gtsave</span>(gt, <span class="st">&quot;Normalidade.html&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Um total de 56 táxons distribuídos entre Rotifera, Cladocera e Copepoda foi registrado durante o período de estudo. Rotifera apresentou a maior riqueza taxonômica (40), seguido por Cladocera (12) e Copepoda (4), além dos estágios juvenis de copepoda náuplios e copepoditos. Entre os registros, Bdelloidea foi o único táxon presente em todos os pontos amostrados, com densidades médias (ind/L) que variaram de 0,9 no P13 a 2,3 no P4. A distribuição dos demais táxons foi mais restrita, com diferenças nas densidades médias entre os pontos. Entre os rotíferos, <em>Lecane curvicornis</em> apresentou densidade média de 2,0 no P11. Nesse mesmo ponto, <em>Lecane luna</em> apresentou 0,5, <em>Lecane cornuta</em> 0,4, <em>Brachionus patulus</em> 0,6 e <em>Polyarthra vulgaris</em> 0,5. <em>Platyias quadricornis</em> foi registrado no P6 e no P11, com densidade média de 0,6 em ambos os pontos. Outros rotíferos apresentaram densidades médias inferiores a 0,5, como <em>Lecane leontina</em>, com 0,2 no P4, e <em>Testudinella patina</em>, com 0,2 no P11. Entre os cladóceros, <em>Alonella dadayi</em> apresentou densidade média de 2,7 no P4, sendo o maior valor registrado para esse grupo. Nos demais pontos em que ocorreu, as densidades foram de 0,2 no P6, 0,3 no P11 e 0,1 nos P12 e P13. <em>Chydorus sp.</em> também apresentou maior densidade no P4, com 1,6, seguido pelo P11, com 0,9. Já <em>Alonella hamulata</em> apresentou densidade média de 0,5 no P4, enquanto <em>Macrothrix laticornis</em> e <em>Ilyocryptus spinifer</em> apresentaram, respectivamente, 0,7 e 0,7 no P11. <em>Diaphanosoma birgei</em> também se destacou nesse ponto, com densidade média de 1,1. Em relação a Copepoda, os estágios juvenis apresentaram as maiores densidades médias. Os náuplios atingiram 1,9 no P4 e 4,4 no P11. Para os copepoditos, as densidades médias foram de 6,6 no P4 e 4,5 no P11. Nos demais pontos em que foram registrados, os valores foram inferiores, variando de 0,1 a 0,8 para ambos os estágios. Entre os copépodes identificados em nível de gênero, <em>Paracyclops sp.</em> apresentou densidade média de 0,4 no P4, enquanto <em>Mesocyclops sp.</em> apresentou 0,3 nesse mesmo ponto. <em>Notodiaptomus sp.</em> apresentou densidade média de 0,2 no P11 (<a href="#tbl-spp_gttable" class="quarto-xref">Table 3</a>).</p>
@@ -6670,20 +6681,20 @@ Table 1: Tabela de dados ambientais.
 </figcaption>
 <div aria-describedby="tbl-hab_gttable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tlzgbrlyay" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tlzgbrlyay table {
+<div id="ghzylnwprc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ghzylnwprc table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#tlzgbrlyay thead, #tlzgbrlyay tbody, #tlzgbrlyay tfoot, #tlzgbrlyay tr, #tlzgbrlyay td, #tlzgbrlyay th {
+#ghzylnwprc thead, #ghzylnwprc tbody, #ghzylnwprc tfoot, #ghzylnwprc tr, #ghzylnwprc td, #ghzylnwprc th {
 border-style: none;
 }
-#tlzgbrlyay p {
+#ghzylnwprc p {
 margin: 0;
 padding: 0;
 }
-#tlzgbrlyay .gt_table {
+#ghzylnwprc .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -6708,11 +6719,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_caption {
+#ghzylnwprc .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#tlzgbrlyay .gt_title {
+#ghzylnwprc .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -6723,7 +6734,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#tlzgbrlyay .gt_subtitle {
+#ghzylnwprc .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -6734,7 +6745,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#tlzgbrlyay .gt_heading {
+#ghzylnwprc .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -6745,12 +6756,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_bottom_border {
+#ghzylnwprc .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_col_headings {
+#ghzylnwprc .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -6764,7 +6775,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_col_heading {
+#ghzylnwprc .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6783,7 +6794,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#tlzgbrlyay .gt_column_spanner_outer {
+#ghzylnwprc .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6794,13 +6805,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#tlzgbrlyay .gt_column_spanner_outer:first-child {
+#ghzylnwprc .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#tlzgbrlyay .gt_column_spanner_outer:last-child {
+#ghzylnwprc .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#tlzgbrlyay .gt_column_spanner {
+#ghzylnwprc .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -6811,10 +6822,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#tlzgbrlyay .gt_spanner_row {
+#ghzylnwprc .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#tlzgbrlyay .gt_group_heading {
+#ghzylnwprc .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6839,7 +6850,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#tlzgbrlyay .gt_empty_group_heading {
+#ghzylnwprc .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -6853,13 +6864,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#tlzgbrlyay .gt_from_md > :first-child {
+#ghzylnwprc .gt_from_md > :first-child {
 margin-top: 0;
 }
-#tlzgbrlyay .gt_from_md > :last-child {
+#ghzylnwprc .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#tlzgbrlyay .gt_row {
+#ghzylnwprc .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6877,7 +6888,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#tlzgbrlyay .gt_stub {
+#ghzylnwprc .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6889,7 +6900,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tlzgbrlyay .gt_stub_row_group {
+#ghzylnwprc .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6902,13 +6913,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#tlzgbrlyay .gt_row_group_first td {
+#ghzylnwprc .gt_row_group_first td {
 border-top-width: 2px;
 }
-#tlzgbrlyay .gt_row_group_first th {
+#ghzylnwprc .gt_row_group_first th {
 border-top-width: 2px;
 }
-#tlzgbrlyay .gt_summary_row {
+#ghzylnwprc .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6917,14 +6928,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tlzgbrlyay .gt_first_summary_row {
+#ghzylnwprc .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_first_summary_row.thick {
+#ghzylnwprc .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#tlzgbrlyay .gt_last_summary_row {
+#ghzylnwprc .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6933,7 +6944,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_grand_summary_row {
+#ghzylnwprc .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6942,7 +6953,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tlzgbrlyay .gt_first_grand_summary_row {
+#ghzylnwprc .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6951,7 +6962,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_last_grand_summary_row_top {
+#ghzylnwprc .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6960,10 +6971,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_striped {
+#ghzylnwprc .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#tlzgbrlyay .gt_table_body {
+#ghzylnwprc .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -6971,7 +6982,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_footnotes {
+#ghzylnwprc .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6984,7 +6995,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_footnote {
+#ghzylnwprc .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -6992,7 +7003,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tlzgbrlyay .gt_sourcenotes {
+#ghzylnwprc .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -7005,64 +7016,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#tlzgbrlyay .gt_sourcenote {
+#ghzylnwprc .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tlzgbrlyay .gt_left {
+#ghzylnwprc .gt_left {
 text-align: left;
 }
-#tlzgbrlyay .gt_center {
+#ghzylnwprc .gt_center {
 text-align: center;
 }
-#tlzgbrlyay .gt_right {
+#ghzylnwprc .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#tlzgbrlyay .gt_font_normal {
+#ghzylnwprc .gt_font_normal {
 font-weight: normal;
 }
-#tlzgbrlyay .gt_font_bold {
+#ghzylnwprc .gt_font_bold {
 font-weight: bold;
 }
-#tlzgbrlyay .gt_font_italic {
+#ghzylnwprc .gt_font_italic {
 font-style: italic;
 }
-#tlzgbrlyay .gt_super {
+#ghzylnwprc .gt_super {
 font-size: 65%;
 }
-#tlzgbrlyay .gt_footnote_marks {
+#ghzylnwprc .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#tlzgbrlyay .gt_asterisk {
+#ghzylnwprc .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#tlzgbrlyay .gt_indent_1 {
+#ghzylnwprc .gt_indent_1 {
 text-indent: 5px;
 }
-#tlzgbrlyay .gt_indent_2 {
+#ghzylnwprc .gt_indent_2 {
 text-indent: 10px;
 }
-#tlzgbrlyay .gt_indent_3 {
+#ghzylnwprc .gt_indent_3 {
 text-indent: 15px;
 }
-#tlzgbrlyay .gt_indent_4 {
+#ghzylnwprc .gt_indent_4 {
 text-indent: 20px;
 }
-#tlzgbrlyay .gt_indent_5 {
+#ghzylnwprc .gt_indent_5 {
 text-indent: 25px;
 }
-#tlzgbrlyay .katex-display {
+#ghzylnwprc .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#tlzgbrlyay div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ghzylnwprc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -7275,7 +7286,7 @@ height: 0px !important;
 <td class="gt_row gt_left" headers="Ponto 8">0,3 (0-0,4)</td>
 <td class="gt_row gt_left" headers="Ponto 9">0,3 (0-0,5)</td>
 <td class="gt_row gt_left" headers="Ponto 10">0,2 (0,1-0,3)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,3 (0,1-0,5)</td>
 <td class="gt_row gt_left" headers="Ponto 13">0,1 (0,1-0,2)</td>
 <td class="gt_row gt_left" headers="Ponto 14">0,4 (0,3-0,6)</td>
@@ -7388,8 +7399,8 @@ height: 0px !important;
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Variável">Areia</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
 <td class="gt_row gt_left" headers="Ponto 3">5 (0-10)</td>
 <td class="gt_row gt_left" headers="Ponto 4">25,8 (0-95)</td>
 <td class="gt_row gt_left" headers="Ponto 5">61,7 (20-95)</td>
@@ -7406,39 +7417,39 @@ height: 0px !important;
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Variável">Cascalho fino</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
 <td class="gt_row gt_left" headers="Ponto 9">0,8 (0-5)</td>
 <td class="gt_row gt_left" headers="Ponto 10">1,7 (0-10)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
 <td class="gt_row gt_left" headers="Ponto 13">1,7 (0-10)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Variável">Rochas</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
 <td class="gt_row gt_left" headers="Ponto 12">1,7 (0-10)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Variável">Estrutura do habitat (%)</td>
@@ -7477,19 +7488,19 @@ height: 0px !important;
 <td class="gt_row gt_left" headers="Variável">Macrófitas</td>
 <td class="gt_row gt_left" headers="Ponto 1*">5,8 (5-10)</td>
 <td class="gt_row gt_left" headers="Ponto 2">10 (0-30)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">17,9 (0-60)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">1,7 (0-5)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
 <td class="gt_row gt_left" headers="Ponto 8">0,8 (0-5)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">20,8 (0-50)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
 <td class="gt_row gt_left" headers="Ponto 13">4,2 (0-15)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Variável">Gramíneas</td>
@@ -7497,17 +7508,17 @@ height: 0px !important;
 <td class="gt_row gt_left" headers="Ponto 2">8,3 (5-15)</td>
 <td class="gt_row gt_left" headers="Ponto 3">6 (0-15)</td>
 <td class="gt_row gt_left" headers="Ponto 4">27,1 (15-50)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">21,8 (1-50)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
 <td class="gt_row gt_left" headers="Ponto 10">0,8 (0-5)</td>
 <td class="gt_row gt_left" headers="Ponto 11">39,2 (15-50)</td>
 <td class="gt_row gt_left" headers="Ponto 12">5,8 (5-10)</td>
 <td class="gt_row gt_left" headers="Ponto 13">4,2 (0-10)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Variável">Vegetação submersa</td>
@@ -7520,7 +7531,7 @@ height: 0px !important;
 <td class="gt_row gt_left" headers="Ponto 7">1,7 (0-5)</td>
 <td class="gt_row gt_left" headers="Ponto 8">6,7 (0-15)</td>
 <td class="gt_row gt_left" headers="Ponto 9">5 (0-15)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">16,7 (5-20)</td>
 <td class="gt_row gt_left" headers="Ponto 12">10 (5-15)</td>
 <td class="gt_row gt_left" headers="Ponto 13">10 (0-20)</td>
@@ -7587,17 +7598,17 @@ height: 0px !important;
 <td class="gt_row gt_left" headers="Ponto 2">0,2 (0-1)</td>
 <td class="gt_row gt_left" headers="Ponto 3">5,5 (0-21)</td>
 <td class="gt_row gt_left" headers="Ponto 4">19,2 (15-25)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0,8 (0-5)</td>
 <td class="gt_row gt_left" headers="Ponto 7">0,8 (0-5)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0-0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0-0)</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Variável">Detritos</td>
@@ -7639,20 +7650,20 @@ Table 2: Descritores por ponto.
 </figcaption>
 <div aria-describedby="tbl-desc_gttable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="hnatshkyfy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hnatshkyfy table {
+<div id="bfdirsgimn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bfdirsgimn table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#hnatshkyfy thead, #hnatshkyfy tbody, #hnatshkyfy tfoot, #hnatshkyfy tr, #hnatshkyfy td, #hnatshkyfy th {
+#bfdirsgimn thead, #bfdirsgimn tbody, #bfdirsgimn tfoot, #bfdirsgimn tr, #bfdirsgimn td, #bfdirsgimn th {
 border-style: none;
 }
-#hnatshkyfy p {
+#bfdirsgimn p {
 margin: 0;
 padding: 0;
 }
-#hnatshkyfy .gt_table {
+#bfdirsgimn .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -7677,11 +7688,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#hnatshkyfy .gt_caption {
+#bfdirsgimn .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#hnatshkyfy .gt_title {
+#bfdirsgimn .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -7692,7 +7703,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#hnatshkyfy .gt_subtitle {
+#bfdirsgimn .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -7703,7 +7714,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#hnatshkyfy .gt_heading {
+#bfdirsgimn .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -7714,12 +7725,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#hnatshkyfy .gt_bottom_border {
+#bfdirsgimn .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#hnatshkyfy .gt_col_headings {
+#bfdirsgimn .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -7733,7 +7744,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#hnatshkyfy .gt_col_heading {
+#bfdirsgimn .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -7752,7 +7763,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#hnatshkyfy .gt_column_spanner_outer {
+#bfdirsgimn .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -7763,13 +7774,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#hnatshkyfy .gt_column_spanner_outer:first-child {
+#bfdirsgimn .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#hnatshkyfy .gt_column_spanner_outer:last-child {
+#bfdirsgimn .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#hnatshkyfy .gt_column_spanner {
+#bfdirsgimn .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -7780,10 +7791,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#hnatshkyfy .gt_spanner_row {
+#bfdirsgimn .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#hnatshkyfy .gt_group_heading {
+#bfdirsgimn .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7808,7 +7819,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#hnatshkyfy .gt_empty_group_heading {
+#bfdirsgimn .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -7822,13 +7833,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#hnatshkyfy .gt_from_md > :first-child {
+#bfdirsgimn .gt_from_md > :first-child {
 margin-top: 0;
 }
-#hnatshkyfy .gt_from_md > :last-child {
+#bfdirsgimn .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#hnatshkyfy .gt_row {
+#bfdirsgimn .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7846,7 +7857,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#hnatshkyfy .gt_stub {
+#bfdirsgimn .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -7858,7 +7869,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hnatshkyfy .gt_stub_row_group {
+#bfdirsgimn .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -7871,13 +7882,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#hnatshkyfy .gt_row_group_first td {
+#bfdirsgimn .gt_row_group_first td {
 border-top-width: 2px;
 }
-#hnatshkyfy .gt_row_group_first th {
+#bfdirsgimn .gt_row_group_first th {
 border-top-width: 2px;
 }
-#hnatshkyfy .gt_summary_row {
+#bfdirsgimn .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -7886,14 +7897,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hnatshkyfy .gt_first_summary_row {
+#bfdirsgimn .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#hnatshkyfy .gt_first_summary_row.thick {
+#bfdirsgimn .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#hnatshkyfy .gt_last_summary_row {
+#bfdirsgimn .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7902,7 +7913,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#hnatshkyfy .gt_grand_summary_row {
+#bfdirsgimn .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -7911,7 +7922,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hnatshkyfy .gt_first_grand_summary_row {
+#bfdirsgimn .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7920,7 +7931,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#hnatshkyfy .gt_last_grand_summary_row_top {
+#bfdirsgimn .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7929,10 +7940,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#hnatshkyfy .gt_striped {
+#bfdirsgimn .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#hnatshkyfy .gt_table_body {
+#bfdirsgimn .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -7940,7 +7951,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#hnatshkyfy .gt_footnotes {
+#bfdirsgimn .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -7953,7 +7964,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#hnatshkyfy .gt_footnote {
+#bfdirsgimn .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -7961,7 +7972,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hnatshkyfy .gt_sourcenotes {
+#bfdirsgimn .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -7974,64 +7985,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#hnatshkyfy .gt_sourcenote {
+#bfdirsgimn .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hnatshkyfy .gt_left {
+#bfdirsgimn .gt_left {
 text-align: left;
 }
-#hnatshkyfy .gt_center {
+#bfdirsgimn .gt_center {
 text-align: center;
 }
-#hnatshkyfy .gt_right {
+#bfdirsgimn .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#hnatshkyfy .gt_font_normal {
+#bfdirsgimn .gt_font_normal {
 font-weight: normal;
 }
-#hnatshkyfy .gt_font_bold {
+#bfdirsgimn .gt_font_bold {
 font-weight: bold;
 }
-#hnatshkyfy .gt_font_italic {
+#bfdirsgimn .gt_font_italic {
 font-style: italic;
 }
-#hnatshkyfy .gt_super {
+#bfdirsgimn .gt_super {
 font-size: 65%;
 }
-#hnatshkyfy .gt_footnote_marks {
+#bfdirsgimn .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#hnatshkyfy .gt_asterisk {
+#bfdirsgimn .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#hnatshkyfy .gt_indent_1 {
+#bfdirsgimn .gt_indent_1 {
 text-indent: 5px;
 }
-#hnatshkyfy .gt_indent_2 {
+#bfdirsgimn .gt_indent_2 {
 text-indent: 10px;
 }
-#hnatshkyfy .gt_indent_3 {
+#bfdirsgimn .gt_indent_3 {
 text-indent: 15px;
 }
-#hnatshkyfy .gt_indent_4 {
+#bfdirsgimn .gt_indent_4 {
 text-indent: 20px;
 }
-#hnatshkyfy .gt_indent_5 {
+#bfdirsgimn .gt_indent_5 {
 text-indent: 25px;
 }
-#hnatshkyfy .katex-display {
+#bfdirsgimn .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#hnatshkyfy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bfdirsgimn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -8063,7 +8074,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,03</td>
 <td class="gt_row gt_right" headers="DP">0,15</td>
 <td class="gt_row gt_right" headers="Max">1,14</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">17,24</td>
 <td class="gt_row gt_right" headers="R">10,00</td>
 <td class="gt_row gt_right" headers="E">0,38</td>
@@ -8078,7 +8089,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,02</td>
 <td class="gt_row gt_right" headers="DP">0,16</td>
 <td class="gt_row gt_right" headers="Max">1,24</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">12,07</td>
 <td class="gt_row gt_right" headers="R">7,00</td>
 <td class="gt_row gt_right" headers="E">0,20</td>
@@ -8093,7 +8104,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,02</td>
 <td class="gt_row gt_right" headers="DP">0,16</td>
 <td class="gt_row gt_right" headers="Max">1,25</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">13,79</td>
 <td class="gt_row gt_right" headers="R">8,00</td>
 <td class="gt_row gt_right" headers="E">0,24</td>
@@ -8108,7 +8119,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,30</td>
 <td class="gt_row gt_right" headers="DP">1,00</td>
 <td class="gt_row gt_right" headers="Max">6,59</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">63,79</td>
 <td class="gt_row gt_right" headers="R">37,00</td>
 <td class="gt_row gt_right" headers="E">0,55</td>
@@ -8123,7 +8134,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,03</td>
 <td class="gt_row gt_right" headers="DP">0,23</td>
 <td class="gt_row gt_right" headers="Max">1,75</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">29,31</td>
 <td class="gt_row gt_right" headers="R">17,00</td>
 <td class="gt_row gt_right" headers="E">0,19</td>
@@ -8138,7 +8149,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,07</td>
 <td class="gt_row gt_right" headers="DP">0,29</td>
 <td class="gt_row gt_right" headers="Max">2,10</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">55,17</td>
 <td class="gt_row gt_right" headers="R">32,00</td>
 <td class="gt_row gt_right" headers="E">0,54</td>
@@ -8153,7 +8164,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,04</td>
 <td class="gt_row gt_right" headers="DP">0,25</td>
 <td class="gt_row gt_right" headers="Max">1,88</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">31,03</td>
 <td class="gt_row gt_right" headers="R">18,00</td>
 <td class="gt_row gt_right" headers="E">0,28</td>
@@ -8168,7 +8179,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,03</td>
 <td class="gt_row gt_right" headers="DP">0,19</td>
 <td class="gt_row gt_right" headers="Max">1,41</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">24,14</td>
 <td class="gt_row gt_right" headers="R">14,00</td>
 <td class="gt_row gt_right" headers="E">0,30</td>
@@ -8183,7 +8194,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,02</td>
 <td class="gt_row gt_right" headers="DP">0,15</td>
 <td class="gt_row gt_right" headers="Max">1,17</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">27,59</td>
 <td class="gt_row gt_right" headers="R">16,00</td>
 <td class="gt_row gt_right" headers="E">0,31</td>
@@ -8198,7 +8209,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,02</td>
 <td class="gt_row gt_right" headers="DP">0,15</td>
 <td class="gt_row gt_right" headers="Max">1,12</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">24,14</td>
 <td class="gt_row gt_right" headers="R">14,00</td>
 <td class="gt_row gt_right" headers="E">0,32</td>
@@ -8213,7 +8224,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,36</td>
 <td class="gt_row gt_right" headers="DP">0,86</td>
 <td class="gt_row gt_right" headers="Max">4,49</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">72,41</td>
 <td class="gt_row gt_right" headers="R">42,00</td>
 <td class="gt_row gt_right" headers="E">0,72</td>
@@ -8228,7 +8239,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,06</td>
 <td class="gt_row gt_right" headers="DP">0,19</td>
 <td class="gt_row gt_right" headers="Max">1,16</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">56,90</td>
 <td class="gt_row gt_right" headers="R">33,00</td>
 <td class="gt_row gt_right" headers="E">0,63</td>
@@ -8243,7 +8254,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,04</td>
 <td class="gt_row gt_right" headers="DP">0,14</td>
 <td class="gt_row gt_right" headers="Max">0,86</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">43,10</td>
 <td class="gt_row gt_right" headers="R">25,00</td>
 <td class="gt_row gt_right" headers="E">0,61</td>
@@ -8258,7 +8269,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,02</td>
 <td class="gt_row gt_right" headers="DP">0,14</td>
 <td class="gt_row gt_right" headers="Max">1,10</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">13,79</td>
 <td class="gt_row gt_right" headers="R">8,00</td>
 <td class="gt_row gt_right" headers="E">0,21</td>
@@ -8273,7 +8284,7 @@ height: 0px !important;
 <td class="gt_row gt_right" headers="Média">0,02</td>
 <td class="gt_row gt_right" headers="DP">0,13</td>
 <td class="gt_row gt_right" headers="Max">0,99</td>
-<td class="gt_row gt_right" headers="Min">0,00</td>
+<td class="gt_row gt_right" headers="Min">0</td>
 <td class="gt_row gt_right" headers="FO (%)">27,59</td>
 <td class="gt_row gt_right" headers="R">16,00</td>
 <td class="gt_row gt_right" headers="E">0,22</td>
@@ -8302,20 +8313,20 @@ Table 3: Lista de espécies.
 </figcaption>
 <div aria-describedby="tbl-spp_gttable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ivyafymkvd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ivyafymkvd table {
+<div id="xrabvamkod" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xrabvamkod table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#ivyafymkvd thead, #ivyafymkvd tbody, #ivyafymkvd tfoot, #ivyafymkvd tr, #ivyafymkvd td, #ivyafymkvd th {
+#xrabvamkod thead, #xrabvamkod tbody, #xrabvamkod tfoot, #xrabvamkod tr, #xrabvamkod td, #xrabvamkod th {
 border-style: none;
 }
-#ivyafymkvd p {
+#xrabvamkod p {
 margin: 0;
 padding: 0;
 }
-#ivyafymkvd .gt_table {
+#xrabvamkod .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -8340,11 +8351,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#ivyafymkvd .gt_caption {
+#xrabvamkod .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#ivyafymkvd .gt_title {
+#xrabvamkod .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -8355,7 +8366,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#ivyafymkvd .gt_subtitle {
+#xrabvamkod .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -8366,7 +8377,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#ivyafymkvd .gt_heading {
+#xrabvamkod .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -8377,12 +8388,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#ivyafymkvd .gt_bottom_border {
+#xrabvamkod .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ivyafymkvd .gt_col_headings {
+#xrabvamkod .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -8396,7 +8407,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#ivyafymkvd .gt_col_heading {
+#xrabvamkod .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -8415,7 +8426,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#ivyafymkvd .gt_column_spanner_outer {
+#xrabvamkod .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -8426,13 +8437,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#ivyafymkvd .gt_column_spanner_outer:first-child {
+#xrabvamkod .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#ivyafymkvd .gt_column_spanner_outer:last-child {
+#xrabvamkod .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#ivyafymkvd .gt_column_spanner {
+#xrabvamkod .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -8443,10 +8454,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#ivyafymkvd .gt_spanner_row {
+#xrabvamkod .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#ivyafymkvd .gt_group_heading {
+#xrabvamkod .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -8471,7 +8482,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#ivyafymkvd .gt_empty_group_heading {
+#xrabvamkod .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -8485,13 +8496,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#ivyafymkvd .gt_from_md > :first-child {
+#xrabvamkod .gt_from_md > :first-child {
 margin-top: 0;
 }
-#ivyafymkvd .gt_from_md > :last-child {
+#xrabvamkod .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#ivyafymkvd .gt_row {
+#xrabvamkod .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -8509,7 +8520,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#ivyafymkvd .gt_stub {
+#xrabvamkod .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -8521,7 +8532,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivyafymkvd .gt_stub_row_group {
+#xrabvamkod .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -8534,13 +8545,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#ivyafymkvd .gt_row_group_first td {
+#xrabvamkod .gt_row_group_first td {
 border-top-width: 2px;
 }
-#ivyafymkvd .gt_row_group_first th {
+#xrabvamkod .gt_row_group_first th {
 border-top-width: 2px;
 }
-#ivyafymkvd .gt_summary_row {
+#xrabvamkod .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -8549,14 +8560,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivyafymkvd .gt_first_summary_row {
+#xrabvamkod .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#ivyafymkvd .gt_first_summary_row.thick {
+#xrabvamkod .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#ivyafymkvd .gt_last_summary_row {
+#xrabvamkod .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -8565,7 +8576,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ivyafymkvd .gt_grand_summary_row {
+#xrabvamkod .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -8574,7 +8585,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivyafymkvd .gt_first_grand_summary_row {
+#xrabvamkod .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -8583,7 +8594,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#ivyafymkvd .gt_last_grand_summary_row_top {
+#xrabvamkod .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -8592,10 +8603,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#ivyafymkvd .gt_striped {
+#xrabvamkod .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#ivyafymkvd .gt_table_body {
+#xrabvamkod .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -8603,7 +8614,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ivyafymkvd .gt_footnotes {
+#xrabvamkod .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -8616,7 +8627,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#ivyafymkvd .gt_footnote {
+#xrabvamkod .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -8624,7 +8635,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivyafymkvd .gt_sourcenotes {
+#xrabvamkod .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -8637,64 +8648,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#ivyafymkvd .gt_sourcenote {
+#xrabvamkod .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivyafymkvd .gt_left {
+#xrabvamkod .gt_left {
 text-align: left;
 }
-#ivyafymkvd .gt_center {
+#xrabvamkod .gt_center {
 text-align: center;
 }
-#ivyafymkvd .gt_right {
+#xrabvamkod .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#ivyafymkvd .gt_font_normal {
+#xrabvamkod .gt_font_normal {
 font-weight: normal;
 }
-#ivyafymkvd .gt_font_bold {
+#xrabvamkod .gt_font_bold {
 font-weight: bold;
 }
-#ivyafymkvd .gt_font_italic {
+#xrabvamkod .gt_font_italic {
 font-style: italic;
 }
-#ivyafymkvd .gt_super {
+#xrabvamkod .gt_super {
 font-size: 65%;
 }
-#ivyafymkvd .gt_footnote_marks {
+#xrabvamkod .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#ivyafymkvd .gt_asterisk {
+#xrabvamkod .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#ivyafymkvd .gt_indent_1 {
+#xrabvamkod .gt_indent_1 {
 text-indent: 5px;
 }
-#ivyafymkvd .gt_indent_2 {
+#xrabvamkod .gt_indent_2 {
 text-indent: 10px;
 }
-#ivyafymkvd .gt_indent_3 {
+#xrabvamkod .gt_indent_3 {
 text-indent: 15px;
 }
-#ivyafymkvd .gt_indent_4 {
+#xrabvamkod .gt_indent_4 {
 text-indent: 20px;
 }
-#ivyafymkvd .gt_indent_5 {
+#xrabvamkod .gt_indent_5 {
 text-indent: 25px;
 }
-#ivyafymkvd .katex-display {
+#xrabvamkod .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#ivyafymkvd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xrabvamkod div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -8889,21 +8900,21 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Dissotrocha aculeata (Ehrenberg, 1832)</td>
 <td class="gt_row gt_left" headers="...2">Dis.aculeata</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Dicranophoridae</td>
@@ -8943,21 +8954,21 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Dicranophoroides sp.</td>
 <td class="gt_row gt_left" headers="...2">Dicranop.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Notommatidae</td>
@@ -8997,21 +9008,21 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Cephalodella sp.</td>
 <td class="gt_row gt_left" headers="...2">Cephalodella.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">MONOGONONTA</td>
@@ -9121,287 +9132,287 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lecane aculeata (Jakubski, 1912)</td>
 <td class="gt_row gt_left" headers="...2">Lec.aculeata</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,2)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lecane bulla (Gosse, 1851)</td>
 <td class="gt_row gt_left" headers="...2">Lec.bulla</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,1 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0,1 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lecane cornuta (Müller, 1786)</td>
 <td class="gt_row gt_left" headers="...2">Lec.cornuta</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,4 (0,5)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lecane crepida Harring, 1914</td>
 <td class="gt_row gt_left" headers="...2">Lec.crepida</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lecane curvicornis (Murray, 1913)</td>
 <td class="gt_row gt_left" headers="...2">Lec.curvicornis</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">2 (2,8)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lecane furcata (Murray, 1913)</td>
 <td class="gt_row gt_left" headers="...2">Lec.furcata</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lecane leontina (Turner, 1892)</td>
 <td class="gt_row gt_left" headers="...2">Lec.leontina</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,2 (0,3)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lecane lunaris (Ehrenberg, 1832)</td>
 <td class="gt_row gt_left" headers="...2">Lec.lunaris</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,2 (0,3)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lecane luna (Müller, 1776)</td>
 <td class="gt_row gt_left" headers="...2">Lec.luna</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,5 (0,6)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lecane monostyla (Daday, 1897):</td>
 <td class="gt_row gt_left" headers="...2">Lec.monostyla</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lecane papuana (Murray, 1913)</td>
 <td class="gt_row gt_left" headers="...2">Lec.papuana</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lecane quadridentata (Ehrenberg, 1830)</td>
 <td class="gt_row gt_left" headers="...2">Lec.quadridentata</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lecane sp.1</td>
 <td class="gt_row gt_left" headers="...2">Lecane.sp1</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lecane sp.2</td>
 <td class="gt_row gt_left" headers="...2">Lecane.sp2</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lecane sp.3</td>
 <td class="gt_row gt_left" headers="...2">Lecane.sp3</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Brachionidae</td>
@@ -9441,59 +9452,59 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Brachionus patulus Müller, 1786</td>
 <td class="gt_row gt_left" headers="...2">Bra.patulus</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,6 (0,9)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Macrochaetus sp.</td>
 <td class="gt_row gt_left" headers="...2">Macrochaetus.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Platyias quadricornis (Ehrenberg, 1832)</td>
 <td class="gt_row gt_left" headers="...2">Pla.quadricornis</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0,6 (0,8)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,6 (0,9)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
 <td class="gt_row gt_left" headers="Ponto 13">0 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lepadellidae</td>
@@ -9533,78 +9544,78 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lepadella ovalis (Müller, 1786)</td>
 <td class="gt_row gt_left" headers="...2">Lep.ovalis</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lepadella patella (Müller, 1773)</td>
 <td class="gt_row gt_left" headers="...2">Lep.patella</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Lepadella sp.1</td>
 <td class="gt_row gt_left" headers="...2">Lepadella.sp1</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Lepadella sp.2</td>
 <td class="gt_row gt_left" headers="...2">Lepadella.sp2</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Euchlanidae</td>
@@ -9644,21 +9655,21 @@ height: 0px !important;
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Euchlanis dilatata Ehrenberg, 1832</td>
 <td class="gt_row gt_left" headers="...2">Euc.dilatata</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Synchaetidae</td>
@@ -9698,78 +9709,78 @@ height: 0px !important;
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Polyarthra bicerca</td>
 <td class="gt_row gt_left" headers="...2">Pol.bicerca</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Polyarthra dolichoptera Idelson, 1925</td>
 <td class="gt_row gt_left" headers="...2">Pol.dolichoptera</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Polyarthra vulgaris</td>
 <td class="gt_row gt_left" headers="...2">Pol.vulgaris</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,5 (0,7)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Polyarthra sp.</td>
 <td class="gt_row gt_left" headers="...2">Polyarthra.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Colurellidae</td>
@@ -9809,21 +9820,21 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Colurella sp.</td>
 <td class="gt_row gt_left" headers="...2">Colurella.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Mytilinidae</td>
@@ -9863,59 +9874,59 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Mytilina crassipes (Lucks, 1912)</td>
 <td class="gt_row gt_left" headers="...2">Myt.crassipes</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Mytilina bisulcata (Lucks, 1912)</td>
 <td class="gt_row gt_left" headers="...2">Myt.bisulcata</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Mytilina sp.</td>
 <td class="gt_row gt_left" headers="...2">Mytilina.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Trichotriidae</td>
@@ -9955,21 +9966,21 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Trichotria tetractis (Ehrenberg, 1830)</td>
 <td class="gt_row gt_left" headers="...2">Tri.tetractis</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Filiniidae</td>
@@ -10009,21 +10020,21 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Filinia longiseta (Ehrenberg, 1834)</td>
 <td class="gt_row gt_left" headers="...2">Fil.longiseta</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Testudinellidae</td>
@@ -10063,40 +10074,40 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Testudinella mucronata (Gosse, 1886)</td>
 <td class="gt_row gt_left" headers="...2">Tes.mucronata</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Testudinella patina (Hermann, 1783)</td>
 <td class="gt_row gt_left" headers="...2">Tes.patina</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,2 (0,1)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Trichocercidae</td>
@@ -10136,21 +10147,21 @@ height: 0px !important;
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Trichocerca sp.</td>
 <td class="gt_row gt_left" headers="...2">Trichocerca.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">CRUSTACEA</td>
@@ -10295,97 +10306,97 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Alonella dadayi Birge, 1910</td>
 <td class="gt_row gt_left" headers="...2">Alo.dadayi</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">2,7 (3,7)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0,2 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
 <td class="gt_row gt_left" headers="Ponto 8">0 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,3 (0,4)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,1)</td>
 <td class="gt_row gt_left" headers="Ponto 13">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Alonella hamulata (Birge, 1910)</td>
 <td class="gt_row gt_left" headers="...2">Alo.hamulata</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,5 (0,7)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Alonella sp.</td>
 <td class="gt_row gt_left" headers="...2">Alonella.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,2 (0,3)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Chydorus sp.</td>
 <td class="gt_row gt_left" headers="...2">Chydorus.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">1,6 (2,3)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,9 (1,3)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,2)</td>
 <td class="gt_row gt_left" headers="Ponto 13">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Leydigia sp.</td>
 <td class="gt_row gt_left" headers="...2">Leydigia.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Macrothricidae</td>
@@ -10425,59 +10436,59 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Macrothrix laticornis (Jurine, 1820)</td>
 <td class="gt_row gt_left" headers="...2">Mac.laticornis</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,7 (1)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Macrothrix mira Smirnov 1982</td>
 <td class="gt_row gt_left" headers="...2">Mac.mira</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,1 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,6 (0,8)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Macrothrix sp.</td>
 <td class="gt_row gt_left" headers="...2">Macrothrix.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Sididae</td>
@@ -10517,40 +10528,40 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Diaphanosoma birgei</td>
 <td class="gt_row gt_left" headers="...2">Dia.birgei</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">1,1 (1,2)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,1)</td>
 <td class="gt_row gt_left" headers="Ponto 13">0,1 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Diaphanosoma spinulosum</td>
 <td class="gt_row gt_left" headers="...2">Dia.spinulosum</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Ilyocryptidae</td>
@@ -10590,21 +10601,21 @@ height: 0px !important;
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Ilyocryptus spinifer Herrick, 1882</td>
 <td class="gt_row gt_left" headers="...2">Ily.spinifer</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,7 (0,9)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Moinidae</td>
@@ -10644,21 +10655,21 @@ height: 0px !important;
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Moina minuta Hansen, 1899</td>
 <td class="gt_row gt_left" headers="...2">Moi.minuta</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">COPEPODA</td>
@@ -10699,10 +10710,10 @@ height: 0px !important;
 <td class="gt_row gt_left" headers="...1">Nauplii</td>
 <td class="gt_row gt_left" headers="...2">Nauplii</td>
 <td class="gt_row gt_left" headers="Ponto 1*">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
 <td class="gt_row gt_left" headers="Ponto 3">0,1 (0,1)</td>
 <td class="gt_row gt_left" headers="Ponto 4">1,9 (1,8)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0,5 (0,4)</td>
 <td class="gt_row gt_left" headers="Ponto 7">0,1 (0)</td>
 <td class="gt_row gt_left" headers="Ponto 8">0,1 (0,1)</td>
@@ -10711,17 +10722,17 @@ height: 0px !important;
 <td class="gt_row gt_left" headers="Ponto 11">4,4 (2,8)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,3 (0,3)</td>
 <td class="gt_row gt_left" headers="Ponto 13">0,3 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Copepodite</td>
 <td class="gt_row gt_left" headers="...2">Copepodite</td>
 <td class="gt_row gt_left" headers="Ponto 1*">0,3 (0,4)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
 <td class="gt_row gt_left" headers="Ponto 3">0,1 (0,1)</td>
 <td class="gt_row gt_left" headers="Ponto 4">6,6 (7,9)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
 <td class="gt_row gt_left" headers="Ponto 6">0,3 (0,4)</td>
 <td class="gt_row gt_left" headers="Ponto 7">0,1 (0)</td>
 <td class="gt_row gt_left" headers="Ponto 8">0,1 (0,2)</td>
@@ -10730,8 +10741,8 @@ height: 0px !important;
 <td class="gt_row gt_left" headers="Ponto 11">4,5 (4,8)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,8 (0,7)</td>
 <td class="gt_row gt_left" headers="Ponto 13">0,5 (0,5)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">CYCLOPOIDA</td>
@@ -10806,59 +10817,59 @@ height: 0px !important;
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Macrocyclops sp.</td>
 <td class="gt_row gt_left" headers="...2">Macrocyclops.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 11">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
+<td class="gt_row gt_left" headers="Ponto 11">0</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Mesocyclops sp.</td>
 <td class="gt_row gt_left" headers="...2">Mesocyclops.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,3 (0,4)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,2)</td>
-<td class="gt_row gt_left" headers="Ponto 12">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 13">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 12">0</td>
+<td class="gt_row gt_left" headers="Ponto 13">0</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="...1">Paracyclops sp.</td>
 <td class="gt_row gt_left" headers="...2">Paracyclops.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
 <td class="gt_row gt_left" headers="Ponto 4">0,4 (0,5)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,1 (0,1)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,1)</td>
 <td class="gt_row gt_left" headers="Ponto 13">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">CALANOIDA</td>
@@ -10933,21 +10944,21 @@ height: 0px !important;
 <tr class="even">
 <td class="gt_row gt_left" headers="...1">Notodiaptomus sp.</td>
 <td class="gt_row gt_left" headers="...2">Notodiaptomus.sp</td>
-<td class="gt_row gt_left" headers="Ponto 1*">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 2">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 3">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 4">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 5">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 6">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 7">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 8">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 9">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 10">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 1*">0</td>
+<td class="gt_row gt_left" headers="Ponto 2">0</td>
+<td class="gt_row gt_left" headers="Ponto 3">0</td>
+<td class="gt_row gt_left" headers="Ponto 4">0</td>
+<td class="gt_row gt_left" headers="Ponto 5">0</td>
+<td class="gt_row gt_left" headers="Ponto 6">0</td>
+<td class="gt_row gt_left" headers="Ponto 7">0</td>
+<td class="gt_row gt_left" headers="Ponto 8">0</td>
+<td class="gt_row gt_left" headers="Ponto 9">0</td>
+<td class="gt_row gt_left" headers="Ponto 10">0</td>
 <td class="gt_row gt_left" headers="Ponto 11">0,2 (0,2)</td>
 <td class="gt_row gt_left" headers="Ponto 12">0,1 (0,2)</td>
 <td class="gt_row gt_left" headers="Ponto 13">0,1 (0,1)</td>
-<td class="gt_row gt_left" headers="Ponto 14">0 (0)</td>
-<td class="gt_row gt_left" headers="Ponto 15">0 (0)</td>
+<td class="gt_row gt_left" headers="Ponto 14">0</td>
+<td class="gt_row gt_left" headers="Ponto 15">0</td>
 </tr>
 </tbody>
 </table>
