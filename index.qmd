@@ -1554,9 +1554,9 @@ saveRDS(spp_gttable, "gt-spp_gttable_xlsx.rds")
 
 ```
 
-A ordenação NMDS mostrou a distribuição das amostras da comunidade zooplanctônica entre os quatro tipos. Os tipos I e II ficaram próximos na ordenação, enquanto o tipo III apresentou uma posição intermediária entre os tipos I e IV. O tipo IV ocupou uma região mais distante dos demais e apresentou maior dispersão das amostras (@fig-NMDS). Apesar da separação visual entre os grupos, a PERMANOVA não identificou diferenças significativas na composição da comunidade zooplanctônica entre os quatro tipos (*F* = 0,8964; *R*² = 0,19645; *p* = 0,42). O modelo explicou 19,65% da variação na composição da comunidade, mas essa variação não foi estatisticamente significativa.
+A ordenação NMDS mostrou a distribuição das amostras da comunidade zooplanctônica entre os quatro tipos. Os tipos I e II ficaram próximos na ordenação, enquanto o tipo III apresentou uma posição intermediária entre os tipos I e IV. O tipo IV ocupou uma região mais distante dos demais e apresentou maior dispersão das amostras (@fig-NMDS). Apesar da separação visual entre os grupos, a PERMANOVA não identificou diferenças significativas na composição da comunidade zooplanctônica entre os quatro tipos (*F* = 0,8964; *R*² = 0,19645; *p* = 0,42). O modelo explicou 19,65% da variação na composição da comunidade, mas essa variação não foi estatisticamente significativa. Na análise de espécies indicadoras (IZA), apenas *Paracyclops sp.* apresentou associação significativa com a combinação dos tipos I, II e IV, com valor indicador de 0,986 (*p* = 0,027). Não foram identificados táxons indicadores significativos associados exclusivamente a um único tipo de ambiente. Já na análise de preferência ecológica, seis táxons apresentaram associações significativas: *Macrothrix laticornis* (*p* = 0,005) e *Lecane curvicornis* (*p* = 0,029) estiveram associados ao tipo IV, enquanto *Lecane lunaris* (*p* = 0,009), *Lecane luna* (*p* = 0,030), *Alona hamulata* (*p* = 0,046) e *Lecane cornuta* (*p* = 0,045) estiveram associados à combinação dos tipos III e IV.
 
-```{r ordenação-comunidade}
+```{r ordenação-NMDS}
 #| eval: false
 #| warning: false
 #| message: false
@@ -1758,7 +1758,7 @@ ordihull(nmds, groups = grupos, draw = "polygon",
 dev.off()
 ```
 
-```{r com-PERMANOVA_fviz}
+```{r zoo-PERMANOVA}
 #| eval: false
 #| warning: false
 #| message: false
@@ -2019,6 +2019,179 @@ kableExtra::save_kable(
   "res/kb-perma-com_matrixstyle.html"
 )
 
+```
+
+```{r IZA}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Análise de espécies indicadoras"
+
+#IZA----
+#####....----
+
+##ORGANIZANDO DADOS----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+m_dens <- read.csv("m_dens.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+####### matriz de média para comunidade
+env_completo <- m_dens
+library(tidyverse)
+m_hab <- env_completo %>%                    
+  replace(is.na(.), 0) %>%  #substitui todos os valores NA por 0
+  select(where(~sum(.) > 0)) %>%  #mantém apenas colunas cuja soma seja maior que 0
+  rownames_to_column("Grupos") %>%
+  mutate(Grupos = substr(Grupos, 5, 7),     
+         Grupos = factor(Grupos, levels = unique(Grupos))) %>% #mantém a ordem original dos grupos
+  group_by(Grupos) %>%                                       
+  summarise(across(everything(), mean),                     
+            .groups = "drop") %>%                            
+  column_to_rownames("Grupos")
+m_dens <- m_hab
+
+######## grupos precisa ter o mesmo número de linhas
+###################### particionando grupos
+m_grups <- t_grps
+row.names(m_grups)
+pat <- "-H2" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
+pat <- "-H3" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui
+#quem começa com pat
+#quem começa com pat
+pat <- "S-" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui
+################## deletando "H1"
+rownames(m_grups) <- gsub("-H1", "", rownames(m_grups))
+m_grups
+################## deletando "C-B-"
+rownames(m_grups) <- gsub("C-B-", "", rownames(m_grups))
+m_grups
+################## deletando "C-C-"
+rownames(m_grups) <- gsub("C-C-", "", rownames(m_grups))
+m_grups
+t_grps <- m_grups
+
+m_dens
+str(m_dens)
+m_trab <- m_dens
+t_grps
+load("m_dist.Rdata")
+
+#ISA----
+#browseURL("https://cran.r-project.org/web/packages/indicspecies/vignettes/IndicatorSpeciesAnalysis.html")
+
+
+library(indicspecies)
+# Grupos a priori----
+grupos <- t_grps$Ref_site
+grupos
+
+##VALORES INDICATIVOS (IV)----
+
+# Multi-level Pattern Analysis
+set.seed(123)
+indval <- multipatt(m_trab, grupos,
+                    control = how(nperm=999))
+indval
+
+sink("isa_indval.txt", split=TRUE)
+# Summary of the results
+summary(indval)
+# Examining the indicator value components
+summary(indval, indvalcomp=TRUE)
+# Inspecting the indicator species analysis results for all species
+summary(indval, alpha=1)
+
+###RESUMO GERAL----
+indval$sign
+subset(indval$sign, p.value <= 0.05) #only p<0.05 species
+sink()
+
+# Tabela ordenada pelo menor valor de P
+indval$sign[order(indval$sign$p.value), ]
+library("gt")
+library("webshot2")
+indicator_val <- gt(indval$sign[order(indval$sign$p.value), ], rownames_to_stub=TRUE)
+indicator_val
+gtsave(indicator_val, "gt-indval_gttable.html")
+gtsave(indicator_val, "fig-indval_gttable.png")
+
+##SPECIES ECOLOGICAL PREFERENCES (phi)----
+set.seed(123)
+pa <- ifelse(m_trab>0,1,0)
+phi <- multipatt(pa, grupos, func = "r", 
+                 control = how(nperm=999))
+phi
+phi <- multipatt(pa, grupos, func = "r.g", 
+                 control = how(nperm=999)) 
+summary(phi)
+round(head(phi$str),3)
+round(head(indval$str),3)
+# Subsetting for p<0.05
+sig_phi <- rownames(subset(phi$sign, p.value <= 0.05))
+round(phi$str[sig_phi, , drop = FALSE], 3)
+sig_indval <- rownames(subset(indval$sign, p.value <= 0.05))
+round(indval$str[sig_indval, , drop = FALSE], 3)
+
+# Tabela ordenada pelo menor valor de P
+phi$sign[order(phi$sign$p.value), ]
+library("gt")
+library("webshot2")
+phi_val <- gt(phi$sign[order(phi$sign$p.value), ], rownames_to_stub=TRUE)
+phi_val
+gtsave(phi_val, "gt-phi_gttable.html")
+gtsave(phi_val, "fig-phi_gttable.png")
+
+###SPECIES OF INTEREST p<0.05----
+sig <- subset(phi$sign, p.value <= 0.05) #only p<0.05 species
+sink("isa_indval.txt", append=TRUE)
+sig
+sink()
+
+library(ggplot2)
+sig$species <- rownames(sig)
+ggplot(sig, aes(x = reorder(species, stat), y = stat)) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    x = "Species",
+    y = "Indicator value (r.g)",
+    title = "Significant species–habitat associations"
+  )
+assoc <- sig[, grep("^s\\.", names(sig))]
+assoc$species <- rownames(sig)
+assoc_long <- reshape2::melt(assoc, id.vars = "species")
+png("fig-sig_spp.png")
+ggplot(assoc_long, aes(variable, species, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "black") +
+  labs(x = "Group", y = "Species")
+dev.off()
+
+#R base
+barplot(
+  sig$stat,
+  names.arg = rownames(sig),
+  horiz = TRUE,
+  las = 1,
+  xlab = "Indicator value (r.g)")
 ```
 
 # Discussão

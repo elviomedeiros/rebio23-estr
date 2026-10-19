@@ -1,0 +1,198 @@
+
+ Multilevel pattern analysis
+ ---------------------------
+
+ Association function: IndVal.g
+ Significance level (alpha): 0.05
+
+ Total number of species: 58
+ Selected number of species: 1 
+ Number of species associated to 1 group: 0 
+ Number of species associated to 2 groups: 0 
+ Number of species associated to 3 groups: 1 
+
+ List of species associated to each combination: 
+
+ Group I+II+IV  #sps.  1 
+                stat p.value  
+Paracyclops.sp 0.986   0.027 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+ Multilevel pattern analysis
+ ---------------------------
+
+ Association function: IndVal.g
+ Significance level (alpha): 0.05
+
+ Total number of species: 58
+ Selected number of species: 1 
+ Number of species associated to 1 group: 0 
+ Number of species associated to 2 groups: 0 
+ Number of species associated to 3 groups: 1 
+
+ List of species associated to each combination: 
+
+ Group I+II+IV  #sps.  1 
+                    A      B  stat p.value  
+Paracyclops.sp 0.9722 1.0000 0.986   0.027 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+ Multilevel pattern analysis
+ ---------------------------
+
+ Association function: IndVal.g
+ Significance level (alpha): 1
+
+ Total number of species: 58
+ Selected number of species: 53 
+ Number of species associated to 1 group: 42 
+ Number of species associated to 2 groups: 10 
+ Number of species associated to 3 groups: 1 
+
+ List of species associated to each combination: 
+
+ Group I  #sps.  1 
+                  stat p.value
+Pol.dolichoptera 0.624   0.389
+
+ Group II  #sps.  2 
+               stat p.value  
+Lecane.sp3    1.000   0.079 .
+Polyarthra.sp 0.756   0.199  
+
+ Group III  #sps.  2 
+               stat p.value
+Lepadella.sp1 0.447   0.556
+Lepadella.sp2 0.447   0.556
+
+ Group IV  #sps.  37 
+                     stat p.value  
+Lec.luna            0.969   0.053 .
+Mac.laticornis      0.926   0.142  
+Lec.curvicornis     0.925   0.145  
+Chydorus.sp         0.924   0.099 .
+Bra.patulus         0.920   0.164  
+Ily.spinifer        0.920   0.171  
+Pla.quadricornis    0.916   0.107  
+Tes.patina          0.888   0.196  
+Dia.birgei          0.832   0.227  
+Lec.leontina        0.802   0.579  
+Alonella.sp         0.756   0.244  
+Lec.aculeata        0.756   0.269  
+Notodiaptomus.sp    0.756   0.256  
+Tes.mucronata       0.756   0.219  
+Trichocerca.sp      0.756   0.293  
+Lec.papuana         0.741   0.325  
+Macrocyclops.sp     0.655   0.377  
+Macrochaetus.sp     0.655   0.349  
+Mac.mira            0.655   0.406  
+Moi.minuta          0.655   0.357  
+Pol.bicerca         0.655   0.361  
+Cephalodella.sp     0.629   0.514  
+Colurella.sp        0.598   0.576  
+Dicranophoroides.sp 0.535   0.664  
+Fil.longiseta       0.535   0.673  
+Lec.monostyla       0.535   0.669  
+Leydigia.sp         0.535   0.607  
+Mytilina.sp         0.535   0.665  
+Pol.vulgaris        0.532   0.793  
+Dia.spinulosum      0.378   1.000  
+Dis.aculeata        0.378   1.000  
+Euc.dilatata        0.378   1.000  
+Lec.furcata         0.378   1.000  
+Lec.quadridentata   0.378   1.000  
+Myt.crassipes       0.378   1.000  
+Myt.bisulcata       0.378   1.000  
+Tri.tetractis       0.378   1.000  
+
+ Group I+IV  #sps.  2 
+                stat p.value
+Macrothrix.sp  0.745   0.327
+Mesocyclops.sp 0.735   0.584
+
+ Group III+IV  #sps.  8 
+              stat p.value  
+Lec.lunaris  0.957   0.085 .
+Alo.hamulata 0.866   0.308  
+Lec.cornuta  0.866   0.326  
+Lep.ovalis   0.707   0.585  
+Lec.crepida  0.645   0.678  
+Lep.patella  0.500   0.954  
+Lecane.sp1   0.408   1.000  
+Lecane.sp2   0.408   1.000  
+
+ Group I+II+IV  #sps.  1 
+                stat p.value  
+Paracyclops.sp 0.986   0.027 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+                    s.I s.II s.III s.IV index      stat p.value
+Alo.dadayi            1    1     1    1    15 1.0000000      NA
+Alo.hamulata          0    0     1    1    10 0.8660254   0.308
+Alonella.sp           0    0     0    1     4 0.7559289   0.244
+Bdelloidea            1    1     1    1    15 1.0000000      NA
+Bra.patulus           0    0     0    1     4 0.9201127   0.164
+Cephalodella.sp       0    0     0    1     4 0.6292557   0.514
+Colurella.sp          0    0     0    1     4 0.5976143   0.576
+Copepodite            1    1     1    1    15 1.0000000      NA
+Chydorus.sp           0    0     0    1     4 0.9242699   0.099
+Dicranophoroides.sp   0    0     0    1     4 0.5345225   0.664
+Dia.birgei            0    0     0    1     4 0.8319561   0.227
+Dia.spinulosum        0    0     0    1     4 0.3779645   1.000
+Dis.aculeata          0    0     0    1     4 0.3779645   1.000
+Euc.dilatata          0    0     0    1     4 0.3779645   1.000
+Fil.longiseta         0    0     0    1     4 0.5345225   0.673
+Ily.spinifer          0    0     0    1     4 0.9200874   0.171
+Lec.aculeata          0    0     0    1     4 0.7559289   0.269
+Lec.bulla             1    1     1    1    15 0.8164966      NA
+Lec.cornuta           0    0     1    1    10 0.8660254   0.326
+Lec.crepida           0    0     1    1    10 0.6454972   0.678
+Lec.curvicornis       0    0     0    1     4 0.9247849   0.145
+Lec.furcata           0    0     0    1     4 0.3779645   1.000
+Lecane.sp1            0    0     1    1    10 0.4082483   1.000
+Lec.leontina          0    0     0    1     4 0.8019948   0.579
+Lec.lunaris           0    0     1    1    10 0.9574271   0.085
+Lec.luna              0    0     0    1     4 0.9694769   0.053
+Lec.monostyla         0    0     0    1     4 0.5345225   0.669
+Lecane.sp2            0    0     1    1    10 0.4082483   1.000
+Lec.papuana           0    0     0    1     4 0.7412493   0.325
+Lec.quadridentata     0    0     0    1     4 0.3779645   1.000
+Lecane.sp3            0    1     0    0     2 1.0000000   0.079
+Leydigia.sp           0    0     0    1     4 0.5345225   0.607
+Lepadella.sp1         0    0     1    0     3 0.4472136   0.556
+Lepadella.sp2         0    0     1    0     3 0.4472136   0.556
+Lep.ovalis            0    0     1    1    10 0.7071068   0.585
+Lep.patella           0    0     1    1    10 0.5000000   0.954
+Mesocyclops.sp        1    0     0    1     7 0.7346456   0.584
+Macrocyclops.sp       0    0     0    1     4 0.6546537   0.377
+Macrochaetus.sp       0    0     0    1     4 0.6546537   0.349
+Macrothrix.sp         1    0     0    1     7 0.7453560   0.327
+Mac.mira              0    0     0    1     4 0.6546537   0.406
+Mac.laticornis        0    0     0    1     4 0.9258201   0.142
+Moi.minuta            0    0     0    1     4 0.6546537   0.357
+Myt.crassipes         0    0     0    1     4 0.3779645   1.000
+Mytilina.sp           0    0     0    1     4 0.5345225   0.665
+Myt.bisulcata         0    0     0    1     4 0.3779645   1.000
+Nauplii               1    1     1    1    15 1.0000000      NA
+Notodiaptomus.sp      0    0     0    1     4 0.7559289   0.256
+Paracyclops.sp        1    1     0    1    12 0.9859853   0.027
+Pla.quadricornis      0    0     0    1     4 0.9158826   0.107
+Polyarthra.sp         0    1     0    0     2 0.7559289   0.199
+Pol.bicerca           0    0     0    1     4 0.6546537   0.361
+Pol.dolichoptera      1    0     0    0     1 0.6236096   0.389
+Pol.vulgaris          0    0     0    1     4 0.5319780   0.793
+Tes.patina            0    0     0    1     4 0.8877935   0.196
+Tes.mucronata         0    0     0    1     4 0.7559289   0.219
+Trichocerca.sp        0    0     0    1     4 0.7559289   0.293
+Tri.tetractis         0    0     0    1     4 0.3779645   1.000
+               s.I s.II s.III s.IV index      stat p.value
+Paracyclops.sp   1    1     0    1    12 0.9859853   0.027
+                s.I s.II s.III s.IV index      stat p.value
+Alo.hamulata      0    0     1    1    10 0.7805097   0.046
+Lec.cornuta       0    0     1    1    10 0.7805097   0.045
+Lec.curvicornis   0    0     0    1     4 0.7762435   0.029
+Lec.lunaris       0    0     1    1    10 0.9045340   0.009
+Lec.luna          0    0     1    1    10 0.8164966   0.030
+Mac.laticornis    0    0     0    1     4 0.9045340   0.005
