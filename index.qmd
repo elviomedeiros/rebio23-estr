@@ -1554,6 +1554,473 @@ saveRDS(spp_gttable, "gt-spp_gttable_xlsx.rds")
 
 ```
 
+A ordenação NMDS mostrou a distribuição das amostras da comunidade zooplanctônica entre os quatro tipos. Os tipos I e II ficaram próximos na ordenação, enquanto o tipo III apresentou uma posição intermediária entre os tipos I e IV. O tipo IV ocupou uma região mais distante dos demais e apresentou maior dispersão das amostras (@fig-NMDS). Apesar da separação visual entre os grupos, a PERMANOVA não identificou diferenças significativas na composição da comunidade zooplanctônica entre os quatro tipos (*F* = 0,8964; *R*² = 0,19645; *p* = 0,42). O modelo explicou 19,65% da variação na composição da comunidade, mas essa variação não foi estatisticamente significativa.
+
+```{r ordenação-comunidade}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Análise de classificação e ordenação de dados comunitários"
+
+#NMDS----
+#####....----
+
+##ORGANIZANDO DADOS----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+m_dens <- read.csv("m_dens.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+####### matriz de média para comunidade
+env_completo <- m_dens
+library(tidyverse)
+m_hab <- env_completo %>%                    
+  replace(is.na(.), 0) %>%  #substitui todos os valores NA por 0
+  select(where(~sum(.) > 0)) %>%  #mantém apenas colunas cuja soma seja maior que 0
+  rownames_to_column("Grupos") %>%
+  mutate(Grupos = substr(Grupos, 5, 7),     
+         Grupos = factor(Grupos, levels = unique(Grupos))) %>% #mantém a ordem original dos grupos
+  group_by(Grupos) %>%                                       
+  summarise(across(everything(), mean),                     
+            .groups = "drop") %>%                            
+  column_to_rownames("Grupos")
+m_dens <- m_hab
+
+######## grupos precisa ter o mesmo número de linhas
+###################### particionando grupos
+m_grups <- t_grps
+row.names(m_grups)
+pat <- "-H2" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
+pat <- "-H3" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui
+#quem começa com pat
+#quem começa com pat
+pat <- "S-" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui
+################## deletando "H1"
+rownames(m_grups) <- gsub("-H1", "", rownames(m_grups))
+m_grups
+t_grps <- m_grups
+
+m_dens
+str(m_dens)
+m_trab <- m_dens
+
+#CLASSIFICAÇÃO: Matriz Comunitária----
+
+library(vegan)
+m_trns <- asin(sqrt(decostand(m_trab,
+                              method="total", MARGIN = 2)))
+#m_trns <- sqrt(m_trab)
+
+# Salvando a matriz transformada
+write.table(m_trns, "m_com_trns.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+
+m_dist <- vegdist(m_trns, method = "bray",
+                   diag = TRUE,
+                   upper = FALSE)
+save(m_dist, file = "m_dist.RData")
+load("m_dist.RData")
+
+cluster_uas <- hclust(m_dist, method = "average")
+png("fig-cluster.png", width = 9, height = 7, units = "in", res = 400)
+plot(cluster_uas, main = "Cluster Dendrogram - Bray-Curtis da Matriz Comunitária",
+      hang = 0.1) #testar com -.01
+#rect.hclust(cluster_uas, k = 3, h = NULL)
+#h = 0.8 fornece os grupos formados na altura h
+dev.off()
+as.matrix(m_dist)[1:6, 1:6]
+
+# Heatmap
+library("gplots")
+heatdist <- as.matrix(m_dist)
+col <- rev(heat.colors(999)) #rev() reverte as cores do heatmap
+png("fig-heatmap_uas.png", width = 9, height = 7, units = "in", res = 400)
+heatmap.2(x=(as.matrix(m_dist)), #objetos x objetos
+          Rowv = as.dendrogram(cluster_uas),
+          Colv = as.dendrogram(cluster_uas),
+          key = T, tracecol = NA, revC = T,
+          col = heat.colors,  #dissimilaridade = 1 - similaridade
+          density.info = "none",
+          xlab = "UA´s", ylab = "UA´s",
+          mar = c(6, 6) + 0.2)
+dev.off()
+library(vegan)
+cluster_spp <- hclust(
+  vegdist(t(m_trns), method = "bray"),
+  method = "average"
+)
+png("fig-cluster_spp.png", width = 9, height = 7, units = "in", res = 400)
+plot (cluster_spp, main = "Dendrograma dos atributos")
+dev.off()
+png("fig-heatmap.png", width = 9, height = 9, units = "in", res = 400)
+heatmap.2(t(as.matrix(m_trns)), #objetos x atributos
+          Colv = as.dendrogram(cluster_uas),
+          Rowv = as.dendrogram(cluster_spp),
+          key = T, tracecol = NA, revC = T,
+          col = col,
+          density.info = "none",
+          xlab = "Unidades amostrais", ylab = "Espécies",
+          mar = c(6, 6) + 1.8)  # adjust margin size
+dev.off()
+
+# Histórico das fusões
+library(tidyverse)
+library(gt)
+merge <- as.data.frame(cluster_uas$merge)
+merge[nrow(merge)+1,] = c("0","0")
+height <- as.data.frame(round(cluster_uas$height, 2))
+height[nrow(height)+1,] = c("1.0")
+fusoes <- data.frame(Cluster_uas = merge, Height = height)
+colnames(fusoes) <- c("Cluster1", "Cluster2", "Height")
+UA <- rownames_to_column(as.data.frame(m_trns[, 0]))
+colnames(UA) <- c("UAs")
+No.UA <- 1:nrow(fusoes)
+fusoes <- cbind(No.UA, UA, fusoes)
+fusoes$Histórico <- 1:nrow(fusoes)
+#fusoes
+fusoes <- gt(fusoes)
+fusoes
+gtsave(fusoes, "Fusoes.html")
+
+#ORDENAÇÃO----
+
+nmds <- metaMDS(m_trns, #matriz CPE, definida anteriormente
+                k=2) #no. de redução de dimensões
+nmds
+set.seed(321)
+nmds <- metaMDS(m_trns, distance = "bray", k = 2, trymax = 100)
+#method = "manhattan", "euclidean", "canberra", "clark", "bray", "kulczynski", "jaccard", "gower", #"altGower", "morisita", "horn", "mountford", "raup", "binomial", "chao", "cao", "mahalanobis", "chisq", #"chord", "hellinger", "aitchison", or "robust.aitchison"
+nmds
+scores(nmds)
+stressplot(nmds)
+gof <- goodness(nmds)
+gof
+
+##GRAFICOS DE ORDENAÇÃO----
+
+plot(nmds, display = "sites", type = "n")
+points(nmds, display = "sites", cex = 2*gof/mean(gof))
+plot(nmds)
+ordiplot(nmds, choices = c(1,2), type = "n")
+orditorp(nmds, display = "species", col="red", air=0.01)
+orditorp(nmds, display = "sites", cex=1.25, air=0.01)
+
+plot(nmds)
+colnames(t_grps)
+grupos <- t_grps$Ref_site
+grupos
+
+### GRÁFICO FINAL ----
+
+colors <- dplyr::recode(
+  as.character(grupos),
+  "I" = "grey50",
+  "II" = "black",
+  "III" = "grey90",
+  "IV" = "grey70"
+)
+
+png("fig-NMDS.png", width = 9, height = 7, units = "in", res = 1000)
+ordiplot(nmds, type = "n")
+ordihull(nmds, groups = grupos, draw = "polygon",
+         col= "grey90", label = TRUE)
+#orditorp(nmds, display = "species", col = "red", air = 0.01)
+#orditorp(nmds, display = "sites", col = colors, air = 0.01, cex = 1.25)
+#points(nmds, display = "sites", pch = 21, col = "black", bg = colors, cex = 1.25)
+
+#sites_coords <- scores(nmds, display = "sites")
+#sites_coords <- read.table("nms_sites_coords.txt")
+#text(sites_coords[,1], sites_coords[,2],
+#     labels = rownames(sites_coords),
+#     col = colors, cex = 1, pos = 3)  # pos = 3 puts labels above
+#fix(sites_coords)
+#write.table(sites_coords, "nms_sites_coords.txt")
+dev.off()
+```
+
+```{r com-PERMANOVA_fviz}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Teste PERMANOVA - Comunidade zooplanctônica"
+
+#### Limpando para começar
+
+dev.off()
+rm(list = ls(all = TRUE))
+cat("\014")
+
+library(vegan)
+
+########## Organizando os dados
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+######## grupos precisa ter o mesmo número de linhas
+###################### particionando grupos
+m_grups <- t_grps
+row.names(m_grups)
+pat <- "-H2" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui quem começa com pat
+pat <- "-H3" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui
+#quem começa com pat
+#quem começa com pat
+pat <- "S-" 
+m_grups <- m_grups[!grepl(pat, rownames(m_grups)), ] #exclui
+################## deletando "H1"
+rownames(m_grups) <- gsub("-H1", "", rownames(m_grups))
+m_grups
+################## deletando "C-B-"
+rownames(m_grups) <- gsub("C-B-", "", rownames(m_grups))
+m_grups
+################## deletando "C-C-"
+rownames(m_grups) <- gsub("C-C-", "", rownames(m_grups))
+m_grups
+t_grps <- m_grups
+
+m_trns <- read.csv("m_com_trns.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+# Conferir se as amostras correspondem
+if (!setequal(rownames(t_grps), rownames(m_trns))) {
+  stop("As amostras de t_grps e m_trns não correspondem.")
+}
+
+# Colocar as amostras na mesma ordem
+m_trab <- m_trns[rownames(t_grps), , drop = FALSE]
+
+# Manter apenas variáveis ambientais numéricas
+m_trab <- m_trab[
+  , sapply(m_trab, is.numeric),
+  drop = FALSE
+]
+
+# Remover amostras com dados ausentes
+dados_ok <- complete.cases(m_trab) &
+  !is.na(t_grps$Ref_site)
+
+m_trab <- m_trab[dados_ok, , drop = FALSE]
+grupos <- droplevels(as.factor(t_grps$Ref_site[dados_ok]))
+
+# Remover variáveis sem variação
+variancia <- sapply(m_trab, var)
+
+m_trab <- m_trab[
+  , is.finite(variancia) & variancia > 0,
+  drop = FALSE
+]
+
+# Conferir os dados
+print(table(grupos))
+print(colnames(m_trab))
+
+# Padronizar as variáveis ambientais
+m_env <- scale(m_trab)
+
+# Distância euclidiana
+dist_env <- dist(m_env, method = "euclidean")
+
+#### PERMANOVA GERAL
+
+set.seed(123)
+
+perma_geral <- adonis2(
+  dist_env ~ grupos,
+  permutations = 999
+)
+
+print(perma_geral)
+
+####  COMPARAÇÕES PAREADAS ENTRE OS NÍVEIS DE PRESERVAÇÃO
+
+niveis <- levels(grupos)
+
+pares <- combn(niveis, 2, simplify = FALSE)
+
+set.seed(123)
+
+resultados_pares <- lapply(pares, function(par) {
+  
+  selecao <- grupos %in% par
+  
+  dados_par <- m_env[selecao, , drop = FALSE]
+  grupos_par <- droplevels(grupos[selecao])
+  
+  dist_par <- dist(dados_par, method = "euclidean")
+  
+  teste <- adonis2(
+    dist_par ~ grupos_par,
+    permutations = 999
+  )
+  
+  data.frame(
+    Tipo_1 = par[1],
+    Tipo_2 = par[2],
+    F = teste$F[1],
+    R2 = teste$R2[1],
+    p = teste$`Pr(>F)`[1]
+  )
+})
+
+resultados_pares <- do.call(rbind, resultados_pares)
+
+# Corrigir os valores de p para as comparações múltiplas
+resultados_pares$p_ajustado <- p.adjust(
+  resultados_pares$p,
+  method = "holm"
+)
+
+resultados_pares$Significativo <- ifelse(
+  resultados_pares$p_ajustado < 0.05,
+  "Sim",
+  "Não"
+)
+
+print(resultados_pares)
+
+# 4. PERMDISP — DISPERSÃO DOS GRUPOS
+
+bd <- betadisper(
+  dist_env,
+  grupos,
+  type = "centroid"
+)
+
+set.seed(123)
+
+teste_disp <- permutest(
+  bd,
+  permutations = 999
+)
+
+print(teste_disp)
+
+
+# 5. SALVAR OS RESULTADOS
+
+write.csv(
+  as.data.frame(perma_geral),
+  "permanova_com_geral.csv",
+  row.names = TRUE
+)
+
+write.csv(
+  resultados_pares,
+  "permanova_com_pareada.csv",
+  row.names = FALSE
+)
+
+capture.output(
+  teste_disp,
+  file = "permdisp_com.txt"
+)
+
+
+# TABELA EM MATRIZ (OS VALORES DE p SIGNIFICATIVOS EM VERMELHO)
+
+library(knitr)
+library(kableExtra)
+library(tibble)
+
+# Criar matriz com os tipos de Ref_sites
+niveis <- levels(grupos)
+
+pval_matrix <- matrix(
+  NA_real_,
+  nrow = length(niveis),
+  ncol = length(niveis),
+  dimnames = list(niveis, niveis)
+)
+
+diag(pval_matrix) <- NA_real_
+
+# Preencher a matriz com os p ajustados das comparações pareadas
+for (i in seq_len(nrow(resultados_pares))) {
+  
+  tipo1 <- resultados_pares$Tipo_1[i]
+  tipo2 <- resultados_pares$Tipo_2[i]
+  p <- resultados_pares$p_ajustado[i]
+  
+  pval_matrix[tipo1, tipo2] <- p
+  pval_matrix[tipo2, tipo1] <- p
+}
+
+# Formatar os valores de p e destacar os significativos em vermelho
+pval_formatada <- matrix(
+  ifelse(
+    is.na(pval_matrix),
+    "",
+    ifelse(
+      pval_matrix < 0.05,
+      paste0(
+        "<span style='color:red; font-weight:bold;'>",
+        sprintf("%.3f", pval_matrix),
+        "</span>"
+      ),
+      sprintf("%.3f", pval_matrix)
+    )
+  ),
+  nrow = nrow(pval_matrix),
+  ncol = ncol(pval_matrix),
+  dimnames = dimnames(pval_matrix)
+)
+
+# Transformar em tabela
+tabela_p <- as.data.frame(pval_formatada) |>
+  tibble::rownames_to_column("Ref_sites")
+
+# Mostrar a tabela formatada
+matrixstyle <- knitr::kable(
+  tabela_p,
+  format = "html",
+  escape = FALSE,
+  row.names = FALSE,
+  caption = "Valores de p ajustados das comparações pareadas entre os tipos de Ref_sites"
+) |>
+  kableExtra::kable_styling(full_width = FALSE)
+
+matrixstyle
+
+# Salvar a tabela em HTML
+if (!dir.exists("res")) dir.create("res")
+
+kableExtra::save_kable(
+  matrixstyle,
+  "res/kb-perma-com_matrixstyle.html"
+)
+
+```
+
 # Discussão
 
 ## Variáveis ambientais
@@ -1588,6 +2055,8 @@ O presente trabalho teve duração de um ano e foi desenvolvido no laboratório 
 
 @fig-PCA_fviz: Biplot da Análise de Componentes Principais (PCA) dos pontos de coleta com base nas variáveis ambientais, considerando os quatro tipos de pontos amostrais (I a IV), classificados de acordo com o nível de preservação. Os símbolos representam os pontos amostrais, e os vetores indicam as variáveis ambientais relacionadas à estrutura do habitat.
 
+@fig-NMDS: Ordenação NMDS da composição da comunidade zooplanctônica nos quatro tipos de pontos classificados de acordo com o nível de preservação ambiental e a localização em relação à Reserva Biológica Guaribas. Os polígonos representam a distribuição dos pontos amostrais de cada tipo.
+
 @tbl-hab_gttable: Variáveis ambientais médias para os pontos de amostragem (mínimo–máximo) nos riachos Barro Branco e Caiana (Mamanguape, PB). O Ponto 1 é o ponto de referência deste estudo.
 
 @tbl-desc_gttable: Descritores da diversidade por ponto de amostragem (linhas). Soma, abundância relativa (%), média, desvio padrão, valor máximo (Max), valor mínimo (Min), frequência de ocorrência (%), riqueza (R), índice de equitabilidade de Pielou (E), índice de diversidade de Shannon (H) e índice de diversidade de Simpson (D).
@@ -1609,6 +2078,14 @@ O presente trabalho teve duração de um ano e foi desenvolvido no laboratório 
 <summary>Fig.: Análise de Componentes Principais das variáveis ambientais</summary>
 
 ![Análise de Componentes Principais das variáveis ambientais.](fig-PCA_fviz.png){#fig-PCA_fviz}
+
+</details>
+
+<details>
+
+<summary>Fig.: Ordenação NMDS da composição da comunidade zooplanctônica</summary>
+
+![Ordenação NMDS da composição da comunidade zooplanctônica entre os quatro tipos de níveis de preservação.](fig-NMDS.png){#fig-NMDS}
 
 </details>
 
