@@ -1,0 +1,77 @@
+$r.squared
+[1] 0.7497816
+
+$adj.r.squared
+[1] 0.6496943
+
+Permutation test for rda under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = com_hell ~ Overh_veg + Algae + mp_C + Debris, data = m_trns_hab2)
+         Df Variance      F Pr(>F)    
+Model     4 0.136123 7.4913  0.001 ***
+Residual 10 0.045427                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Permutation test for rda under reduced model
+Forward tests for axes
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = com_hell ~ Overh_veg + Algae + mp_C + Debris, data = m_trns_hab2)
+         Df Variance       F Pr(>F)    
+RDA1      1 0.107553 23.6759  0.001 ***
+RDA2      1 0.015933  3.5074  0.015 *  
+RDA3      1 0.007347  1.6174  0.315    
+RDA4      1 0.005289  1.1643  0.329    
+Residual 10 0.045427                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Permutation test for rda under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = com_hell ~ Overh_veg + Algae + mp_C + Debris, data = m_trns_hab2)
+          Df Variance      F Pr(>F)   
+Overh_veg  1 0.035622 7.8415  0.003 **
+Algae      1 0.025429 5.5978  0.017 * 
+mp_C       1 0.022476 4.9478  0.010 **
+Debris     1 0.014597 3.2132  0.052 . 
+Residual  10 0.045427                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Call:
+rda(formula = com_hell ~ Overh_veg + Algae + mp_C + Debris, data = m_trns_hab2) 
+
+Partitioning of variance:
+              Inertia Proportion
+Total         0.18155     1.0000
+Constrained   0.13612     0.7498
+Unconstrained 0.04543     0.2502
+
+Eigenvalues, and their contribution to the variance 
+
+Importance of components:
+                        RDA1    RDA2     RDA3     RDA4     PC1      PC2      PC3
+Eigenvalue            0.1076 0.01593 0.007347 0.005289 0.01605 0.008967 0.005444
+Proportion Explained  0.5924 0.08776 0.040470 0.029134 0.08839 0.049391 0.029985
+Cumulative Proportion 0.5924 0.68018 0.720648 0.749782 0.83817 0.887566 0.917551
+                           PC4      PC5      PC6      PC7      PC8       PC9
+Eigenvalue            0.004448 0.003246 0.002066 0.001953 0.001729 0.0009868
+Proportion Explained  0.024500 0.017880 0.011379 0.010759 0.009524 0.0054355
+Cumulative Proportion 0.942051 0.959931 0.971310 0.982070 0.991594 0.9970297
+                           PC10
+Eigenvalue            0.0005393
+Proportion Explained  0.0029703
+Cumulative Proportion 1.0000000
+
+Accumulated constrained eigenvalues
+Importance of components:
+                        RDA1    RDA2     RDA3     RDA4
+Eigenvalue            0.1076 0.01593 0.007347 0.005289
+Proportion Explained  0.7901 0.11705 0.053975 0.038856
+Cumulative Proportion 0.7901 0.90717 0.961144 1.000000
+

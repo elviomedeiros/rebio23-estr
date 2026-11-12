@@ -2194,6 +2194,19 @@ barplot(
   xlab = "Indicator value (r.g)")
 ```
 
+```{r RDA}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Código: Análise de Redundância"
+
+
+
+```
+
 # Discussão
 
 ## Variáveis ambientais
